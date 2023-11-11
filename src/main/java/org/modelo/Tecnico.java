@@ -1,2 +1,42 @@
-package org.modelo;public class Tecnico {
+package org.modelo;
+
+public class Tecnico {
+    private String nombre;
+    private String apellido;
+    private String dni;
+    // Otros atributos relacionados con el técnico
+
+    // Constructor
+    public Tecnico(String nombre, String apellido, String dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        // Inicializa otros atributos
+    }
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    // Otros métodos relacionados con el técnico
 }
+
