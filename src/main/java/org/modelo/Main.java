@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    //P1
     public static void main(String[] args) {
         ArrayList<Tecnico> tecnicos = new ArrayList<>();
         Tecnico tecnico2 = new Tecnico("Nombre del Técnico", "Apellido del Técnico", "DNI del Técnico");
@@ -152,8 +153,31 @@ public class Main {
                 case 4:
                     // Reporte de Empleados
                     // Implementa la lógica para mostrar el reporte de empleados (lista de empleados)
-                    System.out.println("Reporte de Empleados - Implementa la lógica aquí");
-                    break;
+
+                    while(true){
+                        System.out.println("\nMenú Reporte:");
+                        System.out.println("1. Reporte Empleados");
+                        System.out.println("2. Reporte Solicitudes");
+                        System.out.println("0. Volver al Menú Principal");
+
+                        System.out.print("Seleccione una opción: ");
+                        int opcionReporte = scanner.nextInt();
+
+                        switch (opcionReporte){
+                            case 1:
+                                System.out.println("Lista de Tarifas - Implementa la lógica aquí");
+                                break;
+                            case 2:
+                                System.out.println("Lista de Tarifas - Implementa la lógica aquí");
+                                break;
+                            case 0:
+                                // Volver al Menú Principal
+                                break;
+                            default:
+                                System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+                        }
+                        break;
+                    }
 
                 case 0:
                     // Salir del programa
