@@ -96,7 +96,7 @@ public class Main {
                                 break;
 
                             case 0:
-                                // Volver al Menú Principal
+                                // Regresar Menú Principal
                                 break;
 
                             default:
