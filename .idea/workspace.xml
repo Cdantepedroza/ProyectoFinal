@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/modelo/SolicitudPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/modelo/SolicitudPedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/modelo/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/modelo/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,18 +52,23 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Proyecto/ProyectoFinal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.modelo" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.org.GrupoNavarro.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.modelo.Main" />
-      <module name="ProyectoFinal" />
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.modelo.*" />
+          <option name="PATTERN" value="org.GrupoNavarro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,8 +76,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="org.GrupoNavarro.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.GrupoNavarro.Main" />
+      <module name="ProyectoFinal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.GrupoNavarro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.org.GrupoNavarro.Main" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.GrupoNavarro.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -168,6 +191,17 @@
     </task>
     <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Prueba commit and Push" />

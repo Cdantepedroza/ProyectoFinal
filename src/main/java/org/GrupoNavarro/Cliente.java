@@ -1,4 +1,4 @@
-package org.modelo;
+package org.GrupoNavarro;
 
 public class Cliente {
 }

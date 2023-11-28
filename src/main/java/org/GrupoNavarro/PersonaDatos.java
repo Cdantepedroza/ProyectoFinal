@@ -1,4 +1,4 @@
-package org.modelo;
+package org.GrupoNavarro;
 
 public class PersonaDatos {
     private String nombre_completo;
