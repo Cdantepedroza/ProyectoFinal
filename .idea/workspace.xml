@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase PersonaDatos atributos">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/modelo/Servicio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/modelo/Zona.java" afterDir="false" />
+    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Ageregar clases">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/modelo/SolicitudPedido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,12 +23,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Josept-Vela"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Josept-Vela&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -47,17 +46,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Proyecto/ProyectoFinal",
-    "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
-    "settings.editor.selected.configurable": "configurable.group.editor"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Proyecto/ProyectoFinal&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.modelo.Main" />
@@ -143,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701144001680</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Ageregar clases">
+      <option name="closed" value="true" />
+      <created>1701145019047</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701145019048</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -153,7 +160,8 @@
     <MESSAGE value="Clase Cliente" />
     <MESSAGE value="Clase PersonaDatos" />
     <MESSAGE value="Clase PersonaDatos atributos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clase PersonaDatos atributos" />
+    <MESSAGE value="Ageregar clases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ageregar clases" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
