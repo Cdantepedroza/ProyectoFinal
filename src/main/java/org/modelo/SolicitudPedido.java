@@ -9,6 +9,11 @@ public class SolicitudPedido {
     private String comentarios;
     private String estado;
 
+    //Heredo Servicio con su tarifa
+    private String servicio;
+    //Heredo Zona con su tarifa
+    private String zona;
+
     public SolicitudPedido(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtención = fechaAtención;
@@ -59,18 +64,35 @@ public class SolicitudPedido {
 
 
     private void costoServicio(){
-
+        //if(servicio.getTipo().equals("Gasfiteria"))
+        //{
+        // return servicio.getCostoServicio;
+        //}
     }
     private void costoZona(){
+        //if(zona.getZona().equals("Lima"))
+        //{
+        // return zona.getTarifaZona();
+        //}
+
+        //O puede ser solo un intento
+
+        //if(zona.getZona().equals("Lima"))
+        //{
+        // return zona.getTarifaZona();
+        //}
 
     }
 
     private void descuentoZonaServicio(){
-
+        //if(zona.getZona().equals("Lima"))
+        //{
+        // return zona.getTarifaZona();
+        //}
     }
 
     private void costoFinal(){
-
+        //return costoServicio()+costoZona()-descuentoZonaServicio();
     }
 
 

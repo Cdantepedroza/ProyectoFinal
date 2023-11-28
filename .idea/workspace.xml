@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Ageregar clases">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/modelo/SolicitudPedido.java" afterDir="false" />
+    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/modelo/SolicitudPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/modelo/SolicitudPedido.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +150,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701145019048</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Clase SP con atributos">
+      <option name="closed" value="true" />
+      <created>1701147314620</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701147314620</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Clase SP con atributos">
+      <option name="closed" value="true" />
+      <created>1701147332658</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701147332658</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -161,7 +177,8 @@
     <MESSAGE value="Clase PersonaDatos" />
     <MESSAGE value="Clase PersonaDatos atributos" />
     <MESSAGE value="Ageregar clases" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ageregar clases" />
+    <MESSAGE value="Clase SP con atributos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clase SP con atributos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
