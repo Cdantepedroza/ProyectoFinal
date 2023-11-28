@@ -2,6 +2,7 @@ package org.modelo;
 
 public class SolicitudPedido {
 
+    //JV
     private String codigoSolicitud;
     private String fechaAtención;
     private String fechaEmisión;
