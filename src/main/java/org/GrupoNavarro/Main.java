@@ -30,12 +30,16 @@ public class Main {
                     break;
                 case 2:
                     menuPedidos(scanner);
+                    break;
                 case 3:
                     menuTarifas(scanner);
+                    break;
                 case 4:
                     menuReporte(scanner);
+                    break;
                 case 5:
                     menuServicios(scanner);
+                    break;
                 case 0:
                     System.out.println("Saliendo del programa. ¡Hasta luego!");
                     System.exit(0);
@@ -207,6 +211,7 @@ public class Main {
                     break;
                 case 0:
                     // volver al menu principal
+
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
