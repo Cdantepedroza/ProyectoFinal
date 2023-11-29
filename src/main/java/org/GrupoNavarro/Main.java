@@ -10,6 +10,21 @@ public class Main {
 
         GrupoNavarro empresa = new GrupoNavarro("Grupo Navarro");
 
+        Servicios servicio1 = new Servicios("Instalacioón de camaras", 56);
+        Servicios servicio2 = new Servicios("Cercos electricos", 80);
+        Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
+        Servicios servicio4 = new Servicios("Intercomunicadores", 200);
+        Servicios servicio5 = new Servicios("Alarmas contra incendio", 150);
+        Servicios servicio6 = new Servicios("Control de acceso", 170);
+        Servicios servicio7 = new Servicios("electricistas", 800);
+        Servicios.agregarServicio(servicio1);
+        Servicios.agregarServicio(servicio2);
+        Servicios.agregarServicio(servicio3);
+        Servicios.agregarServicio(servicio4);
+        Servicios.agregarServicio(servicio5);
+        Servicios.agregarServicio(servicio6);
+        Servicios.agregarServicio(servicio7);
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -179,7 +194,7 @@ public class Main {
     private static void menuServicios(Scanner scanner){
         do {
             System.out.println("\nMenú Servicos:");
-            System.out.println("1. Agregar servicio");
+            System.out.println("1. Registrar nuevo servicio");
             System.out.println("2. Lista de servicios");
             System.out.println("0. Volver al Menú Principal");
 
@@ -187,25 +202,9 @@ public class Main {
             int opcionServicios = scanner.nextInt();
             switch (opcionServicios){
                 case 1:
-
-                    System.out.println("Agregar servicios - Implementa la lógica aquí");
+                    Servicios.registrarNuevoServicio();
                     break;
                 case 2:
-                    Servicios servicio1 = new Servicios("Instalacioón de camaras", 56);
-                    Servicios servicio2 = new Servicios("Cercos electricos", 80);
-                    Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
-                    Servicios servicio4 = new Servicios("Intercomunicador", 200);
-                    Servicios servicio5 = new Servicios("Alarmas contra incendio", 150);
-                    Servicios servicio6 = new Servicios("Control de acceso", 170);
-                    Servicios servicio7 = new Servicios("electricistas", 800);
-                    Servicios.agregarServicio(servicio1);
-                    Servicios.agregarServicio(servicio2);
-                    Servicios.agregarServicio(servicio3);
-                    Servicios.agregarServicio(servicio4);
-                    Servicios.agregarServicio(servicio5);
-                    Servicios.agregarServicio(servicio6);
-                    Servicios.agregarServicio(servicio7);
-
                     Servicios.imprimirServicios();
                     System.out.println("Lista de servicios- Implementa la lógica aquí");
                     break;
