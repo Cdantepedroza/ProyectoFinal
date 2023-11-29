@@ -7,6 +7,7 @@ public class Main {
     //P1
     public static void main(String[] args) {
 
+
         GrupoNavarro empresa = new GrupoNavarro("Grupo Navarro");
 
         Scanner scanner = new Scanner(System.in);
@@ -17,6 +18,7 @@ public class Main {
             System.out.println("2. Pedidos");
             System.out.println("3. Tarifas");
             System.out.println("4. Reporte de Empleados");
+            System.out.println("5. Servicios");
             System.out.println("0. Salir");
 
             System.out.print("Seleccione una opción: ");
@@ -32,6 +34,8 @@ public class Main {
                     menuTarifas(scanner);
                 case 4:
                     menuReporte(scanner);
+                case 5:
+                    menuServicios(scanner);
                 case 0:
                     System.out.println("Saliendo del programa. ¡Hasta luego!");
                     System.exit(0);
@@ -40,6 +44,7 @@ public class Main {
                     }
             }
         }
+
     private static void menuTecnicos(Scanner scanner){
         do {
             System.out.println("\nMenú Técnicos:");
@@ -157,6 +162,48 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Lista de Tarifas - Implementa la lógica aquí");
+                    break;
+                case 0:
+                    // volver al menu principal
+                    return;
+                default:
+                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+            }
+
+        }while (true);
+    }
+    private static void menuServicios(Scanner scanner){
+        do {
+            System.out.println("\nMenú Servicos:");
+            System.out.println("1. Agregar servicio");
+            System.out.println("2. Lista de servicios");
+            System.out.println("0. Volver al Menú Principal");
+
+            System.out.print("Seleccione una opción: ");
+            int opcionServicios = scanner.nextInt();
+            switch (opcionServicios){
+                case 1:
+
+                    System.out.println("Agregar servicios - Implementa la lógica aquí");
+                    break;
+                case 2:
+                    Servicios servicio1 = new Servicios("Instalacioón de camaras", 56);
+                    Servicios servicio2 = new Servicios("Cercos electricos", 80);
+                    Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
+                    Servicios servicio4 = new Servicios("Intercomunicador", 200);
+                    Servicios servicio5 = new Servicios("Alarmas contra incendio", 150);
+                    Servicios servicio6 = new Servicios("Control de acceso", 170);
+                    Servicios servicio7 = new Servicios("electricistas", 800);
+                    Servicios.agregarServicio(servicio1);
+                    Servicios.agregarServicio(servicio2);
+                    Servicios.agregarServicio(servicio3);
+                    Servicios.agregarServicio(servicio4);
+                    Servicios.agregarServicio(servicio5);
+                    Servicios.agregarServicio(servicio6);
+                    Servicios.agregarServicio(servicio7);
+
+                    Servicios.imprimirServicios();
+                    System.out.println("Lista de servicios- Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal

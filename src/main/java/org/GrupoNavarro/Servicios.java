@@ -6,25 +6,33 @@ public class Servicios {
     private String nombre;
     private double tarifaServico;
 
-    private ArrayList<Servicios> servicios = new ArrayList<>();
-    Servicios servicio1 = new Servicios("Instalacioón de camaras", 56);
-    Servicios servicio2 = new Servicios("Cercos electricos", 80);
-    Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
-    Servicios servicio4 = new Servicios("Intercomunicador", 200);
-    Servicios servicio5 = new Servicios("Alarmas contra incendio", 150);
-    Servicios servicio6 = new Servicios("Control de acceso", 170);
-    Servicios servicio7 = new Servicios("electricistas", 800);
+    public static ArrayList<Servicios> listaServicios = new ArrayList<>();
 
-    public Servicios(String nombre, double tarifaServico) {
+    Servicios(String nombre, double tarifaServico) {
         this.nombre = nombre;
         this.tarifaServico = tarifaServico;
-    }
 
+    }
     public String getNombre() {
         return nombre;
     }
 
     public double getTarifaServico() {
         return tarifaServico;
+    }
+
+    public static void agregarServicio(Servicios servicio) {
+        listaServicios.add(servicio);
+    }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + ", Tarifa: " + tarifaServico;
+    }
+    public static void imprimirServicios() {
+        System.out.println("\nLista de Servicios:");
+        for (Servicios servicio : listaServicios) {
+            System.out.println(servicio);
+        }
     }
 }
