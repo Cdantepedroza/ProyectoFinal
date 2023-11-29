@@ -1,6 +1,6 @@
 package org.GrupoNavarro;
 
-public class SolicitudPedido {
+public class Solicitud {
 
     //JV
     private String codigoSolicitud;
@@ -14,7 +14,7 @@ public class SolicitudPedido {
     //Heredo Zona con su tarifa
     private String zona;
 
-    public SolicitudPedido(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
+    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtención = fechaAtención;
         this.fechaEmisión = fechaEmisión;

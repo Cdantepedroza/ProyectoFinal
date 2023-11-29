@@ -8,4 +8,8 @@ public class GrupoNavarro {
     private ArrayList<UsuarioAdm> usuariosAdm = new ArrayList<>();
     private ArrayList<PersonalTecnico> tecnicos = new ArrayList<>();
     private ArrayList<Cliente> clientes = new ArrayList<>();
+
+    public GrupoNavarro(String nombre) {
+        this.nombre = nombre;
+    }
 }

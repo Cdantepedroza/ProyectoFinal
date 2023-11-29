@@ -1,6 +1,6 @@
 package org.GrupoNavarro;
 
-public class Zona {
+public class ZonaPostal {
     private String distrito;
     private double tarifaZona;
 }
