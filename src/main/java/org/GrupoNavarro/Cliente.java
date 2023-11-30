@@ -2,11 +2,14 @@ package org.GrupoNavarro;
 
 public class Cliente extends PersonaDatos {
     private String codigoCliente;
-    private String codigoPostal;
+    private String codigoZona;
+    private String nombreZona;
 
-    public Cliente(String nombre_completo, String dni, String numero_celular, String direccion, String codigoCliente, String codigoPostal) {
-        super(nombre_completo, dni, numero_celular, direccion);
+    public Cliente(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoCliente, String codigoZona, String nombreZona) {
+        super(nombreCompleto, dni, numeroCelular, direccion);
         this.codigoCliente = codigoCliente;
-        this.codigoPostal = codigoPostal;
+        this.codigoZona = codigoZona;
+        this.nombreZona = nombreZona;
     }
+
 }

@@ -3,13 +3,13 @@ package org.GrupoNavarro;
 public abstract class  PersonaDatos  {
     private String nombreCompleto;
     private String dni;
-    private String numCelular;
+    private String numeroCelular;
     private String direccion;
 
-    public PersonaDatos(String nombreCompleto, String dni, String numero_celular, String direccion) {
+    public PersonaDatos(String nombreCompleto, String dni, String numeroCelular, String direccion) {
         this.nombreCompleto = nombreCompleto;
         this.dni = dni;
-        this.numCelular = numCelular;
+        this.numeroCelular = numeroCelular;
         this.direccion = direccion;
     }
 
@@ -29,12 +29,12 @@ public abstract class  PersonaDatos  {
         this.dni = dni;
     }
 
-    public String getnumCelularo() {
-        return numCelular;
+    public String getnumCelular() {
+        return numeroCelular;
     }
 
     public void setnumCelular(String numero_celular) {
-        this.numCelular = numero_celular;
+        this.numeroCelular = numero_celular;
     }
 
     public String getDireccion() {
