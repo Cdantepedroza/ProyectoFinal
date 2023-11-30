@@ -1,6 +1,7 @@
 package org.GrupoNavarro;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -76,14 +77,19 @@ public class Main {
             System.out.print("Seleccione una opción: ");
             int opcionTecnicos = scanner.nextInt();
 
+            // Creamos una lista de técnicos
+            List<PersonalTecnico> tecnicos = new ArrayList<>();
+
             switch (opcionTecnicos){
                 case 1:
                     // implementar logica aqui
-                    System.out.println("Registrar tecnico ");
+                    //PersonalTecnico tecnico = new PersonalTecnico("Pablo La plata Sánchez", "79467389", "962334810", "Calle Margaritas 456", "T79467389", "electricista");
+
+                    System.out.println("Tecnico registrado exitosamente");
                     break;
                 case 2:
-                    // implementar logica aqui
-                    System.out.println("Registrar tecnico ");
+                    // listamos a los técnicos
+                        PersonalTecnico.imprimirTecnicos();
                     break;
                 case 3:
                     // implementar logica aqui
@@ -218,5 +224,8 @@ public class Main {
 
         }while (true);
     }
+
+    
+
 
 }

@@ -1,5 +1,7 @@
 package org.GrupoNavarro;
 
+import java.util.Date;
+
 public class UsuarioAdm extends PersonaDatos{
     private String codigoUser;
     private String nombreUser;
@@ -25,10 +27,10 @@ public class UsuarioAdm extends PersonaDatos{
         this.nombreUser = nombreUser;
     }
     public  void  generarPedido(){
-        String codigoSolicitud= codigoSOlicitud;
-        Date fechaAtencion= fechaAtencion;
-        Date fechaEmision= fechaEmision;
-        String comentarios= comentarios;
-        String estado= estado;
+      //  String codigoSolicitud= codigoSolicitud;
+        //   Date fechaAtencion= fechaAtencion;
+        //   Date fechaEmision= fechaEmision;
+        //   String comentarios= comentarios;
+        //   String estado= estado;
     }
 }
