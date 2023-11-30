@@ -24,4 +24,11 @@ public class UsuarioAdm extends PersonaDatos{
     public void setNombreUser(String nombreUser) {
         this.nombreUser = nombreUser;
     }
+    public  void  generarPedido(){
+        String codigoSolicitud= codigoSOlicitud;
+        Date fechaAtencion= fechaAtencion;
+        Date fechaEmision= fechaEmision;
+        String comentarios= comentarios;
+        String estado= estado;
+    }
 }
