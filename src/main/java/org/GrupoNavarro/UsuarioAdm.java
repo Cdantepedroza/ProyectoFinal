@@ -9,4 +9,19 @@ public class UsuarioAdm extends PersonaDatos{
         this.codigoUser = codigoUser;
         this.nombreUser = nombreUser;
     }
+    public String getCodigoUser() {
+        return codigoUser;
+    }
+
+    public void setCodigoUser(String codigoUser) {
+        this.codigoUser = codigoUser;
+    }
+
+    public String getNombreUser() {
+        return nombreUser;
+    }
+
+    public void setNombreUser(String nombreUser) {
+        this.nombreUser = nombreUser;
+    }
 }
