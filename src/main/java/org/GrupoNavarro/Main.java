@@ -11,20 +11,16 @@ public class Main {
 
         GrupoNavarro empresa = new GrupoNavarro("Grupo Navarro");
 
-        Servicios servicio1 = new Servicios("Instalacioón de camaras", 56);
-        Servicios servicio2 = new Servicios("Cercos electricos", 80);
-        Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
-        Servicios servicio4 = new Servicios("Intercomunicadores", 200);
-        Servicios servicio5 = new Servicios("Alarmas contra incendio", 150);
-        Servicios servicio6 = new Servicios("Control de acceso", 170);
-        Servicios servicio7 = new Servicios("electricistas", 800);
-        Servicios.agregarServicio(servicio1);
-        Servicios.agregarServicio(servicio2);
-        Servicios.agregarServicio(servicio3);
-        Servicios.agregarServicio(servicio4);
-        Servicios.agregarServicio(servicio5);
-        Servicios.agregarServicio(servicio6);
-        Servicios.agregarServicio(servicio7);
+        Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
+        GrupoNavarro.agregarCliente(cliente1);
+
+        // Carga de servicios base
+        Servicios servicios = new Servicios();
+        servicios.cargaInicialServicios();
+
+        // lista base de zonas postales
+        ZonaPostal zonaPostal = new ZonaPostal();
+        zonaPostal.cargaInicialZonas();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -32,9 +28,10 @@ public class Main {
             System.out.println("\nMenú Principal:");
             System.out.println("1. Técnicos");
             System.out.println("2. Pedidos");
-            System.out.println("3. Tarifas");
-            System.out.println("4. Reporte de Empleados");
-            System.out.println("5. Servicios");
+            System.out.println("3. Clientes");
+            System.out.println("4. Tarifas");
+            System.out.println("5. Reporte de Empleados");
+            System.out.println("6. Servicios");
             System.out.println("0. Salir");
 
             System.out.print("Seleccione una opción: ");
@@ -48,12 +45,14 @@ public class Main {
                     menuPedidos(scanner);
                     break;
                 case 3:
+                    menuClientes(scanner);
+                case 4:
                     menuTarifas(scanner);
                     break;
-                case 4:
+                case 5:
                     menuReporte(scanner);
                     break;
-                case 5:
+                case 6:
                     menuServicios(scanner);
                     break;
                 case 0:
@@ -111,6 +110,8 @@ public class Main {
             System.out.println("\nMenú Pedidos:");
             System.out.println("1. Registrar Pedido");
             System.out.println("2. Lista de Pedidos");
+            System.out.println("3. Agregar Zona Postal");
+            System.out.println("4. Lista de Zona Postal");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -119,12 +120,54 @@ public class Main {
                 case 1:
                     // Registrar Pedido
                     // Implementa la lógica para registrar un pedido y sus detalles
+
                     System.out.println("Registrar Pedido - Implementa la lógica aquí");
                     break;
                 case 2:
                     // Lista de Pedidos
                     // Implementa la lógica para mostrar la lista de pedidos registrados
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
+                    break;
+                case 3:
+                    // Agregar Zona postal
+                    ZonaPostal.registrarNuevaZonaPostal();
+                    System.out.println("Lista de Pedidos - Implementa la lógica aquí");
+                    break;
+                case 4:
+                    // Lista de Zonas Postale
+                    ZonaPostal.imprimirZonasPostales();
+                    System.out.println("Lista de Zona postal - Implementa la lógica aquí");
+                    break;
+                case 0:
+                    // volver al menu principal
+                    return;
+                default:
+                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+            }
+
+        }while (true);
+    }
+    private static void menuClientes(Scanner scanner){
+        do {
+            System.out.println("\nMenú Clientes:");
+            System.out.println("1. Registrar nuevo Cliente");
+            System.out.println("2. Lista de Clientes");
+            System.out.println("0. Volver al Menú Principal");
+
+            System.out.print("Seleccione una opción: ");
+            int opcionClientes = scanner.nextInt();
+            switch (opcionClientes){
+                case 1:
+                    // Registrar Clientes
+                    // Implementa la lógica para registrar un pedido y sus detalles
+                    GrupoNavarro.registrarNuevoCliente();
+                    System.out.println("Registrar Cliente - Implementa la lógica aquí");
+                    break;
+                case 2:
+                    // Lista de Clientes
+                    // Implementa la lógica para mostrar la lista de pedidos registrados
+                    GrupoNavarro.imprimirClientes();
+                    System.out.println("Lista de Clientes - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal

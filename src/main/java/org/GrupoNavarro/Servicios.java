@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Servicios {
+public class Servicios  {
     private String nombre;
     private double tarifaServico;
 
     public static ArrayList<Servicios> listaServicios = new ArrayList<>();
 
-    Servicios(String nombre, double tarifaServico) {
+    public Servicios(String nombre, double tarifaServico) {
         this.nombre = nombre;
         this.tarifaServico = tarifaServico;
     }
+    public Servicios() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -26,6 +30,25 @@ public class Servicios {
         listaServicios.add(servicio);
     }
 
+    public static ArrayList<Servicios> getListaServicios() {
+        return listaServicios;
+    }
+    public void cargaInicialServicios(){
+        Servicios servicio1 = new Servicios("Instalacioón de camaras", 400);
+        Servicios servicio2 = new Servicios("Cercos electricos", 300);
+        Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
+        Servicios servicio4 = new Servicios("Intercomunicadores", 800);
+        Servicios servicio5 = new Servicios("Alarmas contra incendio", 700);
+        Servicios servicio6 = new Servicios("Control de acceso", 280);
+        Servicios servicio7 = new Servicios("Instalacion electrica", 700);
+        Servicios.agregarServicio(servicio1);
+        Servicios.agregarServicio(servicio2);
+        Servicios.agregarServicio(servicio3);
+        Servicios.agregarServicio(servicio4);
+        Servicios.agregarServicio(servicio5);
+        Servicios.agregarServicio(servicio6);
+        Servicios.agregarServicio(servicio7);
+    }
     @Override
     public String toString() {
         return "Nombre: " + nombre + ", Tarifa: " + tarifaServico;
@@ -73,8 +96,4 @@ public class Servicios {
         }
     }
 
-    public double calcularPrecioFinal(String distritoElegido) {
-        ZonaPostal zonapostal = new ZonaPostal("Lima", 400);
-        return zonapostal.calcularPrecioFinal(distritoElegido);
-    }
 }

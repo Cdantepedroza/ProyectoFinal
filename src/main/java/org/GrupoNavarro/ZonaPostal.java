@@ -1,94 +1,85 @@
 package org.GrupoNavarro;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZonaPostal {
-    private String ciudad;
-    private double precioBase;
+    private double tarifaZona;
+    private String codigoPostal;
+    private String nombreDistrito;
+    private static ArrayList<ZonaPostal> listaZonaPostal = new ArrayList();
 
-    public ZonaPostal(String ciudad, double precioBase) {
-        this.ciudad = ciudad;
-        this.precioBase = precioBase;
+    public ZonaPostal(double tarifaZona, String codigoPostal, String nombreDistrito) {
+        this.tarifaZona = tarifaZona;
+        this.codigoPostal = codigoPostal;
+        this.nombreDistrito = nombreDistrito;
+    }
+    public ZonaPostal() {
+
+    }
+    public ArrayList<ZonaPostal> getListaZonaPostal() {
+        return listaZonaPostal;
     }
 
-    public double calcularPrecioFinal(String distritoElegido) {
-        double precioFinal = precioBase;
-
-        // Comparar directamente la ciudad y ajustar el precio final
-        if (ciudad.equalsIgnoreCase("Lima")) {
-            if (distritoElegido.equalsIgnoreCase("chorrillos")) {
-                precioFinal += 100;
-            } else if (distritoElegido.equalsIgnoreCase("comas")) {
-                precioFinal += 150;
-            } else if (distritoElegido.equalsIgnoreCase("lima")) {
-                precioFinal += 120;
-            } else if (distritoElegido.equalsIgnoreCase("manzanales")) {
-                precioFinal += 50;
-            } else if (distritoElegido.equalsIgnoreCase("la victoria")) {
-                precioFinal += 30;
-            } else if (distritoElegido.equalsIgnoreCase("magdalena")) {
-                precioFinal += 70;
-            } else {
-                System.out.println("El distrito elegido no está en la lista. Se utilizará el precio base.");
-            }
-        } else {
-            System.out.println("La ciudad elegida no está en la lista. No se puede calcular el precio.");
-        }
-
-        return precioFinal;
+    public static void agregarZonaPostal(ZonaPostal zonaPostal){
+        listaZonaPostal.add(zonaPostal);
+    }
+    public void cargaInicialZonas() {
+        ZonaPostal zonapostal1 = new ZonaPostal(25,"15001","Lima");
+        ZonaPostal zonapostal2 = new ZonaPostal(35,"15002", "Callao");
+        listaZonaPostal.add(zonapostal1);
+        listaZonaPostal.add(zonapostal2);
     }
 
-    public static void main(String[] args) {
+    public static void registrarNuevaZonaPostal() {
+        System.out.println("Registrar nueva Zona Postal:");
+
+        // Solicitar datos de la nueva zona postal
         Scanner scanner = new Scanner(System.in);
 
-        // Crear una instancia del servicio para Lima con un precio base de 400
-        ZonaPostal servicioLima = new ZonaPostal("Lima", 400);
+        System.out.print("Ingrese la tarifa de la Zona Postal: ");
+        double tarifaZona = scanner.nextDouble();
 
-        // Mostrar menú de distritos
-        System.out.println("Menú de Distritos:");
-        System.out.println("1. Chorrillos");
-        System.out.println("2. Comas");
-        System.out.println("3. Lima");
-        System.out.println("4. Manzanales");
-        System.out.println("5. La Victoria");
-        System.out.println("6. Magdalena");
+        System.out.print("Ingrese el código postal de la Zona Postal: ");
+        String codigoPostal = scanner.next();
 
-        // Solicitar la elección del usuario
-        System.out.print("Ingrese el número del distrito deseado: ");
-        int opcion = scanner.nextInt();
+        System.out.print("Ingrese el nombre del distrito de la Zona Postal: ");
+        String nombreDistrito = scanner.next();
 
-        // Obtener el nombre del distrito según la opción del usuario
-        String distritoElegido;
-        switch (opcion) {
-            case 1:
-                distritoElegido = "chorrillos";
-                break;
-            case 2:
-                distritoElegido = "comas";
-                break;
-            case 3:
-                distritoElegido = "lima";
-                break;
-            case 4:
-                distritoElegido = "manzanales";
-                break;
-            case 5:
-                distritoElegido = "la victoria";
-                break;
-            case 6:
-                distritoElegido = "magdalena";
-                break;
-            default:
-                System.out.println("Opción no válida. Se utilizará el distrito por defecto (lima).");
-                distritoElegido = "lima";
-        }
+        // Crear y agregar la nueva zona postal a la lista
+        ZonaPostal nuevaZonaPostal = new ZonaPostal(tarifaZona, codigoPostal, nombreDistrito);
+        ZonaPostal.agregarZonaPostal(nuevaZonaPostal);
 
-        // Ejemplo de cálculo del precio final para el distrito seleccionado
-        double precioFinal = servicioLima.calcularPrecioFinal(distritoElegido);
-
-        // Mostrar el resultado
-        System.out.println("Precio final para el distrito " + distritoElegido + ": " + precioFinal);
-
-        // Cerrar el scanner
-        scanner.close();
+        System.out.println("Zona Postal registrada correctamente.");
     }
+
+    public static void imprimirZonasPostales() {
+        System.out.println("Lista de Zonas Postales:");
+        int contador = 1;
+
+        for (ZonaPostal zona : listaZonaPostal) {
+            System.out.println(contador + ". " + zona);
+            contador++;
+        }
+    }
+
+
+    public double getTarifaZona() {
+        return tarifaZona;
+    }
+
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+    public String getNombreDistrito() {
+        return nombreDistrito;
+    }
+    @Override
+    public String toString() {
+        return
+                "Tarifa Zona:" + getTarifaZona() +", Codigo Postal:" + getCodigoPostal() +", Distrito: " + getNombreDistrito();
+    }
+
+
+
 }
