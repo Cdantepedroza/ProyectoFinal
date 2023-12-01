@@ -72,4 +72,9 @@ public class Servicios {
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
     }
+
+    public double calcularPrecioFinal(String distritoElegido) {
+        ZonaPostal zonapostal = new ZonaPostal("Lima", 400);
+        return zonapostal.calcularPrecioFinal(distritoElegido);
+    }
 }
