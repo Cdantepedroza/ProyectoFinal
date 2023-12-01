@@ -82,10 +82,8 @@ public class Main {
 
             switch (opcionTecnicos){
                 case 1:
-                    // implementar logica aqui
-                    //PersonalTecnico tecnico = new PersonalTecnico("Pablo La plata Sánchez", "79467389", "962334810", "Calle Margaritas 456", "T79467389", "electricista");
-
-                    System.out.println("Tecnico registrado exitosamente");
+                    //Registramos un tecnico
+                    PersonalTecnico.SolicitarDatosTecnico();
                     break;
                 case 2:
                     // listamos a los técnicos
@@ -225,7 +223,7 @@ public class Main {
         }while (true);
     }
 
-    
+
 
 
 }
