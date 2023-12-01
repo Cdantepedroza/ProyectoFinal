@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class Solicitud {
 
-    //JV
     private String codigoSolicitud;
     private String fechaAtención;
     private String fechaEmisión;
     private String comentarios;
     private String estado;
 
-    //Heredo Servicio con su tarifa
-    private String servicio;
-    //Heredo Zona con su tarifa
-    private String zona;
+    //Llamo a Servicios
+    private Servicios servicio;
+    //Llamo a Zona
+    private ZonaPostal zona;
+    //Listo las solicitudes
     private ArrayList<Solicitud> listaSolicitudes;
 
     public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
@@ -71,13 +71,13 @@ public class Solicitud {
         listaSolicitudes.add(solicitud);
     }
 
-    private void costoServicio(){
+    public void costoServicio(){
         //if(servicio.getTipo().equals("Gasfiteria"))
         //{
         // return servicio.getCostoServicio;
         //}
     }
-    private void costoZona(){
+    public void costoZona(){
         //if(zona.getZona().equals("Lima"))
         //{
         // return zona.getTarifaZona();
@@ -92,15 +92,17 @@ public class Solicitud {
 
     }
 
-    private void descuentoZonaServicio(){
+    public void descuentoZonaServicio(){
         //if(zona.getZona().equals("Lima"))
         //{
         // return zona.getTarifaZona();
         //}
     }
 
-    private void costoFinal(){
-        //return costoServicio()+costoZona()-descuentoZonaServicio();
+    public double costoFinal(Servicios servicio, ZonaPostal zona){
+        //Falta agregar Zona
+        double importeFinal = servicio.getTarifaServico();
+        return 0.00;
     }
 
 

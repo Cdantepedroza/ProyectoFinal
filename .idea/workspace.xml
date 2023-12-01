@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
+    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Solicitud void">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
     </list>
@@ -59,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main-harly",
-    "last_opened_file_path": "C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master",
+    "last_opened_file_path": "D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Trabajos/caso_pc2",
     "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
@@ -196,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701147332658</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Solicitud void">
+      <option name="closed" value="true" />
+      <created>1701401953220</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701401953220</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,7 +227,8 @@
     <MESSAGE value="Clase PersonaDatos atributos" />
     <MESSAGE value="Ageregar clases" />
     <MESSAGE value="Clase SP con atributos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clase SP con atributos" />
+    <MESSAGE value="Solicitud void" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solicitud void" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
