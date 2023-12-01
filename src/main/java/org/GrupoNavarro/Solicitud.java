@@ -2,6 +2,8 @@ package org.GrupoNavarro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Solicitud extends Servicios{
 
@@ -14,15 +16,15 @@ public class Solicitud extends Servicios{
     //Llamo a Zona (para sacar tarifa)
     private ZonaPostal zona;
     //Listo las solicitudes
-    private ArrayList<Solicitud> listaSolicitudes;
+    private static ArrayList<Solicitud> listaSolicitudes;
 
-    public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, String estado, Servicios servicio, ZonaPostal zona) {
+    public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
         super(nombre, tarifaServico);
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtención = fechaAtención;
         this.fechaEmisión = fechaEmisión;
         this.comentarios = comentarios;
-        this.estado = estado;
+        this.estado = "EN GESTION";
         this.zona = zona;
         this.listaSolicitudes = new ArrayList<>();
     }
@@ -68,29 +70,8 @@ public class Solicitud extends Servicios{
     }
 
 
-    public void agregarSolicitud(Solicitud solicitud){
+    public static void agregarSolicitud(Solicitud solicitud){
         listaSolicitudes.add(solicitud);
-    }
-
-    public void costoServicio(){
-        //if(servicio.getTipo().equals("Gasfiteria"))
-        //{
-        // return servicio.getCostoServicio;
-        //}
-    }
-    public void costoZona(){
-        //if(zona.getZona().equals("Lima"))
-        //{
-        // return zona.getTarifaZona();
-        //}
-
-        //O puede ser solo un intento
-
-        //if(zona.getZona().equals("Lima"))
-        //{
-        // return zona.getTarifaZona();
-        //}
-
     }
 
     public double descuentoServicio(Servicios servicio){
@@ -112,6 +93,47 @@ public class Solicitud extends Servicios{
         double igv = importeBase*0.18;
         return importeBase+igv-descuentoServicio(servicio);
     }
+
+    public void listarSolicitudes() {
+        System.out.println("\nLista de Solicitudes:");
+        int contador = 1;
+        for (Solicitud servicio : listaSolicitudes) {
+            System.out.println(contador + ". " + servicio);
+            contador++;
+        }
+    }
+
+    public static void registrarNuevaSolicitud(){
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+
+        System.out.println("Agregar Solicitud:");
+        // Ingresar código de nueva solicitud
+        System.out.print("Ingrese el código de la solicitud: ");
+        String codSolicitud = scanner.nextLine();
+        System.out.print("Ingrese la fecha de atención: ");
+        String fechaAt = scanner.nextLine();
+        System.out.print("Ingrese la fecha de Emisión: ");
+        String fechaEm = scanner.nextLine();
+        System.out.print("Ingrese comentarios: ");
+        String comentarios = scanner.nextLine();
+        System.out.print("Seleccione su Servicio");
+        System.out.print("Seleccione su Zona");
+
+        String nom = "";
+        double varr = 0;
+
+        try {
+            // Crear y agregar solicitud a la lista
+            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);
+            //Solicitud.agregarSolicitud(nuevaSolicitud);
+            System.out.println("Servicio agregado correctamente.");
+        } catch (Exception e) {
+            System.out.println("Error al agregar el servicio: " + e.getMessage());
+        }
+
+    }
+
+
 
 
 }
