@@ -1,6 +1,7 @@
 package org.GrupoNavarro;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solicitud extends Servicios{
 
@@ -92,19 +93,24 @@ public class Solicitud extends Servicios{
 
     }
 
-    public void descuentoZonaServicio(){
-        //if(zona.getZona().equals("Lima"))
-        //{
-        // return zona.getTarifaZona();
-        //}
+    public double descuentoServicio(Servicios servicio){
+
+        if (servicio.getNombre().equals("Alarmas de seguridad")){
+            return 0.20;
+        } else if (servicio.getNombre().equals("Cercos electricos")) {
+            return 0.15;
+        } else if (servicio.getNombre().equals("Intercomunicadores")) {
+            return 0.10;
+        } else {
+            return 0;
+        }
     }
 
     public double costoFinal(Servicios servicio, ZonaPostal zona){
         //Falta agregar Zona
         double importeBase = servicio.getTarifaServico();
         double igv = importeBase*0.18;
-        double importeFinal = importeBase+igv;
-        return importeFinal;
+        return importeBase+igv-descuentoServicio(servicio);
     }
 
 
