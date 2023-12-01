@@ -2,7 +2,7 @@ package org.GrupoNavarro;
 
 import java.util.ArrayList;
 
-public class Solicitud {
+public class Solicitud extends Servicios{
 
     private String codigoSolicitud;
     private String fechaAtención;
@@ -10,19 +10,19 @@ public class Solicitud {
     private String comentarios;
     private String estado;
 
-    //Llamo a Servicios
-    private Servicios servicio;
-    //Llamo a Zona
+    //Llamo a Zona (para sacar tarifa)
     private ZonaPostal zona;
     //Listo las solicitudes
     private ArrayList<Solicitud> listaSolicitudes;
 
-    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
+    public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, String estado, Servicios servicio, ZonaPostal zona) {
+        super(nombre, tarifaServico);
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtención = fechaAtención;
         this.fechaEmisión = fechaEmisión;
         this.comentarios = comentarios;
-        this.estado = "EN GESTION";
+        this.estado = estado;
+        this.zona = zona;
         this.listaSolicitudes = new ArrayList<>();
     }
 
@@ -101,8 +101,10 @@ public class Solicitud {
 
     public double costoFinal(Servicios servicio, ZonaPostal zona){
         //Falta agregar Zona
-        double importeFinal = servicio.getTarifaServico();
-        return 0.00;
+        double importeBase = servicio.getTarifaServico();
+        double igv = importeBase*0.18;
+        double importeFinal = importeBase+igv;
+        return importeFinal;
     }
 
 
