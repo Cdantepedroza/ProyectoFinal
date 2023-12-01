@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonaDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonaDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonalTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonalTecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/UsuarioAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/UsuarioAdm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -45,7 +46,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2XNhVSSZ35q1W9yLrIWZ4RAZrMp" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,9 +58,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "geraMunoz",
+    "git-widget-placeholder": "main-harly",
     "last_opened_file_path": "C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master",
-    "node.js.selected.package.tslint": "(autodetect)",
     "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
