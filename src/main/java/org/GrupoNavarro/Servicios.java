@@ -13,7 +13,6 @@ public class Servicios {
     Servicios(String nombre, double tarifaServico) {
         this.nombre = nombre;
         this.tarifaServico = tarifaServico;
-
     }
     public String getNombre() {
         return nombre;
@@ -72,5 +71,10 @@ public class Servicios {
         } catch (Exception e) {
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
+    }
+
+    public double calcularPrecioFinal(String distritoElegido) {
+        ZonaPostal zonapostal = new ZonaPostal("Lima", 400);
+        return zonapostal.calcularPrecioFinal(distritoElegido);
     }
 }
