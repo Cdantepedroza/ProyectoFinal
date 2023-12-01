@@ -1,5 +1,7 @@
 package org.GrupoNavarro;
 
+import java.util.ArrayList;
+
 public class Solicitud {
 
     //JV
@@ -13,6 +15,7 @@ public class Solicitud {
     private String servicio;
     //Heredo Zona con su tarifa
     private String zona;
+    private ArrayList<Solicitud> listaSolicitudes;
 
     public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
         this.codigoSolicitud = codigoSolicitud;
@@ -20,6 +23,7 @@ public class Solicitud {
         this.fechaEmisión = fechaEmisión;
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
+        this.listaSolicitudes = new ArrayList<>();
     }
 
     public String getCodigoSolicitud() {
@@ -62,6 +66,10 @@ public class Solicitud {
         this.estado = estado;
     }
 
+
+    public void agregarSolicitud(Solicitud solicitud){
+        listaSolicitudes.add(solicitud);
+    }
 
     private void costoServicio(){
         //if(servicio.getTipo().equals("Gasfiteria"))
