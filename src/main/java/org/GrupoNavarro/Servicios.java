@@ -13,7 +13,6 @@ public class Servicios {
     Servicios(String nombre, double tarifaServico) {
         this.nombre = nombre;
         this.tarifaServico = tarifaServico;
-
     }
     public String getNombre() {
         return nombre;
