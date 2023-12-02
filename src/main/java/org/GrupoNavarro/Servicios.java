@@ -1,18 +1,23 @@
 package org.GrupoNavarro;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class Servicios  {
     private String nombre;
-    private double tarifaServico;
+    private double tarifaServicio;
 
-    public static ArrayList<Servicios> listaServicios = new ArrayList<>();
+     public static ArrayList<Servicios> listaServicios = new ArrayList<>();
 
-    public Servicios(String nombre, double tarifaServico) {
+    public Servicios(String nombre, double tarifaServicio) {
         this.nombre = nombre;
-        this.tarifaServico = tarifaServico;
+        this.tarifaServicio = tarifaServicio;
+
     }
     public Servicios() {
 
@@ -22,17 +27,45 @@ public class Servicios  {
         return nombre;
     }
 
-    public double getTarifaServico() {
-        return tarifaServico;
+    public double getTarifaServicio() {
+        return tarifaServicio;
     }
 
+    public void setTarifaServicio(double tarifaServicio) {
+        this.tarifaServicio = tarifaServicio;
+    }
+
+    public static void setListaServicios(ArrayList<Servicios> listaServicios) {
+        Servicios.listaServicios = listaServicios;
+    }
     public static void agregarServicio(Servicios servicio) {
         listaServicios.add(servicio);
+    }
+
+    public  static void modificarServicio(String nombre, double nuevatarifaServicio, ArrayList<Servicios> listaServicios) {
+        String nombreTmp;
+        double tarif;
+        nombreTmp = " ";
+        tarif = 0;
+
+        for (Servicios servicio : listaServicios){
+            nombreTmp = servicio.getNombre();
+
+         //   tarif = servicio.getTarifaServicio();
+            if (nombreTmp.equals(nombre)){
+                servicio.setTarifaServicio(nuevatarifaServicio);
+                Servicios.setListaServicios(listaServicios);
+            }
+        }
+
     }
 
     public static ArrayList<Servicios> getListaServicios() {
         return listaServicios;
     }
+
+
+
     public void cargaInicialServicios(){
         Servicios servicio1 = new Servicios("Instalacioón de camaras", 400);
         Servicios servicio2 = new Servicios("Cercos electricos", 300);
@@ -51,13 +84,28 @@ public class Servicios  {
     }
     @Override
     public String toString() {
-        return "Nombre: " + nombre + ", Tarifa: " + tarifaServico;
+        return "Nombre: " + nombre + ", Tarifa: " + tarifaServicio;
     }
     public static void imprimirServicios() {
+      String diadehoy;
+      double preciosobrecargo;
+      double preciolista;
+      diadehoy = calculadiahoy();
+      preciosobrecargo = 0.0;
+      preciolista = 0.0;
+
+
         System.out.println("\nLista de Servicios:");
         int contador = 1;
 
         for (Servicios servicio : listaServicios) {
+
+            if (diadehoy.equals("Sabado") || diadehoy.equals("Domingo")){
+                preciolista = servicio.getTarifaServicio();
+                preciosobrecargo = preciolista * 1.10;
+                servicio.setTarifaServicio(preciosobrecargo);
+                Servicios.setListaServicios(listaServicios);
+            }
             System.out.println(contador + ". " + servicio);
             contador++;
         }
@@ -93,6 +141,54 @@ public class Servicios  {
         } catch (Exception e) {
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
+    }
+
+    public static void modificarServicioT(){
+        System.out.println("Modificar servicio:");
+
+        // Solicitar nombre del servicio a modificar
+        System.out.print("Ingrese el nombre del servicio a modificar: ");
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+        String nombreServicio = scanner.nextLine();
+
+        System.out.print("Ingrese la nueva tarifa: ");
+        Scanner scanner1 = new Scanner(System.in).useLocale(Locale.US);;
+        double nuevatarifa = Double.parseDouble(scanner1.nextLine());
+
+        try {
+            // Modificar el servicio a la lista
+            Servicios.modificarServicio(nombreServicio, nuevatarifa, listaServicios);
+            System.out.println("Servicio modificado correctamente.");
+        } catch (Exception e) {
+            System.out.println("Error al modificar el servicio: " + e.getMessage());
+        }
+    }
+
+    public static String calculadiahoy(){
+        String dhoy;
+        // Creamos una instancia del calendario
+        Calendar now = Calendar.getInstance();
+
+        System.out.println("Fecha actual : " + (now.get(Calendar.MONTH) + 1)
+                + "-"
+                + now.get(Calendar.DATE)
+                + "-"
+                + now.get(Calendar.YEAR));
+
+        // Array con los dias de la semana
+        String[] strDays = new String[]{
+                "Domingo",
+                "Lunes",
+                "Martes",
+                "Miercoles",
+                "Jueves",
+                "Viernes",
+                "Sabado"};
+
+        dhoy = strDays[now.get(Calendar.DAY_OF_WEEK) - 1];
+        // El dia de la semana inicia en el 1 mientras que el array empieza en el 0
+        System.out.println("Hoy es : " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
+        return dhoy;
     }
 
 }

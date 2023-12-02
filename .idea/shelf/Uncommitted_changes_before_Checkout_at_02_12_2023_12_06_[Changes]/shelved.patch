@@ -1,0 +1,213 @@
+Index: src/main/java/org/GrupoNavarro/Solicitud.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class Solicitud {\r\n\r\n    //JV\r\n    private String codigoSolicitud;\r\n    private String fechaAtención;\r\n    private String fechaEmisión;\r\n    private String comentarios;\r\n    private String estado;\r\n\r\n    //Heredo Servicio con su tarifa\r\n    private String servicio;\r\n    //Heredo Zona con su tarifa\r\n    private String zona;\r\n    private ArrayList<Solicitud> listaSolicitudes;\r\n\r\n    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {\r\n        this.codigoSolicitud = codigoSolicitud;\r\n        this.fechaAtención = fechaAtención;\r\n        this.fechaEmisión = fechaEmisión;\r\n        this.comentarios = comentarios;\r\n        this.estado = \"EN GESTION\";\r\n        this.listaSolicitudes = new ArrayList<>();\r\n    }\r\n\r\n    public String getCodigoSolicitud() {\r\n        return codigoSolicitud;\r\n    }\r\n\r\n    public void setCodigoSolicitud(String codigoSolicitud) {\r\n        this.codigoSolicitud = codigoSolicitud;\r\n    }\r\n\r\n    public String getFechaAtención() {\r\n        return fechaAtención;\r\n    }\r\n\r\n    public void setFechaAtención(String fechaAtención) {\r\n        this.fechaAtención = fechaAtención;\r\n    }\r\n\r\n    public String getFechaEmisión() {\r\n        return fechaEmisión;\r\n    }\r\n\r\n    public void setFechaEmisión(String fechaEmisión) {\r\n        this.fechaEmisión = fechaEmisión;\r\n    }\r\n\r\n    public String getComentarios() {\r\n        return comentarios;\r\n    }\r\n\r\n    public void setComentarios(String comentarios) {\r\n        this.comentarios = comentarios;\r\n    }\r\n\r\n    public String getEstado() {\r\n        return estado;\r\n    }\r\n\r\n    public void setEstado(String estado) {\r\n        this.estado = estado;\r\n    }\r\n\r\n\r\n    public void agregarSolicitud(Solicitud solicitud){\r\n        listaSolicitudes.add(solicitud);\r\n    }\r\n\r\n    private void costoServicio(){\r\n        //if(servicio.getTipo().equals(\"Gasfiteria\"))\r\n        //{\r\n        // return servicio.getCostoServicio;\r\n        //}\r\n    }\r\n    private void costoZona(){\r\n        //if(zona.getZona().equals(\"Lima\"))\r\n        //{\r\n        // return zona.getTarifaZona();\r\n        //}\r\n\r\n        //O puede ser solo un intento\r\n\r\n        //if(zona.getZona().equals(\"Lima\"))\r\n        //{\r\n        // return zona.getTarifaZona();\r\n        //}\r\n\r\n    }\r\n\r\n    private void descuentoZonaServicio(){\r\n        //if(zona.getZona().equals(\"Lima\"))\r\n        //{\r\n        // return zona.getTarifaZona();\r\n        //}\r\n    }\r\n\r\n    private void costoFinal(){\r\n        //return costoServicio()+costoZona()-descuentoZonaServicio();\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/Solicitud.java b/src/main/java/org/GrupoNavarro/Solicitud.java
+--- a/src/main/java/org/GrupoNavarro/Solicitud.java	(revision 9d854e11aa028b30f8aa7063e34a3f38aa3b0dc5)
++++ b/src/main/java/org/GrupoNavarro/Solicitud.java	(date 1701536569326)
+@@ -1,29 +1,35 @@
+ package org.GrupoNavarro;
+ 
+ import java.util.ArrayList;
++import java.util.Locale;
++import java.util.Scanner;
+ 
+ public class Solicitud {
+ 
+-    //JV
+     private String codigoSolicitud;
+     private String fechaAtención;
+     private String fechaEmisión;
+     private String comentarios;
+     private String estado;
+ 
+-    //Heredo Servicio con su tarifa
+-    private String servicio;
+-    //Heredo Zona con su tarifa
+-    private String zona;
+-    private ArrayList<Solicitud> listaSolicitudes;
++    //Llamo a Zona (para sacar tarifa)
++    private ZonaPostal zona;
++    //Llamo a técnico
++    private PersonalTecnico personalTecnico;
++    //Listo las solicitudes
++    private static ArrayList<Solicitud> listaSolicitudes;
++    private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
++    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
+ 
+-    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
++    public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
++        super(nombre, tarifaServico);
+         this.codigoSolicitud = codigoSolicitud;
+         this.fechaAtención = fechaAtención;
+         this.fechaEmisión = fechaEmisión;
+         this.comentarios = comentarios;
+         this.estado = "EN GESTION";
+-        this.listaSolicitudes = new ArrayList<>();
++        this.zona = zona;
++        listaSolicitudes = new ArrayList<>();
+     }
+ 
+     public String getCodigoSolicitud() {
+@@ -67,41 +73,75 @@
+     }
+ 
+ 
+-    public void agregarSolicitud(Solicitud solicitud){
++    public static void agregarSolicitud(Solicitud solicitud){
+         listaSolicitudes.add(solicitud);
+     }
+ 
+-    private void costoServicio(){
+-        //if(servicio.getTipo().equals("Gasfiteria"))
+-        //{
+-        // return servicio.getCostoServicio;
+-        //}
++    public double descuentoServicio(Servicios servicio){
++
++        if (servicio.getNombre().equals("Alarmas de seguridad")){
++            return 0.20;
++        } else if (servicio.getNombre().equals("Cercos electricos")) {
++            return 0.15;
++        } else if (servicio.getNombre().equals("Intercomunicadores")) {
++            return 0.10;
++        } else {
++            return 0;
++        }
+     }
+-    private void costoZona(){
+-        //if(zona.getZona().equals("Lima"))
+-        //{
+-        // return zona.getTarifaZona();
+-        //}
+ 
+-        //O puede ser solo un intento
++    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){
++        //Falta agregar Zona servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito)
++        double importeBase = 0;
++        double igv = importeBase*0.18;
++        return importeBase+igv-descuentoServicio(servicio);
++    }
+ 
+-        //if(zona.getZona().equals("Lima"))
+-        //{
+-        // return zona.getTarifaZona();
+-        //}
++    public void imprimirSolicitudes() {
++        System.out.println("\nLista de Solicitudes:");
++        int contador = 1;
++        for (Solicitud servicio : listaSolicitudes) {
++            System.out.println(contador + ". " + servicio);
++            contador++;
++        }
++    }
+ 
++    public void imprimirZonas() {
++        System.out.println("\nLista de Zonas:");
++        int contador = 1;
++        for (ZonaPostal zona : listaZonas) {
++            System.out.println(contador + ". " + zona);
++            contador++;
++        }
+     }
++
++    public static void registrarNuevaSolicitud(){
++        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
++
++        System.out.println("Agregar Solicitud:");
++        // Ingresar código de nueva solicitud
++        System.out.print("Ingrese el código de la solicitud: ");
++        String codSolicitud = scanner.nextLine();
++        System.out.print("Ingrese la fecha de atención: ");
++        String fechaAt = scanner.nextLine();
++        System.out.print("Ingrese la fecha de Emisión: ");
++        String fechaEm = scanner.nextLine();
++        System.out.print("Ingrese comentarios: ");
++        String comentarios = scanner.nextLine();
++        System.out.print("Seleccione su Zona");
++        // ZonaPostal.imprimirZona();
+ 
+-    private void descuentoZonaServicio(){
+-        //if(zona.getZona().equals("Lima"))
+-        //{
+-        // return zona.getTarifaZona();
+-        //}
+-    }
++        try {
++            // Crear y agregar solicitud a la lista
++            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);
++            //Solicitud.agregarSolicitud(nuevaSolicitud);
++            System.out.println("Solicitud agregado correctamente.");
++        } catch (Exception e) {
++            System.out.println("Error al agregar el servicio: " + e.getMessage());
++        }
+ 
+-    private void costoFinal(){
+-        //return costoServicio()+costoZona()-descuentoZonaServicio();
+     }
++
+ 
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"Clase SP con atributos\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22_[Changes]/shelved.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22__Changes_.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20_[Changes]/shelved.patch\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Josept-Vela&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"c2708650-b1fc-4e9a-be06-8dd7ec4f2013\" />\r\n        <option name=\"url\" value=\"https://github.com/Cdantepedroza/ProyectoFinal.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XNhVSSZ35q1W9yLrIWZ4RAZrMp\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main-harly&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master&quot;,\r\n    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"org.modelo\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.org.GrupoNavarro.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"19\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"org.GrupoNavarro.Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.GrupoNavarro.Main\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"\" />\r\n      <created>1698475470043</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698475470043</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Prueba commit and Push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699662937725</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699662937725</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Cambio Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726134959</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726134960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Cambio en Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726209917</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726209917</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Clase Cliente\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143685098</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143685098</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Clase PersonaDatos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143760999</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143760999</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143937832</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143937832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701144001680</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701144001680</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Ageregar clases\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701145019047</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701145019048</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147314620</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147314620</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147332658</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147332658</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"11\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Prueba commit and Push\" />\r\n    <MESSAGE value=\"Cambio Reporte\" />\r\n    <MESSAGE value=\"Cambio en Reporte\" />\r\n    <MESSAGE value=\"Clase Cliente\" />\r\n    <MESSAGE value=\"Clase PersonaDatos\" />\r\n    <MESSAGE value=\"Clase PersonaDatos atributos\" />\r\n    <MESSAGE value=\"Ageregar clases\" />\r\n    <MESSAGE value=\"Clase SP con atributos\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Clase SP con atributos\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/org/proyectoFinal/Main.java</url>\r\n          <line>15</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9d854e11aa028b30f8aa7063e34a3f38aa3b0dc5)
++++ b/.idea/workspace.xml	(date 1701536546956)
+@@ -5,16 +5,11 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22_[Changes]/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22__Changes_.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20_[Changes]/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -61,17 +56,17 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main-harly&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master&quot;,
+-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "git-widget-placeholder": "main",
++    "last_opened_file_path": "D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Proyecto/ProyectoFinal",
++    "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
++    "settings.editor.selected.configurable": "configurable.group.appearance"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+       <recent name="org.modelo" />

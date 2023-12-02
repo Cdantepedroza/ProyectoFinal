@@ -1,8 +1,6 @@
 package org.GrupoNavarro;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     //P1
@@ -232,10 +230,12 @@ public class Main {
         }while (true);
     }
     private static void menuServicios(Scanner scanner){
+
         do {
             System.out.println("\nMenú Servicos:");
             System.out.println("1. Registrar nuevo servicio");
-            System.out.println("2. Lista de servicios");
+            System.out.println("2. Modificar servicio");
+            System.out.println("3. Lista de servicios");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -245,8 +245,10 @@ public class Main {
                     Servicios.registrarNuevoServicio();
                     break;
                 case 2:
+                    Servicios.modificarServicioT();
+                    break;
+                case 3:
                     Servicios.imprimirServicios();
-                    System.out.println("Lista de servicios- Implementa la lógica aquí");
                     break;
                 case 0:
                     return;
@@ -256,7 +258,6 @@ public class Main {
 
         }while (true);
     }
-
 
 
 
