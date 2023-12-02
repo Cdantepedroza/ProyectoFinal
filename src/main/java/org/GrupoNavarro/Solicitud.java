@@ -14,26 +14,24 @@ public class Solicitud extends Servicios{
     private String estado;
 
 
-    private ZonaPostal zona;
+    private static ZonaPostal zona = new ZonaPostal();
     private PersonalTecnico personalTecnico;
 
 
     private static ArrayList<Solicitud> listaSolicitudes;
-
-
-    private static final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
     private static final ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
+    private static ArrayList<ZonaPostal> listaZona = zona.getListaZonaPostal();
 
 
 
-    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, ZonaPostal zona, PersonalTecnico personalTecnico) {
+
+    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, PersonalTecnico personalTecnico) {
         super(nombre, tarifaServicio);
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtencion = fechaAtencion;
         this.fechaEmision = fechaEmision;
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
-        this.zona = zona;
         listaSolicitudes = new ArrayList<>();
     }
 
@@ -98,7 +96,7 @@ public class Solicitud extends Servicios{
         return tarifa +igv-importeDescuento;
     }
 
-    public void imprimirSolicitudes() {
+    public static void imprimirSolicitudes() {
         System.out.println("\nLista de Solicitudes:");
         int contador = 1;
         for (Solicitud servicio : listaSolicitudes) {
@@ -143,16 +141,13 @@ public class Solicitud extends Servicios{
         System.out.print("Ingrese código de Zona delivery:");
         String codigo = scanner.nextLine();
 
-        for (ZonaPostal distrito: listaZonas) {
-            if (distrito.getCodigoPostal().equals(codigo)) {
-                delivery = distrito.getTarifaZona();
+        for (ZonaPostal zone: listaZona) {
+            if (zone.getCodigoPostal().equals(codigo)) {
+                delivery = zone.getTarifaZona();
             }
         }
 
         System.out.println("Costo por delivery: "+delivery);
-
-
-
 
 
         try {
