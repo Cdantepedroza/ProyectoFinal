@@ -57,9 +57,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "geraMunoz",
-    "last_opened_file_path": "C:/Users/Dante/Downloads/ProyectoFinal",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master",
     "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
     "settings.editor.selected.configurable": "configurable.group.appearance"
   }
@@ -228,6 +227,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/proyectoFinal/Main.java</url>
           <line>15</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java</url>
+          <line>211</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

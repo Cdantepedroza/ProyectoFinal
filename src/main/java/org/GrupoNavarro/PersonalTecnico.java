@@ -16,6 +16,10 @@ public class PersonalTecnico extends PersonaDatos {
         this.especialidad = especialidad;
     }
 
+    public PersonalTecnico(){
+        super();
+    }
+
     public String getCodigoEmpleado() {
         return codigoEmpleado;
     }
@@ -41,6 +45,14 @@ public class PersonalTecnico extends PersonaDatos {
     }
     private static List<PersonalTecnico> tecnicos = new ArrayList<>();
     String codigoSeguridad = especialidad.ObtenerCodigoPorNombreEspecialidad("seguridad");
+
+    public List<PersonalTecnico> getTecnicos() {
+        return tecnicos;
+    }
+
+    public static void setTecnicos(List<PersonalTecnico> tecnicos) {
+        PersonalTecnico.tecnicos = tecnicos;
+    }
 
     static {
 

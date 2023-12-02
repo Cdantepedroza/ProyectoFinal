@@ -10,7 +10,7 @@ public class ZonaPostal {
     private double tarifaZona;
 
 
-    private static ArrayList<ZonaPostal> listaZonaPostal = new ArrayList();
+    private static ArrayList<ZonaPostal> listaZonaPostal = new ArrayList<>();
 
     public ZonaPostal(String nombreDistrito, String codigoPostal, double tarifaZona) {
         this.nombreDistrito = nombreDistrito;
