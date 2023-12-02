@@ -14,26 +14,22 @@ public class Solicitud extends Servicios{
     private String estado;
 
 
-    private ZonaPostal zona;
-    private PersonalTecnico personalTecnico;
-
-
     private static ArrayList<Solicitud> listaSolicitudes;
 
+    private static ZonaPostal zona = new ZonaPostal();
+    private static ArrayList<ZonaPostal> listaZona = zona.getListaZonaPostal();
 
-    private static final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
-    private static final ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
+    private static PersonalTecnico tecnico = new PersonalTecnico();
+    private static ArrayList<PersonalTecnico> listaTecnicos = (ArrayList<PersonalTecnico>) tecnico.getTecnicos();
 
 
-
-    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, ZonaPostal zona, PersonalTecnico personalTecnico) {
+    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, PersonalTecnico personalTecnico) {
         super(nombre, tarifaServicio);
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtencion = fechaAtencion;
         this.fechaEmision = fechaEmision;
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
-        this.zona = zona;
         listaSolicitudes = new ArrayList<>();
     }
 
@@ -92,13 +88,13 @@ public class Solicitud extends Servicios{
         };
     }
 
-    public static double costoFinal(double tarifa, Servicios servicios){
+    public static double costoFinal(double tarifa, double delivery, Servicios servicios){
         double igv = tarifa *0.18;
         double importeDescuento = tarifa *descuentoServicio(servicios);
-        return tarifa +igv-importeDescuento;
+        return tarifa +igv-importeDescuento+delivery;
     }
 
-    public void imprimirSolicitudes() {
+    public static void imprimirSolicitudes() {
         System.out.println("\nLista de Solicitudes:");
         int contador = 1;
         for (Solicitud servicio : listaSolicitudes) {
@@ -113,8 +109,12 @@ public class Solicitud extends Servicios{
         double tarifa = 0;
         double descuento = 0;
         double delivery = 0;
+        double costoTotal = 0;
+        String nombreTecnico = "";
+        String especialidad = "";
 
-        System.out.println("Agregar Solicitud:");
+        System.out.print("");
+        System.out.println("AGREGAR SOLICITUD");
         // Ingresar código de nueva solicitud
         System.out.print("Ingrese el código de la solicitud: ");
         String codSolicitud = scanner.nextLine();
@@ -126,6 +126,19 @@ public class Solicitud extends Servicios{
         String comentarios = scanner.nextLine();
 
         System.out.print("");
+        ZonaPostal.imprimirZonasPostales();
+        System.out.print("");
+        System.out.print("Ingrese código de Zona delivery:");
+        String codigo = scanner.nextLine();
+        System.out.print("");
+        for (ZonaPostal zone: listaZona) {
+            if (zone.getCodigoPostal().equals(codigo)) {
+                delivery = zone.getTarifaZona();
+            }
+        }
+        System.out.println("Costo por delivery: "+delivery);
+
+        System.out.print("");
         Servicios.imprimirServicios();
         System.out.print("");
         System.out.print("Ingrese Servicio a solicitar:");
@@ -134,24 +147,37 @@ public class Solicitud extends Servicios{
             if (serv.getNombre().equals(servicios)) {
                 tarifa = serv.getTarifaServicio();
                 descuento = Solicitud.descuentoServicio(serv);
+                costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
             }
         }
         System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
         System.out.print("");
-        ZonaPostal.imprimirZonasPostales();
-        System.out.print("");
-        System.out.print("Ingrese código de Zona delivery:");
-        String codigo = scanner.nextLine();
 
-        for (ZonaPostal distrito: listaZonas) {
-            if (distrito.getCodigoPostal().equals(codigo)) {
-                delivery = distrito.getTarifaZona();
+        System.out.print("");
+        PersonalTecnico.imprimirTecnicos();
+        System.out.print("");
+        System.out.print("Ingrese tecnico a solicitar:");
+        String codigoTecnico = scanner.nextLine();
+        for (PersonalTecnico personal: listaTecnicos) {
+            if (personal.getCodigoEmpleado().equals(codigoTecnico)) {
+                nombreTecnico = personal.getnombreCompleto();
+                especialidad = personal.getEspecialidad();
             }
         }
+        System.out.println("Nombre del tecnico asignado: "+nombreTecnico + " con especialidad: " +especialidad);
+        System.out.print("");
 
-        System.out.println("Costo por delivery: "+delivery);
-
-
+        System.out.print("ATENCION! Solicitud contiene lo siguiente: \n");
+        System.out.print("Código: "+ codSolicitud+"\n");
+        System.out.print("Fecha de atención:" +fechaAt+"\n");
+        System.out.print("Fecha de emisión:" + fechaEm+"\n");
+        System.out.print("Costo por Delivery: "+delivery+"\n");
+        System.out.print("Costo por Servicio: "+tarifa+"\n");
+        System.out.print("Descuento por Servicio: "+descuento+"\n");
+        System.out.print("Técnico asiganado: "+nombreTecnico+"\n");
+        System.out.print("Especialidad Técnico: "+especialidad+"\n");
+        System.out.print("Costo Total del Servicio: "+costoTotal+"\n");
+        System.out.print("Cometarios sobre la solicitud: "+comentarios+"\n");
 
 
 

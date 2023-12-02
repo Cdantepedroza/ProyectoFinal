@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class GrupoNavarro {
     private String nombre;
     private ArrayList<UsuarioAdm> listausuariosAdm = new ArrayList<>();
-    private ArrayList<PersonalTecnico> listatecnicos = new ArrayList<>();
+    private static ArrayList<PersonalTecnico> listatecnicos = new ArrayList<>();
     private static ArrayList<Cliente> listaclientes = new ArrayList<>();
     private ArrayList<String> listaespecialidades = new ArrayList<>();
 
