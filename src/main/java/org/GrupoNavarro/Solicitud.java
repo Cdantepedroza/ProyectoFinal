@@ -1,17 +1,17 @@
 package org.GrupoNavarro;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Solicitud extends Servicios{
 
     private String codigoSolicitud;
-    private String fechaAtención;
-    private String fechaEmisión;
+    private String fechaAtencion;
+    private String fechaEmision;
     private String comentarios;
     private String estado;
+
 
     //Llamo a Zona (para sacar tarifa)
     private ZonaPostal zona;
@@ -24,9 +24,24 @@ public class Solicitud extends Servicios{
 
     public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
         super(nombre, tarifaServico);
+
+    private ZonaPostal zona;
+    private PersonalTecnico personalTecnico;
+
+
+    private static ArrayList<Solicitud> listaSolicitudes;
+
+
+    private static final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
+    private static final ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
+
+
+
+    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, ZonaPostal zona, PersonalTecnico personalTecnico) {
+        super(nombre, tarifaServicio);
         this.codigoSolicitud = codigoSolicitud;
-        this.fechaAtención = fechaAtención;
-        this.fechaEmisión = fechaEmisión;
+        this.fechaAtencion = fechaAtencion;
+        this.fechaEmision = fechaEmision;
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
         this.zona = zona;
@@ -41,20 +56,20 @@ public class Solicitud extends Servicios{
         this.codigoSolicitud = codigoSolicitud;
     }
 
-    public String getFechaAtención() {
-        return fechaAtención;
+    public String getFechaAtencion() {
+        return fechaAtencion;
     }
 
-    public void setFechaAtención(String fechaAtención) {
-        this.fechaAtención = fechaAtención;
+    public void setFechaAtencion(String fechaAtención) {
+        this.fechaAtencion = fechaAtencion;
     }
 
-    public String getFechaEmisión() {
-        return fechaEmisión;
+    public String getFechaEmision() {
+        return fechaEmision;
     }
 
-    public void setFechaEmisión(String fechaEmisión) {
-        this.fechaEmisión = fechaEmisión;
+    public void setFechaEmision(String fechaEmisión) {
+        this.fechaEmision = fechaEmision;
     }
 
     public String getComentarios() {
@@ -77,6 +92,7 @@ public class Solicitud extends Servicios{
     public static void agregarSolicitud(Solicitud solicitud){
         listaSolicitudes.add(solicitud);
     }
+
 
     public double descuentoServicio(Servicios servicio){
 
@@ -141,8 +157,91 @@ public class Solicitud extends Servicios{
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
 
+
+    public static double descuentoServicio(Servicios servicio){
+
+        return switch (servicio.getNombre()) {
+            case "Alarmas de seguridad" -> 0.20;
+            case "Cercos electricos" -> 0.15;
+            case "Intercomunicadores" -> 0.10;
+            default -> 0;
+        };
     }
 
+    public static double costoFinal(double tarifa, Servicios servicios){
+        double igv = tarifa *0.18;
+        double importeDescuento = tarifa *descuentoServicio(servicios);
+        return tarifa +igv-importeDescuento;
+    }
+
+    public void imprimirSolicitudes() {
+        System.out.println("\nLista de Solicitudes:");
+        int contador = 1;
+        for (Solicitud servicio : listaSolicitudes) {
+            System.out.println(contador + ". " + servicio);
+            contador++;
+        }
+
+    }
+
+    public static void registrarNuevaSolicitud(){
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+
+        double tarifa = 0;
+        double descuento = 0;
+        double delivery = 0;
+
+        System.out.println("Agregar Solicitud:");
+        // Ingresar código de nueva solicitud
+        System.out.print("Ingrese el código de la solicitud: ");
+        String codSolicitud = scanner.nextLine();
+        System.out.print("Ingrese la fecha de atención: ");
+        String fechaAt = scanner.nextLine();
+        System.out.print("Ingrese la fecha de Emisión: ");
+        String fechaEm = scanner.nextLine();
+        System.out.print("Ingrese comentarios: ");
+        String comentarios = scanner.nextLine();
+
+        System.out.print("");
+        Servicios.imprimirServicios();
+        System.out.print("");
+        System.out.print("Ingrese Servicio a solicitar:");
+        String servicios = scanner.nextLine();
+        for (Servicios serv: Servicios.listaServicios) {
+            if (serv.getNombre().equals(servicios)) {
+                tarifa = serv.getTarifaServicio();
+                descuento = Solicitud.descuentoServicio(serv);
+            }
+        }
+        System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
+        System.out.print("");
+        ZonaPostal.imprimirZonasPostales();
+        System.out.print("");
+        System.out.print("Ingrese código de Zona delivery:");
+        String codigo = scanner.nextLine();
+
+        for (ZonaPostal distrito: listaZonas) {
+            if (distrito.getCodigoPostal().equals(codigo)) {
+                delivery = distrito.getTarifaZona();
+            }
+        }
+
+        System.out.println("Costo por delivery: "+delivery);
+
+
+
+
+
+        try {
+            // Crear y agregar solicitud a la lista
+            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);
+            //Solicitud.agregarSolicitud(nuevaSolicitud);
+            System.out.println("Solicitud agregado correctamente.");
+        } catch (Exception e) {
+            System.out.println("Error al agregar el servicio: " + e.getMessage());
+        }
+
+    }
 
 
 

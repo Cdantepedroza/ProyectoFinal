@@ -2,6 +2,8 @@ package org.GrupoNavarro;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class PersonalTecnico extends PersonaDatos {
     private String codigoEmpleado;
@@ -57,4 +59,59 @@ public class PersonalTecnico extends PersonaDatos {
             System.out.println("Especialidad: " + tecnico.getEspecialidad()+" \n");
         }
     }
+
+    public static void registrarTecnico(PersonalTecnico tecnico) {
+        tecnicos .add(tecnico);
+    }
+
+    public static void SolicitarDatosTecnico() {
+
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+
+        // Solicitar nombre completo del técnico
+        System.out.print("Ingrese el nombre completo del técnico: ");
+        String nombreCompleto = scanner.nextLine();
+        //Validaciones
+        if (nombreCompleto.isEmpty()) {
+            System.out.println("El nombre completo no puede estar vacío.");
+            return;
+        }
+        // Solicitar DNI del técnico
+        System.out.print("Ingrese el DNI del técnico: ");
+        String dni = scanner.nextLine();
+        //Validaciones
+        if (!dni.matches("[0-9]{8}")) {
+            System.out.println("El DNI debe tener 8 dígitos");
+            return;
+        }
+        // Solicitar número de teléfono del técnico
+        System.out.print("Ingrese el número de teléfono del técnico: ");
+        String numeroCelular = scanner.nextLine();
+
+        // Solicitar dirección del técnico
+        System.out.print("Ingrese la dirección del técnico: ");
+        String direccion = scanner.nextLine();
+
+        // Solicitar código de empleado del técnico
+        System.out.print("Ingrese el código de empleado del técnico: ");
+        String codigoEmpleado = scanner.nextLine();
+
+        // Solicitar especialidad del técnico
+        System.out.print("Ingrese la especialidad del técnico: ");
+        String especialidad = scanner.nextLine();
+
+        try {
+            // Crear el técnico
+            PersonalTecnico tecnico = new PersonalTecnico(nombreCompleto, dni, numeroCelular, direccion, codigoEmpleado, especialidad);
+
+            // Agregar el técnico a la lista
+            PersonalTecnico.registrarTecnico(tecnico);
+            System.out.println("Técnico registrado correctamente.");
+
+        } catch (Exception e) {
+            System.out.println("Error al registrar el técnico: " + e.getMessage());
+        }
+    }
+
+
 }
