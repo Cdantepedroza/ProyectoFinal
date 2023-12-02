@@ -1,14 +1,26 @@
 package org.GrupoNavarro;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZonaPostal {
     private String ciudad;
     private double precioBase;
 
+    private static ArrayList<ZonaPostal> listaZona;
+
+    public static ArrayList<ZonaPostal> getListaZona() {
+        return listaZona;
+    }
+
+    public static void setListaZona(ArrayList<ZonaPostal> listaZona) {
+        ZonaPostal.listaZona = listaZona;
+    }
+
     public ZonaPostal(String ciudad, double precioBase) {
         this.ciudad = ciudad;
         this.precioBase = precioBase;
+        listaZona = new ArrayList<>();
     }
 
     public String getCiudad() {
@@ -107,4 +119,15 @@ public class ZonaPostal {
 
 
     }
+
+    public static void imprimirZona(){
+        System.out.println("Lista de Zonas: \n");
+        int contador = 1;
+        for (ZonaPostal zona : listaZona) {
+            System.out.println(contador + ". " + zona);
+            contador++;
+        }
+    }
+
+
 }

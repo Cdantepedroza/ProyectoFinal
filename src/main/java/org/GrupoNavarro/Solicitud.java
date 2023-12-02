@@ -19,6 +19,8 @@ public class Solicitud extends Servicios{
     private PersonalTecnico personalTecnico;
     //Listo las solicitudes
     private static ArrayList<Solicitud> listaSolicitudes;
+    private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
+    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
 
     public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
         super(nombre, tarifaServico);
@@ -73,7 +75,7 @@ public class Solicitud extends Servicios{
 
 
     public static void agregarSolicitud(Solicitud solicitud){
-        listaSolicitudes.add(solicitud);    
+        listaSolicitudes.add(solicitud);
     }
 
     public double descuentoServicio(Servicios servicio){
@@ -96,11 +98,20 @@ public class Solicitud extends Servicios{
         return importeBase+igv-descuentoServicio(servicio);
     }
 
-    public void listarSolicitudes() {
+    public void imprimirSolicitudes() {
         System.out.println("\nLista de Solicitudes:");
         int contador = 1;
         for (Solicitud servicio : listaSolicitudes) {
             System.out.println(contador + ". " + servicio);
+            contador++;
+        }
+    }
+
+    public void imprimirZonas() {
+        System.out.println("\nLista de Zonas:");
+        int contador = 1;
+        for (ZonaPostal zona : listaZonas) {
+            System.out.println(contador + ". " + zona);
             contador++;
         }
     }
@@ -118,11 +129,8 @@ public class Solicitud extends Servicios{
         String fechaEm = scanner.nextLine();
         System.out.print("Ingrese comentarios: ");
         String comentarios = scanner.nextLine();
-        System.out.print("Seleccione su Servicio");
-        System.out.print("Seleccione su Zana");
 
-        String nom = "";
-        double varr = 0;
+        System.out.print("Seleccione su Zona");
 
         try {
             // Crear y agregar solicitud a la lista
