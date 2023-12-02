@@ -27,7 +27,7 @@ public class Main {
             System.out.println("1. Técnicos");
             System.out.println("2. Pedidos");
             System.out.println("3. Clientes");
-            System.out.println("4. Tarifas");
+            System.out.println("4. Zona Postal");
             System.out.println("5. Reporte de Empleados");
             System.out.println("6. Servicios");
             System.out.println("0. Salir");
@@ -45,7 +45,7 @@ public class Main {
                 case 3:
                     menuClientes(scanner);
                 case 4:
-                    menuTarifas(scanner);
+                    menuZonaPostal(scanner);
                     break;
                 case 5:
                     menuReporte(scanner);
@@ -108,8 +108,6 @@ public class Main {
             System.out.println("\nMenú Pedidos:");
             System.out.println("1. Registrar Pedido");
             System.out.println("2. Lista de Pedidos");
-            System.out.println("3. Agregar Zona Postal");
-            System.out.println("4. Lista de Zona Postal");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -125,16 +123,6 @@ public class Main {
                     // Lista de Pedidos
                     // Implementa la lógica para mostrar la lista de pedidos registrados
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
-                    break;
-                case 3:
-                    // Agregar Zona postal
-                    ZonaPostal.registrarNuevaZonaPostal();
-                    System.out.println("Lista de Pedidos - Implementa la lógica aquí");
-                    break;
-                case 4:
-                    // Lista de Zonas Postale
-                    ZonaPostal.imprimirZonasPostales();
-                    System.out.println("Lista de Zona postal - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
@@ -176,31 +164,28 @@ public class Main {
 
         }while (true);
     }
-    private static void menuTarifas(Scanner scanner){
+    private static void menuZonaPostal(Scanner scanner){
         do {
-            System.out.println("\nMenú Tarifas:");
-            System.out.println("1. Lista de Tarifas");
-            System.out.println("2. Agregar Tarifa");
-            System.out.println("3. Modificar Tarifa");
+            System.out.println("\nMenú Zona Postal:");
+            System.out.println("1. Lista de Zona Postal");
+            System.out.println("2. Agregar Zona Postal");
+            System.out.println("3. Modificar Zona postal");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
             int opcionTarifas = scanner.nextInt();
             switch (opcionTarifas){
                 case 1:
-                    // Lista de Tarifas
-                    // Implementa la lógica para mostrar la lista de tarifas
-                    System.out.println("Lista de Tarifas - Implementa la lógica aquí");
+                    // Lista de Zona Postal
+                    ZonaPostal.imprimirZonasPostales();
                     break;
                 case 2:
-                    // Agregar Tarifa
-                    // Implementa la lógica para agregar una tarifa
-                    System.out.println("Agregar Tarifa - Implementa la lógica aquí");
+                    // Agregar Zona Postal
+                    ZonaPostal.registrarNuevaZonaPostal();
                     break;
                 case 3:
-                    // Modificar Tarifa
-                    // Implementa la lógica para modificar una tarifa
-                    System.out.println("Modificar Tarifa - Implementa la lógica aquí");
+                    // Modificar Zona Postal
+                     System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
