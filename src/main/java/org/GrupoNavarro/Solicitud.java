@@ -15,6 +15,8 @@ public class Solicitud extends Servicios{
 
     //Llamo a Zona (para sacar tarifa)
     private ZonaPostal zona;
+    //Llamo a técnico
+    private PersonalTecnico personalTecnico;
     //Listo las solicitudes
     private static ArrayList<Solicitud> listaSolicitudes;
 
@@ -117,7 +119,7 @@ public class Solicitud extends Servicios{
         System.out.print("Ingrese comentarios: ");
         String comentarios = scanner.nextLine();
         System.out.print("Seleccione su Servicio");
-        System.out.print("Seleccione su Zona");
+        System.out.print("Seleccione su Zana");
 
         String nom = "";
         double varr = 0;
