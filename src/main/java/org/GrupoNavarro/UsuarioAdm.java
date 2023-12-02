@@ -1,14 +1,12 @@
 package org.GrupoNavarro;
 
-import java.util.Date;
-
 public class UsuarioAdm {
-    private String usuario;
-    private String pasword;
+    static String usuarioId;
+    static String pasword;
 
 
-    public UsuarioAdm(String usuario, String pasword) {
-        this.usuario = usuario;
+    public UsuarioAdm(String usuarioId, String pasword) {
+        this.usuarioId = usuarioId;
         this.pasword=pasword;
     }
 
