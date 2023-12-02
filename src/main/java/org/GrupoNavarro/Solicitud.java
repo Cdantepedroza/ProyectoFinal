@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Solicitud {
 
-    //JV2
+    //JV23
     private String codigoSolicitud;
     private String fechaAtención;
     private String fechaEmisión;
