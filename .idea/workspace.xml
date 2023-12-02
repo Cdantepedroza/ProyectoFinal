@@ -36,6 +36,12 @@
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="Cdantepedroza" />
+        <option name="repository" value="ProyectoFinal" />
+      </RepoCoordinatesHolder>
+    </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="c2708650-b1fc-4e9a-be06-8dd7ec4f2013" />
