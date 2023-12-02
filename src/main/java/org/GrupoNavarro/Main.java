@@ -121,7 +121,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
-                    Solicitud.imprimirServicios();
+                    Solicitud.imprimirSolicitudes();
                     break;
                 case 0:
                     // volver al menu principal
