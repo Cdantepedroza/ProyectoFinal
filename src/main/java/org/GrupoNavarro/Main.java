@@ -29,7 +29,7 @@ public class Main {
             id = scanner.nextLine();
             System.out.print("Ingrese la contraseaña: ");
             clave = scanner.nextLine();
-        } while (!id.equals("administrador")&& !clave.equals("administrador"));
+        } while(!id.equals(UsuarioAdm.usuarioId) && !clave.equals(UsuarioAdm.pasword));
 
         while (true) {
             System.out.println("\nMenú Principal:");
