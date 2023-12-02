@@ -11,6 +11,7 @@ public class Main {
 
         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
         GrupoNavarro.agregarCliente(cliente1);
+        UsuarioAdm usuario= new UsuarioAdm("administrador", "administrador");
 
         // Carga de servicios base
         Servicios servicios = new Servicios();
@@ -21,6 +22,14 @@ public class Main {
         zonaPostal.cargaInicialZonas();
 
         Scanner scanner = new Scanner(System.in);
+        String id="";
+        String clave="";
+        do {
+            System.out.print("Ingrese el codigo usuario: ");
+            id = scanner.nextLine();
+            System.out.print("Ingrese la contraseaña: ");
+            clave = scanner.nextLine();
+        } while(!id.equals(UsuarioAdm.usuarioId) && !clave.equals(UsuarioAdm.pasword));
 
         while (true) {
             System.out.println("\nMenú Principal:");
