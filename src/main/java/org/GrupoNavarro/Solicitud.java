@@ -34,6 +34,7 @@ public class Solicitud extends Servicios{
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
         this.zona = zona;
+        listaSolicitudes = new ArrayList<>();
     }
 
     public String getCodigoSolicitud() {
@@ -92,10 +93,9 @@ public class Solicitud extends Servicios{
     }
 
     public static double costoFinal(double tarifa, Servicios servicios){
-        double importeBase = tarifa;
-        double igv = importeBase*0.18;
-        double importeDescuento = importeBase*descuentoServicio(servicios);
-        return importeBase+igv-importeDescuento;
+        double igv = tarifa *0.18;
+        double importeDescuento = tarifa *descuentoServicio(servicios);
+        return tarifa +igv-importeDescuento;
     }
 
     public void imprimirSolicitudes() {
