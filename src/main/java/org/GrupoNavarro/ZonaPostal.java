@@ -96,7 +96,7 @@ public class ZonaPostal {
     @Override
     public String toString() {
         return
-                "Tarifa Zona:" + getTarifaZona() +", Codigo Postal:" + getCodigoPostal() +", Distrito: " + getNombreDistrito();
+                 ", Distrito: " + getNombreDistrito()+", Codigo Postal:" + getCodigoPostal() +  "Tarifa Zona:" + getTarifaZona();
     }
 
 
