@@ -22,40 +22,7 @@ public class Main {
         zonaPostal.cargaInicialZonas();
 
         Scanner scanner = new Scanner(System.in);
-        String id="";
-        String clave="";
-        do {
-            while (true) {
-                try {
-                    System.out.print("Ingrese el codigo usuario: ");
-                    id = scanner.nextLine();
-                    id= id.toLowerCase();
 
-                    if (!id.matches("^[a-zA-Z\\d+]+$")) {
-                        throw new IllegalArgumentException("Solo letras y numeros");
-                    }
-                    break;
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Error: " + e.getMessage());
-                }
-            }
-            while (true){
-                try {
-                    System.out.print("Ingrese la contraseaña: ");
-                    clave = scanner.nextLine();
-                    clave= clave.toLowerCase();
-
-                    if (!clave.matches("^[a-zA-Z\\d+]+$")) {
-                        throw new IllegalArgumentException("Solo letras y numeros");
-                    }break;
-                }catch (IllegalArgumentException e) {
-                    System.out.println("Error: " + e.getMessage());
-                }
-            }
-            if(!id.equals(UsuarioAdm.usuarioId)|| !clave.equals(UsuarioAdm.password)){
-                System.out.println("usuario y/o contraseña incorrecta");
-            }
-        } while(!id.equals(UsuarioAdm.usuarioId)||!clave.equals(UsuarioAdm.password));
 
         while (true) {
             System.out.println("\nMenú Principal:");
