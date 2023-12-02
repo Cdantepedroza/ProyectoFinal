@@ -123,15 +123,12 @@ public class Main {
             int opcionPedidos = scanner.nextInt();
             switch (opcionPedidos){
                 case 1:
-                    // Registrar Pedido
-                    // Implementa la lógica para registrar un pedido y sus detalles
-
                     System.out.println("Registrar Pedido - Implementa la lógica aquí");
+                    Solicitud.registrarNuevaSolicitud();
                     break;
                 case 2:
-                    // Lista de Pedidos
-                    // Implementa la lógica para mostrar la lista de pedidos registrados
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
+                    Solicitud.imprimirServicios();
                     break;
                 case 0:
                     // volver al menu principal

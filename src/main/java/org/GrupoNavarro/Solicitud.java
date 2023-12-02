@@ -4,32 +4,36 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Solicitud {
+public class Solicitud extends Servicios{
 
     //JV23
     private String codigoSolicitud;
-    private String fechaAtención;
-    private String fechaEmisión;
+    private String fechaAtencion;
+    private String fechaEmision;
     private String comentarios;
     private String estado;
 
-    //Llamo a Zona (para sacar tarifa)
-    private ZonaPostal zona;
-    //Llamo a técnico
-    private PersonalTecnico personalTecnico;
-    //Listo las solicitudes
-    private static ArrayList<Solicitud> listaSolicitudes;
-    private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
-    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
 
-    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
+    private ZonaPostal zona;
+    private PersonalTecnico personalTecnico;
+
+
+    private static ArrayList<Solicitud> listaSolicitudes;
+
+
+    private static final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
+    private static final ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
+
+
+
+    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, ZonaPostal zona, PersonalTecnico personalTecnico) {
+        super(nombre, tarifaServicio);
         this.codigoSolicitud = codigoSolicitud;
-        this.fechaAtención = fechaAtención;
-        this.fechaEmisión = fechaEmisión;
+        this.fechaAtencion = fechaAtencion;
+        this.fechaEmision = fechaEmision;
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
         this.zona = zona;
-        listaSolicitudes = new ArrayList<>();
     }
 
     public String getCodigoSolicitud() {
@@ -40,20 +44,20 @@ public class Solicitud {
         this.codigoSolicitud = codigoSolicitud;
     }
 
-    public String getFechaAtención() {
-        return fechaAtención;
+    public String getFechaAtencion() {
+        return fechaAtencion;
     }
 
-    public void setFechaAtención(String fechaAtención) {
-        this.fechaAtención = fechaAtención;
+    public void setFechaAtencion(String fechaAtención) {
+        this.fechaAtencion = fechaAtencion;
     }
 
-    public String getFechaEmisión() {
-        return fechaEmisión;
+    public String getFechaEmision() {
+        return fechaEmision;
     }
 
-    public void setFechaEmisión(String fechaEmisión) {
-        this.fechaEmisión = fechaEmisión;
+    public void setFechaEmision(String fechaEmisión) {
+        this.fechaEmision = fechaEmision;
     }
 
     public String getComentarios() {
@@ -77,24 +81,21 @@ public class Solicitud {
         listaSolicitudes.add(solicitud);
     }
 
-    public double descuentoServicio(Servicios servicio){
+    public static double descuentoServicio(Servicios servicio){
 
-        if (servicio.getNombre().equals("Alarmas de seguridad")){
-            return 0.20;
-        } else if (servicio.getNombre().equals("Cercos electricos")) {
-            return 0.15;
-        } else if (servicio.getNombre().equals("Intercomunicadores")) {
-            return 0.10;
-        } else {
-            return 0;
-        }
+        return switch (servicio.getNombre()) {
+            case "Alarmas de seguridad" -> 0.20;
+            case "Cercos electricos" -> 0.15;
+            case "Intercomunicadores" -> 0.10;
+            default -> 0;
+        };
     }
 
-    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){
-        //Falta agregar Zona servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito)
-        double importeBase = 0;
+    public static double costoFinal(double tarifa, Servicios servicios){
+        double importeBase = tarifa;
         double igv = importeBase*0.18;
-        return importeBase+igv-descuentoServicio(servicio);
+        double importeDescuento = importeBase*descuentoServicio(servicios);
+        return importeBase+igv-importeDescuento;
     }
 
     public void imprimirSolicitudes() {
@@ -115,8 +116,21 @@ public class Solicitud {
         }
     }
 
+    public static Servicios buscarServicio(String nombre) {
+        for (Servicios servicios: Servicios.listaServicios) {
+            if (servicios.getNombre().equals(nombre)) {
+                return servicios;
+            }
+        }
+        return null;
+    }
+
     public static void registrarNuevaSolicitud(){
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+
+        double tarifa = 0;
+        double descuento = 0;
+        double delivery = 0;
 
         System.out.println("Agregar Solicitud:");
         // Ingresar código de nueva solicitud
@@ -128,8 +142,36 @@ public class Solicitud {
         String fechaEm = scanner.nextLine();
         System.out.print("Ingrese comentarios: ");
         String comentarios = scanner.nextLine();
-        System.out.print("Seleccione su Zona");
-        //ZonaPostal.imprimirZona();
+
+        System.out.print("");
+        Servicios.imprimirServicios();
+        System.out.print("");
+        System.out.print("Ingrese Servicio a solicitar:");
+        String servicios = scanner.nextLine();
+        for (Servicios serv: Servicios.listaServicios) {
+            if (serv.getNombre().equals(servicios)) {
+                tarifa = serv.getTarifaServicio();
+                descuento = Solicitud.descuentoServicio(serv);
+            }
+        }
+        System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
+        System.out.print("");
+        ZonaPostal.imprimirZonasPostales();
+        System.out.print("");
+        System.out.print("Ingrese código de Zona delivery:");
+        String codigo = scanner.nextLine();
+
+        for (ZonaPostal distrito: listaZonas) {
+            if (distrito.getCodigoPostal().equals(codigo)) {
+                delivery = distrito.getTarifaZona();
+            }
+        }
+
+        System.out.println("Costo por delivery: "+delivery);
+
+
+
+
 
         try {
             // Crear y agregar solicitud a la lista
