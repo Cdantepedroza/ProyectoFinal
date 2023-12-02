@@ -29,10 +29,10 @@ public class Main {
             id = scanner.nextLine();
             System.out.print("Ingrese la contraseaña: ");
             clave = scanner.nextLine();
-            if(!id.equals(UsuarioAdm.usuarioId) && !clave.equals(UsuarioAdm.pasword)){
+            if(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword)){
                 System.out.println("usuario y/o contraseña incorrecta");
             }
-        } while(!id.equals(UsuarioAdm.usuarioId) && !clave.equals(UsuarioAdm.pasword));
+        } while(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword));
 
         while (true) {
             System.out.println("\nMenú Principal:");
