@@ -23,6 +23,22 @@ public class Servicios {
         return tarifaServico;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTarifaServico(double tarifaServico) {
+        this.tarifaServico = tarifaServico;
+    }
+
+    public static ArrayList<Servicios> getListaServicios() {
+        return listaServicios;
+    }
+
+    public static void setListaServicios(ArrayList<Servicios> listaServicios) {
+        Servicios.listaServicios = listaServicios;
+    }
+
     public static void agregarServicio(Servicios servicio) {
         listaServicios.add(servicio);
     }

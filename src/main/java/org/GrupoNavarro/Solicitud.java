@@ -28,7 +28,7 @@ public class Solicitud extends Servicios{
         this.comentarios = comentarios;
         this.estado = "EN GESTION";
         this.zona = zona;
-        this.listaSolicitudes = new ArrayList<>();
+        listaSolicitudes = new ArrayList<>();
     }
 
     public String getCodigoSolicitud() {
@@ -73,7 +73,7 @@ public class Solicitud extends Servicios{
 
 
     public static void agregarSolicitud(Solicitud solicitud){
-        listaSolicitudes.add(solicitud);
+        listaSolicitudes.add(solicitud);    
     }
 
     public double descuentoServicio(Servicios servicio){
@@ -89,9 +89,9 @@ public class Solicitud extends Servicios{
         }
     }
 
-    public double costoFinal(Servicios servicio, ZonaPostal zona){
+    public double costoFinal(Servicios servicio, ZonaPostal zona, String ciudad){
         //Falta agregar Zona
-        double importeBase = servicio.getTarifaServico();
+        double importeBase = servicio.getTarifaServico() + zona.calcularPrecioFinal(ciudad);
         double igv = importeBase*0.18;
         return importeBase+igv-descuentoServicio(servicio);
     }
