@@ -98,5 +98,4 @@ public class ZonaPostal {
         return
                  ", Distrito: " + getNombreDistrito()+", Codigo Postal:" + getCodigoPostal() +  "Tarifa Zona:" + getTarifaZona();
     }
-
 }
