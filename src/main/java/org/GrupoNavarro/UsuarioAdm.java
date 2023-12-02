@@ -1,5 +1,6 @@
 package org.GrupoNavarro;
 
+
 public class UsuarioAdm {
     static String usuarioId;
     static String pasword;
