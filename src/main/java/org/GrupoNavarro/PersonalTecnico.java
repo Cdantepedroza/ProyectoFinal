@@ -15,6 +15,10 @@ public class PersonalTecnico extends PersonaDatos {
         this.especialidad = especialidad;
     }
 
+    public PersonalTecnico(){
+        super();
+    }
+
     public String getCodigoEmpleado() {
         return codigoEmpleado;
     }
@@ -39,6 +43,14 @@ public class PersonalTecnico extends PersonaDatos {
                 '}';
     }
     private static List<PersonalTecnico> tecnicos = new ArrayList<>();
+
+    public List<PersonalTecnico> getTecnicos() {
+        return tecnicos;
+    }
+
+    public static void setTecnicos(List<PersonalTecnico> tecnicos) {
+        PersonalTecnico.tecnicos = tecnicos;
+    }
 
     static {
         tecnicos.add(new PersonalTecnico("Juan Silva", "12345678", "912345678", "Calle tulipan, 123", "987654321", "electricista"));

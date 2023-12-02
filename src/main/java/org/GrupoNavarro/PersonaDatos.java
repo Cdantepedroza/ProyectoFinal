@@ -13,6 +13,10 @@ public abstract class  PersonaDatos  {
         this.direccion = direccion;
     }
 
+    public PersonaDatos() {
+
+    }
+
     public String getnombreCompleto() {
         return nombreCompleto;
     }
