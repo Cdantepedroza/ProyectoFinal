@@ -14,11 +14,11 @@ public class Main {
         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
         GrupoNavarro.agregarCliente(cliente1);
 
-        // Carga de servicios base
+        // Carga de lista de servicios base
         Servicios servicios = new Servicios();
         servicios.cargaInicialServicios();
 
-        // lista base de zonas postales
+        // carga de lista base de zonas postales
         ZonaPostal zonaPostal = new ZonaPostal();
         zonaPostal.cargaInicialZonas();
 
@@ -29,7 +29,7 @@ public class Main {
             System.out.println("1. Técnicos");
             System.out.println("2. Pedidos");
             System.out.println("3. Clientes");
-            System.out.println("4. Tarifas");
+            System.out.println("4. Tarifas");//CONSIDERAR TARIFA DE ZONA POSTAL AQUI O EN PEDIDOS?????
             System.out.println("5. Reporte de Empleados");
             System.out.println("6. Servicios");
             System.out.println("0. Salir");
@@ -90,14 +90,13 @@ public class Main {
                     break;
                 case 3:
                     // implementar logica aqui
-                    System.out.println("Registrar tecnico ");
+                    System.out.println("Registrar Especialidad - implementar logica aqui ");
                     break;
                 case 4:
                     // implementar logica aqui
-                    System.out.println("Registrar tecnico ");
+                    System.out.println("Lista de especialidades - implementar logica aqui ");
                     break;
                 case 0:
-                    // volver al menu principal
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -134,12 +133,11 @@ public class Main {
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
                     break;
                 case 4:
-                    // Lista de Zonas Postale
+                    // Lista de Zonas Postales
                     ZonaPostal.imprimirZonasPostales();
                     System.out.println("Lista de Zona postal - Implementa la lógica aquí");
                     break;
                 case 0:
-                    // volver al menu principal
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -159,18 +157,15 @@ public class Main {
             switch (opcionClientes){
                 case 1:
                     // Registrar Clientes
-                    // Implementa la lógica para registrar un pedido y sus detalles
                     GrupoNavarro.registrarNuevoCliente();
                     System.out.println("Registrar Cliente - Implementa la lógica aquí");
                     break;
                 case 2:
                     // Lista de Clientes
-                    // Implementa la lógica para mostrar la lista de pedidos registrados
                     GrupoNavarro.imprimirClientes();
                     System.out.println("Lista de Clientes - Implementa la lógica aquí");
                     break;
                 case 0:
-                    // volver al menu principal
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -205,7 +200,6 @@ public class Main {
                     System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:
-                    // volver al menu principal
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -230,7 +224,6 @@ public class Main {
                     System.out.println("Lista de Tarifas - Implementa la lógica aquí");
                     break;
                 case 0:
-                    // volver al menu principal
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -256,8 +249,6 @@ public class Main {
                     System.out.println("Lista de servicios- Implementa la lógica aquí");
                     break;
                 case 0:
-                    // volver al menu principal
-
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");

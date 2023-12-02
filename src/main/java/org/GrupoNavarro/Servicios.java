@@ -85,7 +85,6 @@ public class Servicios  {
                 scanner.next(); // Limpiar el buffer del scanner
             }
         }
-
         try {
             // Crear y agregar el servicio a la lista
             Servicios nuevoServicio = new Servicios(nombreServicio, tarifaServicio);
