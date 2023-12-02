@@ -1,0 +1,284 @@
+Index: src/main/java/org/GrupoNavarro/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.*;\r\n\r\npublic class Main {\r\n    //P1\r\n    public static void main(String[] args) {\r\n\r\n\r\n        GrupoNavarro empresa = new GrupoNavarro(\"Grupo Navarro\");\r\n\r\n        Cliente cliente1 = new Cliente(\"dfdsf\",\"75697852\",\"9658324\",\"av siempre viva\", \"dsfsd262626\",\"15102\");\r\n        GrupoNavarro.agregarCliente(cliente1);\r\n\r\n        // Carga de servicios base\r\n        Servicios servicios = new Servicios();\r\n        servicios.cargaInicialServicios();\r\n\r\n        // lista base de zonas postales\r\n        ZonaPostal zonaPostal = new ZonaPostal();\r\n        zonaPostal.cargaInicialZonas();\r\n\r\n        Scanner scanner = new Scanner(System.in);\r\n\r\n        while (true) {\r\n            System.out.println(\"\\nMenú Principal:\");\r\n            System.out.println(\"1. Técnicos\");\r\n            System.out.println(\"2. Pedidos\");\r\n            System.out.println(\"3. Clientes\");\r\n            System.out.println(\"4. Zona Postal\");\r\n            System.out.println(\"5. Reporte de Empleados\");\r\n            System.out.println(\"6. Servicios\");\r\n            System.out.println(\"0. Salir\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionPrincipal = scanner.nextInt();\r\n\r\n            switch (opcionPrincipal) {\r\n                case 1:\r\n                    menuTecnicos(scanner);\r\n                    break;\r\n                case 2:\r\n                    menuPedidos(scanner);\r\n                    break;\r\n                case 3:\r\n                    menuClientes(scanner);\r\n                case 4:\r\n                    menuZonaPostal(scanner);\r\n                    break;\r\n                case 5:\r\n                    menuReporte(scanner);\r\n                    break;\r\n                case 6:\r\n                    menuServicios(scanner);\r\n                    break;\r\n                case 0:\r\n                    System.out.println(\"Saliendo del programa. ¡Hasta luego!\");\r\n                    System.exit(0);\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n                    }\r\n            }\r\n        }\r\n\r\n    private static void menuTecnicos(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Técnicos:\");\r\n            System.out.println(\"1. Registrar Técnico\");\r\n            System.out.println(\"2. Lista de Técnicos\");\r\n            System.out.println(\"3. Registrar Especialidad\");\r\n            System.out.println(\"4. Lista de Especialidades\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionTecnicos = scanner.nextInt();\r\n\r\n            // Creamos una lista de técnicos\r\n            List<PersonalTecnico> tecnicos = new ArrayList<>();\r\n\r\n            switch (opcionTecnicos){\r\n                case 1:\r\n                    //Registramos un tecnico\r\n                    PersonalTecnico.SolicitarDatosTecnico();\r\n                    break;\r\n                case 2:\r\n                    // listamos a los técnicos\r\n                        PersonalTecnico.imprimirTecnicos();\r\n                    break;\r\n                case 3:\r\n                    // implementar logica aqui\r\n                    System.out.println(\"Registrar tecnico \");\r\n                    break;\r\n                case 4:\r\n                    // implementar logica aqui\r\n                    System.out.println(\"Registrar tecnico \");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n        }while (true);\r\n    }\r\n\r\n    private static void menuPedidos(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Pedidos:\");\r\n            System.out.println(\"1. Registrar Pedido\");\r\n            System.out.println(\"2. Lista de Pedidos\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionPedidos = scanner.nextInt();\r\n            switch (opcionPedidos){\r\n                case 1:\r\n                    // Registrar Pedido\r\n                    // Implementa la lógica para registrar un pedido y sus detalles\r\n\r\n                    System.out.println(\"Registrar Pedido - Implementa la lógica aquí\");\r\n                    break;\r\n                case 2:\r\n                    // Lista de Pedidos\r\n                    // Implementa la lógica para mostrar la lista de pedidos registrados\r\n                    System.out.println(\"Lista de Pedidos - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuClientes(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Clientes:\");\r\n            System.out.println(\"1. Registrar nuevo Cliente\");\r\n            System.out.println(\"2. Lista de Clientes\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionClientes = scanner.nextInt();\r\n            switch (opcionClientes){\r\n                case 1:\r\n                    // Registrar Clientes\r\n                    // Implementa la lógica para registrar un pedido y sus detalles\r\n                    GrupoNavarro.registrarNuevoCliente();\r\n                    System.out.println(\"Registrar Cliente - Implementa la lógica aquí\");\r\n                    break;\r\n                case 2:\r\n                    // Lista de Clientes\r\n                    // Implementa la lógica para mostrar la lista de pedidos registrados\r\n                    GrupoNavarro.imprimirClientes();\r\n                    System.out.println(\"Lista de Clientes - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuZonaPostal(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Zona Postal:\");\r\n            System.out.println(\"1. Lista de Zona Postal\");\r\n            System.out.println(\"2. Agregar Zona Postal\");\r\n            System.out.println(\"3. Modificar Zona postal\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionTarifas = scanner.nextInt();\r\n            switch (opcionTarifas){\r\n                case 1:\r\n                    // Lista de Zona Postal\r\n                    ZonaPostal.imprimirZonasPostales();\r\n                    break;\r\n                case 2:\r\n                    // Agregar Zona Postal\r\n                    ZonaPostal.registrarNuevaZonaPostal();\r\n                    break;\r\n                case 3:\r\n                    // Modificar Zona Postal\r\n                     System.out.println(\"Modificar Tarifa - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuReporte(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Reporte:\");\r\n            System.out.println(\"1. Reporte Empleados\");\r\n            System.out.println(\"2. Reporte Solicitudes\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionReporte = scanner.nextInt();\r\n            switch (opcionReporte){\r\n                case 1:\r\n                    System.out.println(\"Lista de Tarifas - Implementa la lógica aquí\");\r\n                    break;\r\n                case 2:\r\n                    System.out.println(\"Lista de Tarifas - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuServicios(Scanner scanner){\r\n\r\n        do {\r\n            System.out.println(\"\\nMenú Servicos:\");\r\n            System.out.println(\"1. Registrar nuevo servicio\");\r\n            System.out.println(\"2. Modificar servicio\");\r\n            System.out.println(\"3. Lista de servicios\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionServicios = scanner.nextInt();\r\n            switch (opcionServicios){\r\n                case 1:\r\n                    Servicios.registrarNuevoServicio();\r\n                    break;\r\n                case 2:\r\n                    Servicios.modificarServicioT();\r\n                    break;\r\n                case 3:\r\n                    Servicios.imprimirServicios();\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/Main.java b/src/main/java/org/GrupoNavarro/Main.java
+--- a/src/main/java/org/GrupoNavarro/Main.java	(revision 7b1f4ff1ada8e4e3abd2cd0764d558d2da245748)
++++ b/src/main/java/org/GrupoNavarro/Main.java	(date 1701540593259)
+@@ -114,15 +114,12 @@
+             int opcionPedidos = scanner.nextInt();
+             switch (opcionPedidos){
+                 case 1:
+-                    // Registrar Pedido
+-                    // Implementa la lógica para registrar un pedido y sus detalles
+-
+                     System.out.println("Registrar Pedido - Implementa la lógica aquí");
++                    Solicitud.registrarNuevaSolicitud();
+                     break;
+                 case 2:
+-                    // Lista de Pedidos
+-                    // Implementa la lógica para mostrar la lista de pedidos registrados
+                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
++                    Solicitud.imprimirServicios();
+                     break;
+                 case 0:
+                     // volver al menu principal
+Index: src/main/java/org/GrupoNavarro/Servicios.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Calendar;\r\nimport java.util.Date;\r\nimport java.util.Locale;\r\nimport java.util.Scanner;\r\nimport java.text.DateFormat;\r\nimport java.text.SimpleDateFormat;\r\n\r\npublic class Servicios  {\r\n    private String nombre;\r\n    private double tarifaServicio;\r\n\r\n     public static ArrayList<Servicios> listaServicios = new ArrayList<>();\r\n\r\n    public Servicios(String nombre, double tarifaServicio) {\r\n        this.nombre = nombre;\r\n        this.tarifaServicio = tarifaServicio;\r\n\r\n    }\r\n    public Servicios() {\r\n\r\n    }\r\n\r\n    public String getNombre() {\r\n        return nombre;\r\n    }\r\n\r\n    public double getTarifaServicio() {\r\n        return tarifaServicio;\r\n    }\r\n\r\n    public void setTarifaServicio(double tarifaServicio) {\r\n        this.tarifaServicio = tarifaServicio;\r\n    }\r\n\r\n    public static void setListaServicios(ArrayList<Servicios> listaServicios) {\r\n        Servicios.listaServicios = listaServicios;\r\n    }\r\n    public static void agregarServicio(Servicios servicio) {\r\n        listaServicios.add(servicio);\r\n    }\r\n\r\n    public  static void modificarServicio(String nombre, double nuevatarifaServicio, ArrayList<Servicios> listaServicios) {\r\n        String nombreTmp;\r\n        double tarif;\r\n        nombreTmp = \" \";\r\n        tarif = 0;\r\n\r\n        for (Servicios servicio : listaServicios){\r\n            nombreTmp = servicio.getNombre();\r\n\r\n         //   tarif = servicio.getTarifaServicio();\r\n            if (nombreTmp.equals(nombre)){\r\n                servicio.setTarifaServicio(nuevatarifaServicio);\r\n                Servicios.setListaServicios(listaServicios);\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    public static ArrayList<Servicios> getListaServicios() {\r\n        return listaServicios;\r\n    }\r\n\r\n\r\n\r\n    public void cargaInicialServicios(){\r\n        Servicios servicio1 = new Servicios(\"Instalacioón de camaras\", 400);\r\n        Servicios servicio2 = new Servicios(\"Cercos electricos\", 300);\r\n        Servicios servicio3 = new Servicios(\"Alarmas de seguridad\", 500);\r\n        Servicios servicio4 = new Servicios(\"Intercomunicadores\", 800);\r\n        Servicios servicio5 = new Servicios(\"Alarmas contra incendio\", 700);\r\n        Servicios servicio6 = new Servicios(\"Control de acceso\", 280);\r\n        Servicios servicio7 = new Servicios(\"Instalacion electrica\", 700);\r\n        Servicios.agregarServicio(servicio1);\r\n        Servicios.agregarServicio(servicio2);\r\n        Servicios.agregarServicio(servicio3);\r\n        Servicios.agregarServicio(servicio4);\r\n        Servicios.agregarServicio(servicio5);\r\n        Servicios.agregarServicio(servicio6);\r\n        Servicios.agregarServicio(servicio7);\r\n    }\r\n    @Override\r\n    public String toString() {\r\n        return \"Nombre: \" + nombre + \", Tarifa: \" + tarifaServicio;\r\n    }\r\n    public static void imprimirServicios() {\r\n      String diadehoy;\r\n      double preciosobrecargo;\r\n      double preciolista;\r\n      diadehoy = calculadiahoy();\r\n      preciosobrecargo = 0.0;\r\n      preciolista = 0.0;\r\n\r\n\r\n        System.out.println(\"\\nLista de Servicios:\");\r\n        int contador = 1;\r\n\r\n        for (Servicios servicio : listaServicios) {\r\n\r\n            if (diadehoy.equals(\"Sabado\") || diadehoy.equals(\"Domingo\")){\r\n                preciolista = servicio.getTarifaServicio();\r\n                preciosobrecargo = preciolista * 1.10;\r\n                servicio.setTarifaServicio(preciosobrecargo);\r\n                Servicios.setListaServicios(listaServicios);\r\n            }\r\n            System.out.println(contador + \". \" + servicio);\r\n            contador++;\r\n        }\r\n    }\r\n    public static void registrarNuevoServicio(){\r\n        System.out.println(\"Agregar servicio:\");\r\n\r\n        // Solicitar nombre del servicio\r\n        System.out.print(\"Ingrese el nombre del servicio: \");\r\n        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;\r\n        String nombreServicio = scanner.nextLine();\r\n\r\n        // Solicitar tarifa del servicio\r\n        double tarifaServicio = 0.0;\r\n        boolean entradaValida = false;\r\n\r\n        // Validar que la entrada sea un double\r\n        while (!entradaValida) {\r\n            try {\r\n                System.out.print(\"Ingrese la tarifa del servicio: \");\r\n                tarifaServicio = scanner.nextDouble();\r\n                entradaValida = true;\r\n            } catch (java.util.InputMismatchException e) {\r\n                System.out.println(\"Error: Ingrese un valor numérico para la tarifa.\");\r\n                scanner.next(); // Limpiar el buffer del scanner\r\n            }\r\n        }\r\n        try {\r\n            // Crear y agregar el servicio a la lista\r\n            Servicios nuevoServicio = new Servicios(nombreServicio, tarifaServicio);\r\n            Servicios.agregarServicio(nuevoServicio);\r\n            System.out.println(\"Servicio agregado correctamente.\");\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error al agregar el servicio: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public static void modificarServicioT(){\r\n        System.out.println(\"Modificar servicio:\");\r\n\r\n        // Solicitar nombre del servicio a modificar\r\n        System.out.print(\"Ingrese el nombre del servicio a modificar: \");\r\n        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;\r\n        String nombreServicio = scanner.nextLine();\r\n\r\n        System.out.print(\"Ingrese la nueva tarifa: \");\r\n        Scanner scanner1 = new Scanner(System.in).useLocale(Locale.US);;\r\n        double nuevatarifa = Double.parseDouble(scanner1.nextLine());\r\n\r\n        try {\r\n            // Modificar el servicio a la lista\r\n            Servicios.modificarServicio(nombreServicio, nuevatarifa, listaServicios);\r\n            System.out.println(\"Servicio modificado correctamente.\");\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error al modificar el servicio: \" + e.getMessage());\r\n        }\r\n    }\r\n\r\n    public static String calculadiahoy(){\r\n        String dhoy;\r\n        // Creamos una instancia del calendario\r\n        Calendar now = Calendar.getInstance();\r\n\r\n        System.out.println(\"Fecha actual : \" + (now.get(Calendar.MONTH) + 1)\r\n                + \"-\"\r\n                + now.get(Calendar.DATE)\r\n                + \"-\"\r\n                + now.get(Calendar.YEAR));\r\n\r\n        // Array con los dias de la semana\r\n        String[] strDays = new String[]{\r\n                \"Domingo\",\r\n                \"Lunes\",\r\n                \"Martes\",\r\n                \"Miercoles\",\r\n                \"Jueves\",\r\n                \"Viernes\",\r\n                \"Sabado\"};\r\n\r\n        dhoy = strDays[now.get(Calendar.DAY_OF_WEEK) - 1];\r\n        // El dia de la semana inicia en el 1 mientras que el array empieza en el 0\r\n        System.out.println(\"Hoy es : \" + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);\r\n        return dhoy;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/Servicios.java b/src/main/java/org/GrupoNavarro/Servicios.java
+--- a/src/main/java/org/GrupoNavarro/Servicios.java	(revision 7b1f4ff1ada8e4e3abd2cd0764d558d2da245748)
++++ b/src/main/java/org/GrupoNavarro/Servicios.java	(date 1701542837155)
+@@ -191,4 +191,6 @@
+         return dhoy;
+     }
+ 
++
++
+ }
+Index: src/main/java/org/GrupoNavarro/Solicitud.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Locale;\r\nimport java.util.Scanner;\r\n\r\npublic class Solicitud {\r\n\r\n    //JV23\r\n    private String codigoSolicitud;\r\n    private String fechaAtención;\r\n    private String fechaEmisión;\r\n    private String comentarios;\r\n    private String estado;\r\n\r\n    //Llamo a Zona (para sacar tarifa)\r\n    private ZonaPostal zona;\r\n    //Llamo a técnico\r\n    private PersonalTecnico personalTecnico;\r\n    //Listo las solicitudes\r\n    private static ArrayList<Solicitud> listaSolicitudes;\r\n    private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();\r\n    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();\r\n\r\n    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {\r\n        this.codigoSolicitud = codigoSolicitud;\r\n        this.fechaAtención = fechaAtención;\r\n        this.fechaEmisión = fechaEmisión;\r\n        this.comentarios = comentarios;\r\n        this.estado = \"EN GESTION\";\r\n        this.zona = zona;\r\n        listaSolicitudes = new ArrayList<>();\r\n    }\r\n\r\n    public String getCodigoSolicitud() {\r\n        return codigoSolicitud;\r\n    }\r\n\r\n    public void setCodigoSolicitud(String codigoSolicitud) {\r\n        this.codigoSolicitud = codigoSolicitud;\r\n    }\r\n\r\n    public String getFechaAtención() {\r\n        return fechaAtención;\r\n    }\r\n\r\n    public void setFechaAtención(String fechaAtención) {\r\n        this.fechaAtención = fechaAtención;\r\n    }\r\n\r\n    public String getFechaEmisión() {\r\n        return fechaEmisión;\r\n    }\r\n\r\n    public void setFechaEmisión(String fechaEmisión) {\r\n        this.fechaEmisión = fechaEmisión;\r\n    }\r\n\r\n    public String getComentarios() {\r\n        return comentarios;\r\n    }\r\n\r\n    public void setComentarios(String comentarios) {\r\n        this.comentarios = comentarios;\r\n    }\r\n\r\n    public String getEstado() {\r\n        return estado;\r\n    }\r\n\r\n    public void setEstado(String estado) {\r\n        this.estado = estado;\r\n    }\r\n\r\n\r\n    public static void agregarSolicitud(Solicitud solicitud){\r\n        listaSolicitudes.add(solicitud);\r\n    }\r\n\r\n    public double descuentoServicio(Servicios servicio){\r\n\r\n        if (servicio.getNombre().equals(\"Alarmas de seguridad\")){\r\n            return 0.20;\r\n        } else if (servicio.getNombre().equals(\"Cercos electricos\")) {\r\n            return 0.15;\r\n        } else if (servicio.getNombre().equals(\"Intercomunicadores\")) {\r\n            return 0.10;\r\n        } else {\r\n            return 0;\r\n        }\r\n    }\r\n\r\n    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){\r\n        //Falta agregar Zona servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito)\r\n        double importeBase = 0;\r\n        double igv = importeBase*0.18;\r\n        return importeBase+igv-descuentoServicio(servicio);\r\n    }\r\n\r\n    public void imprimirSolicitudes() {\r\n        System.out.println(\"\\nLista de Solicitudes:\");\r\n        int contador = 1;\r\n        for (Solicitud servicio : listaSolicitudes) {\r\n            System.out.println(contador + \". \" + servicio);\r\n            contador++;\r\n        }\r\n    }\r\n\r\n    public void imprimirZonas() {\r\n        System.out.println(\"\\nLista de Zonas:\");\r\n        int contador = 1;\r\n        for (ZonaPostal zona : listaZonas) {\r\n            System.out.println(contador + \". \" + zona);\r\n            contador++;\r\n        }\r\n    }\r\n\r\n    public static void registrarNuevaSolicitud(){\r\n        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;\r\n\r\n        System.out.println(\"Agregar Solicitud:\");\r\n        // Ingresar código de nueva solicitud\r\n        System.out.print(\"Ingrese el código de la solicitud: \");\r\n        String codSolicitud = scanner.nextLine();\r\n        System.out.print(\"Ingrese la fecha de atención: \");\r\n        String fechaAt = scanner.nextLine();\r\n        System.out.print(\"Ingrese la fecha de Emisión: \");\r\n        String fechaEm = scanner.nextLine();\r\n        System.out.print(\"Ingrese comentarios: \");\r\n        String comentarios = scanner.nextLine();\r\n        System.out.print(\"Seleccione su Zona\");\r\n        //ZonaPostal.imprimirZona();\r\n\r\n        try {\r\n            // Crear y agregar solicitud a la lista\r\n            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);\r\n            //Solicitud.agregarSolicitud(nuevaSolicitud);\r\n            System.out.println(\"Solicitud agregado correctamente.\");\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error al agregar el servicio: \" + e.getMessage());\r\n        }\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/Solicitud.java b/src/main/java/org/GrupoNavarro/Solicitud.java
+--- a/src/main/java/org/GrupoNavarro/Solicitud.java	(revision 7b1f4ff1ada8e4e3abd2cd0764d558d2da245748)
++++ b/src/main/java/org/GrupoNavarro/Solicitud.java	(date 1701543183530)
+@@ -4,32 +4,37 @@
+ import java.util.Locale;
+ import java.util.Scanner;
+ 
+-public class Solicitud {
++public class Solicitud extends Servicios{
+ 
+     //JV23
+     private String codigoSolicitud;
+-    private String fechaAtención;
+-    private String fechaEmisión;
++    private String fechaAtencion;
++    private String fechaEmision;
+     private String comentarios;
+     private String estado;
+ 
+-    //Llamo a Zona (para sacar tarifa)
++
+     private ZonaPostal zona;
+-    //Llamo a técnico
+     private PersonalTecnico personalTecnico;
+-    //Listo las solicitudes
++
++
+     private static ArrayList<Solicitud> listaSolicitudes;
++
++
+     private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
+-    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
++    private final ArrayList<Servicios> listaServicios = new ArrayList<Servicios>();
++    private final ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
++
+ 
+-    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
++
++    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, ZonaPostal zona, PersonalTecnico personalTecnico) {
++        super(nombre, tarifaServicio);
+         this.codigoSolicitud = codigoSolicitud;
+-        this.fechaAtención = fechaAtención;
+-        this.fechaEmisión = fechaEmisión;
++        this.fechaAtencion = fechaAtencion;
++        this.fechaEmision = fechaEmision;
+         this.comentarios = comentarios;
+         this.estado = "EN GESTION";
+         this.zona = zona;
+-        listaSolicitudes = new ArrayList<>();
+     }
+ 
+     public String getCodigoSolicitud() {
+@@ -40,20 +45,20 @@
+         this.codigoSolicitud = codigoSolicitud;
+     }
+ 
+-    public String getFechaAtención() {
+-        return fechaAtención;
++    public String getFechaAtencion() {
++        return fechaAtencion;
+     }
+ 
+-    public void setFechaAtención(String fechaAtención) {
+-        this.fechaAtención = fechaAtención;
++    public void setFechaAtencion(String fechaAtención) {
++        this.fechaAtencion = fechaAtencion;
+     }
+ 
+-    public String getFechaEmisión() {
+-        return fechaEmisión;
++    public String getFechaEmision() {
++        return fechaEmision;
+     }
+ 
+-    public void setFechaEmisión(String fechaEmisión) {
+-        this.fechaEmisión = fechaEmisión;
++    public void setFechaEmision(String fechaEmisión) {
++        this.fechaEmision = fechaEmision;
+     }
+ 
+     public String getComentarios() {
+@@ -77,24 +82,26 @@
+         listaSolicitudes.add(solicitud);
+     }
+ 
+-    public double descuentoServicio(Servicios servicio){
++    public double descuentoServicio(String servicio){
+ 
+-        if (servicio.getNombre().equals("Alarmas de seguridad")){
+-            return 0.20;
+-        } else if (servicio.getNombre().equals("Cercos electricos")) {
+-            return 0.15;
+-        } else if (servicio.getNombre().equals("Intercomunicadores")) {
+-            return 0.10;
+-        } else {
+-            return 0;
+-        }
++        return 0;
++
++        //if (servicio.getNombre().equals("Alarmas de seguridad")){
++        //    return 0.20;
++        //} else if (servicio.getNombre().equals("Cercos electricos")) {
++        //    return 0.15;
++        //} else if (servicio.getNombre().equals("Intercomunicadores")) {
++        //    return 0.10;
++        //} else {
++        //    return 0;
++        //}
+     }
+ 
+-    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){
+-        //Falta agregar Zona servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito)
+-        double importeBase = 0;
++    public double costoFinal(String nombre){
++        double importeBase = calcularTarifa(getNombre());
+         double igv = importeBase*0.18;
+-        return importeBase+igv-descuentoServicio(servicio);
++        //double importeDescuento = importeBase*descuentoServicio(servicio);
++        return importeBase+igv;
+     }
+ 
+     public void imprimirSolicitudes() {
+@@ -115,6 +122,22 @@
+         }
+     }
+ 
++    public Servicios buscarServicio(String nombre) {
++        for (Servicios servicios: listaServicios) {
++            if (servicios.getNombre().equals(nombre)) {
++                return servicios;
++            }
++        }
++        return null;
++    }
++
++    public double calcularTarifa(String nombre) {
++        Servicios servicios = buscarServicio(nombre);
++        System.out.println("Servicio seleccionado: "+servicios.getNombre()+" con tarifa: "+servicios.getTarifaServicio());
++        return servicios.getTarifaServicio();
++    }
++
++
+     public static void registrarNuevaSolicitud(){
+         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+ 
+@@ -128,8 +151,12 @@
+         String fechaEm = scanner.nextLine();
+         System.out.print("Ingrese comentarios: ");
+         String comentarios = scanner.nextLine();
+-        System.out.print("Seleccione su Zona");
+-        //ZonaPostal.imprimirZona();
++        System.out.print("Ingrese su Servicio");
++        Servicios.imprimirServicios();
++        String servicios = scanner.nextLine();
++
++
++
+ 
+         try {
+             // Crear y agregar solicitud a la lista
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"Clase SP con atributos\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"harly\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Josept-Vela&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"c2708650-b1fc-4e9a-be06-8dd7ec4f2013\" />\r\n        <option name=\"url\" value=\"https://github.com/Cdantepedroza/ProyectoFinal.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XNhVSSZ35q1W9yLrIWZ4RAZrMp\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master\",\r\n    \"onboarding.tips.debug.path\": \"E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.appearance\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"org.modelo\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.org.GrupoNavarro.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"19\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"org.GrupoNavarro.Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.GrupoNavarro.Main\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"\" />\r\n      <created>1698475470043</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698475470043</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Prueba commit and Push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699662937725</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699662937725</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Cambio Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726134959</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726134960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Cambio en Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726209917</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726209917</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Clase Cliente\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143685098</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143685098</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Clase PersonaDatos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143760999</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143760999</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143937832</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143937832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701144001680</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701144001680</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Ageregar clases\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701145019047</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701145019048</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147314620</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147314620</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147332658</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147332658</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"11\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Prueba commit and Push\" />\r\n    <MESSAGE value=\"Cambio Reporte\" />\r\n    <MESSAGE value=\"Cambio en Reporte\" />\r\n    <MESSAGE value=\"Clase Cliente\" />\r\n    <MESSAGE value=\"Clase PersonaDatos\" />\r\n    <MESSAGE value=\"Clase PersonaDatos atributos\" />\r\n    <MESSAGE value=\"Ageregar clases\" />\r\n    <MESSAGE value=\"Clase SP con atributos\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Clase SP con atributos\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/org/proyectoFinal/Main.java</url>\r\n          <line>15</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7b1f4ff1ada8e4e3abd2cd0764d558d2da245748)
++++ b/.idea/workspace.xml	(date 1701542746888)
+@@ -4,8 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
++    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,6 +23,12 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="Cdantepedroza &lt;christiandantepi@gmail.com&gt;" />
++      </list>
++    </option>
++    <option name="PUSH_AUTO_UPDATE" value="true" />
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+         <entry key="$PROJECT_DIR$" value="harly" />
+@@ -195,7 +204,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1701147332658</updated>
+     </task>
+-    <option name="localTasksCounter" value="11" />
++    <task id="LOCAL-00011" summary="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal">
++      <option name="closed" value="true" />
++      <created>1701539380667</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1701539380667</updated>
++    </task>
++    <task id="LOCAL-00012" summary="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal">
++      <option name="closed" value="true" />
++      <created>1701539427761</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1701539427761</updated>
++    </task>
++    <option name="localTasksCounter" value="13" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -218,7 +243,9 @@
+     <MESSAGE value="Clase PersonaDatos atributos" />
+     <MESSAGE value="Ageregar clases" />
+     <MESSAGE value="Clase SP con atributos" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Clase SP con atributos" />
++    <MESSAGE value="SOL - MOD2" />
++    <MESSAGE value="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal" />
++    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
