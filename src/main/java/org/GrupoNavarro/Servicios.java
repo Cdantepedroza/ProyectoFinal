@@ -12,7 +12,7 @@ public class Servicios  {
     private String nombre;
     private double tarifaServicio;
 
-     public static ArrayList<Servicios> listaServicios = new ArrayList<>();
+    public static ArrayList<Servicios> listaServicios = new ArrayList<>();
 
     public Servicios(String nombre, double tarifaServicio) {
         this.nombre = nombre;
@@ -51,7 +51,7 @@ public class Servicios  {
         for (Servicios servicio : listaServicios){
             nombreTmp = servicio.getNombre();
 
-         //   tarif = servicio.getTarifaServicio();
+            //   tarif = servicio.getTarifaServicio();
             if (nombreTmp.equals(nombre)){
                 servicio.setTarifaServicio(nuevatarifaServicio);
                 Servicios.setListaServicios(listaServicios);
@@ -85,12 +85,12 @@ public class Servicios  {
         return "Nombre: " + nombre + ", Tarifa: " + tarifaServicio;
     }
     public static void imprimirServicios() {
-      String diadehoy;
-      double preciosobrecargo;
-      double preciolista;
-      diadehoy = calculadiahoy();
-      preciosobrecargo = 0.0;
-      preciolista = 0.0;
+        String diadehoy;
+        double preciosobrecargo;
+        double preciolista;
+        diadehoy = calculadiahoy();
+        preciosobrecargo = 0.0;
+        preciolista = 0.0;
 
 
         System.out.println("\nLista de Servicios:");
@@ -188,5 +188,7 @@ public class Servicios  {
         System.out.println("Hoy es : " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
         return dhoy;
     }
+
+
 
 }

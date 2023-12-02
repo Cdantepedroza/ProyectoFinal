@@ -1,5 +1,6 @@
 package org.GrupoNavarro;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -29,8 +30,48 @@ public class ZonaPostal {
     public void cargaInicialZonas() {
         ZonaPostal zonapostal1 = new ZonaPostal("Lima","15001",25);
         ZonaPostal zonapostal2 = new ZonaPostal("Callao","15002",35 );
+        ZonaPostal zonapostal3 = new ZonaPostal("Ate Vitarte","15026",30);
+        ZonaPostal zonapostal4 = new ZonaPostal("Breña","15083",28);
+        ZonaPostal zonapostal5 = new ZonaPostal("Barranco","15063",24.90);
+        ZonaPostal zonapostal6 = new ZonaPostal("Carabayllo","15121",45);
+        ZonaPostal zonapostal7 = new ZonaPostal("Comas","15324",37.25);
+        ZonaPostal zonapostal8 = new ZonaPostal("El Agustino","15004",26);
+        ZonaPostal zonapostal9 = new ZonaPostal("Independencia", "15333", 32);
+        ZonaPostal zonapostal10 = new ZonaPostal("Jesus Maria", "15072",23.99);
+        ZonaPostal zonapostal11 = new ZonaPostal("La molina", "15023", 36);
+        ZonaPostal zonapostal12 = new ZonaPostal("La victoria","15018", 28);
+        ZonaPostal zonapostal13 = new ZonaPostal("Lince","15046", 25);
+        ZonaPostal zonapostal14 = new ZonaPostal("Los olivos","15304", 29.90);
+        ZonaPostal zonapostal15 = new ZonaPostal("Miraflores","15074", 30.99);
+        ZonaPostal zonapostal16 = new ZonaPostal("Pueblo libre","15084", 34);
+        ZonaPostal zonapostal17 = new ZonaPostal("Puente Piedra","15121", 50);
+        ZonaPostal zonapostal18 = new ZonaPostal("Rimac","15093", 36);
+        ZonaPostal zonapostal19 = new ZonaPostal("San Borja","15021", 27);
+        ZonaPostal zonapostal20 = new ZonaPostal("San Isidro","15036", 31);
+        ZonaPostal zonapostal21 = new ZonaPostal("San Juan De Lurigancho","15408", 36);
+
         listaZonaPostal.add(zonapostal1);
         listaZonaPostal.add(zonapostal2);
+        listaZonaPostal.add(zonapostal3);
+        listaZonaPostal.add(zonapostal4);
+        listaZonaPostal.add(zonapostal5);
+        listaZonaPostal.add(zonapostal6);
+        listaZonaPostal.add(zonapostal7);
+        listaZonaPostal.add(zonapostal7);
+        listaZonaPostal.add(zonapostal8);
+        listaZonaPostal.add(zonapostal9);
+        listaZonaPostal.add(zonapostal10);
+        listaZonaPostal.add(zonapostal11);
+        listaZonaPostal.add(zonapostal12);
+        listaZonaPostal.add(zonapostal13);
+        listaZonaPostal.add(zonapostal14);
+        listaZonaPostal.add(zonapostal15);
+        listaZonaPostal.add(zonapostal16);
+        listaZonaPostal.add(zonapostal17);
+        listaZonaPostal.add(zonapostal18);
+        listaZonaPostal.add(zonapostal19);
+        listaZonaPostal.add(zonapostal20);
+        listaZonaPostal.add(zonapostal21);
     }
 
     public static void registrarNuevaZonaPostal() {
@@ -62,6 +103,9 @@ public class ZonaPostal {
                     break;
                 } else {
                     System.out.println("error: el codigo postal debe contener como maximo 5 digitos, intentelo nuevamente");
+                    System.out.print("Ingrese nuevamente el código postal de la Zona Postal: ");
+                    codigoPostal = scanner.next();
+                    Integer.parseInt(codigoPostal);
                 }
 
                 break;
@@ -72,15 +116,15 @@ public class ZonaPostal {
 
         double tarifaZona = 0.0;;
         boolean entradaValida = false;
-
         while (!entradaValida) {
             try {
                 System.out.print("Ingrese la tarifa de la Zona Postal: ");
-                tarifaZona = scanner.nextDouble();
-                         entradaValida = true;
-            } catch (java.util.InputMismatchException e) {
+                String entrada = scanner.next().replace(',', '.');
+                tarifaZona = Double.parseDouble(entrada);
+                entradaValida = true;
+            } catch (InputMismatchException e) {
                 System.out.println("Error: Ingrese un valor numérico .");
-                scanner.next(); // Limpiar el buffer del scanner
+                scanner.next();
             }
         }
 
@@ -114,6 +158,6 @@ public class ZonaPostal {
     @Override
     public String toString() {
         return
-                 ", Distrito: " + getNombreDistrito()+", Codigo Postal:" + getCodigoPostal() +  "Tarifa Zona:" + getTarifaZona();
+                ", Distrito: " + getNombreDistrito()+", Codigo Postal:" + getCodigoPostal() +  ", Tarifa Zona:" + getTarifaZona();
     }
 }
