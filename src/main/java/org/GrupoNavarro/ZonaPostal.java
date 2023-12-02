@@ -1,5 +1,6 @@
 package org.GrupoNavarro;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ZonaPostal {
@@ -34,11 +35,22 @@ public class ZonaPostal {
 
     public static void registrarNuevaZonaPostal() {
         System.out.println("Registrar nueva Zona Postal:");
-
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+        String nombreDistrito = "";
         // Solicitar datos de la nueva zona postal
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Ingrese el nombre del distrito de la Zona Postal: ");
-        String nombreDistrito = scanner.nextLine();
+        while (true){
+            try {
+                System.out.print("Ingrese el nombre del distrito de la Zona Postal: ");
+                nombreDistrito = scanner.nextLine();
+                //verficacion de que los datos "nombre distrito" son de tipo letra
+                if (nombreDistrito.matches("[^[a-zA-Z\\\\s]+$]+")){
+                    throw new IllegalArgumentException("El nombre del distrito debe contener solo letras");
+                } break;
+            } catch (IllegalArgumentException e){
+                System.out.println("Error:"+ e.getMessage());
+            }
+        }
+
 
         String codigoPostal;
         while (true) {
@@ -46,6 +58,12 @@ public class ZonaPostal {
                 System.out.print("Ingrese el código postal de la Zona Postal: ");
                 codigoPostal = scanner.next();
                 Integer.parseInt(codigoPostal);
+                if (codigoPostal.length()<=5){
+                    break;
+                } else {
+                    System.out.println("error: el codigo postal debe contener como maximo 5 digitos, intentelo nuevamente");
+                }
+
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Error: El código postal debe ser un valor numérico. Inténtelo nuevamente.");
@@ -59,7 +77,7 @@ public class ZonaPostal {
             try {
                 System.out.print("Ingrese la tarifa de la Zona Postal: ");
                 tarifaZona = scanner.nextDouble();
-                entradaValida = true;
+                         entradaValida = true;
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Error: Ingrese un valor numérico .");
                 scanner.next(); // Limpiar el buffer del scanner
