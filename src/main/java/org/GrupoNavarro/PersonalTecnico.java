@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import org.GrupoNavarro.Especialidad;
 
 public class PersonalTecnico extends PersonaDatos {
     private String codigoEmpleado;
-    private String especialidad;
+    private static Especialidad especialidad;
 
-    public PersonalTecnico(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoEmpleado, String especialidad) {
+    public PersonalTecnico(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoEmpleado, Especialidad especialidad) {
         super(nombreCompleto, dni, numeroCelular, direccion);
         this.codigoEmpleado = codigoEmpleado;
         this.especialidad = especialidad;
@@ -27,11 +28,11 @@ public class PersonalTecnico extends PersonaDatos {
         this.codigoEmpleado = codigoEmpleado;
     }
 
-    public String getEspecialidad() {
+    public Especialidad getEspecialidad() {
         return especialidad;
     }
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
 
@@ -43,6 +44,7 @@ public class PersonalTecnico extends PersonaDatos {
                 '}';
     }
     private static List<PersonalTecnico> tecnicos = new ArrayList<>();
+    String codigoSeguridad = especialidad.ObtenerCodigoPorNombreEspecialidad("seguridad");
 
     public List<PersonalTecnico> getTecnicos() {
         return tecnicos;
@@ -53,12 +55,10 @@ public class PersonalTecnico extends PersonaDatos {
     }
 
     static {
-        tecnicos.add(new PersonalTecnico("Juan Silva", "12345678", "912345678", "Calle tulipan, 123", "987654321", "electricista"));
-        tecnicos.add(new PersonalTecnico("Carla Sánchez", "987654321", "654321098", "Calle 2 de mayo 456", "567891234", "electricista"));
-        tecnicos.add(new PersonalTecnico("María La Plata", "345678912", "789123456", "Calle la molina 789", "345678912", "electricista"));
-        tecnicos.add(new PersonalTecnico("Antonio García", "567891234", "891234567", "Calle trece 891", "567891234", "electricista"));
-        tecnicos.add(new PersonalTecnico("Laura Martínez", "789123456", "912345678", "Calle flores 912", "789123456", "electricista"));
-    }
+
+        tecnicos.add(new PersonalTecnico("Juan Silva", "12345678", "912345678", "Calle tulipan, 123", "987654321",null));
+        tecnicos.add(new PersonalTecnico("Carla Sánchez", "987654321", "654321098", "Calle 2 de mayo 456", "567891234", null));
+      }
     public static void imprimirTecnicos() {
         System.out.println("Lista de técnicos: \n");
 
@@ -114,7 +114,7 @@ public class PersonalTecnico extends PersonaDatos {
 
         try {
             // Crear el técnico
-            PersonalTecnico tecnico = new PersonalTecnico(nombreCompleto, dni, numeroCelular, direccion, codigoEmpleado, especialidad);
+            PersonalTecnico tecnico = new PersonalTecnico(nombreCompleto, dni, numeroCelular, direccion, codigoEmpleado, null);
 
             // Agregar el técnico a la lista
             PersonalTecnico.registrarTecnico(tecnico);
