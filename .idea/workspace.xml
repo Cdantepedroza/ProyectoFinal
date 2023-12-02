@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Solictud mod registrar">
+    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonaDatos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonaDatos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonalTecnico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/PersonalTecnico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,15 +20,9 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Cdantepedroza &lt;christiandantepi@gmail.com&gt;" />
-      </list>
-    </option>
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="harly" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,7 +60,7 @@
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master",
     "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -206,39 +195,7 @@
       <option name="project" value="LOCAL" />
       <updated>1701147332658</updated>
     </task>
-    <task id="LOCAL-00011" summary="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal">
-      <option name="closed" value="true" />
-      <created>1701539380667</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1701539380667</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal">
-      <option name="closed" value="true" />
-      <created>1701539427761</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1701539427761</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Solictud mod registrar">
-      <option name="closed" value="true" />
-      <created>1701545365031</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1701545365031</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Solictud mod registrar">
-      <option name="closed" value="true" />
-      <created>1701545768491</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1701545768491</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,10 +218,7 @@
     <MESSAGE value="Clase PersonaDatos atributos" />
     <MESSAGE value="Ageregar clases" />
     <MESSAGE value="Clase SP con atributos" />
-    <MESSAGE value="SOL - MOD2" />
-    <MESSAGE value="Merge branch 'main' of https://github.com/Cdantepedroza/ProyectoFinal" />
-    <MESSAGE value="Solictud mod registrar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Solictud mod registrar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clase SP con atributos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -273,6 +227,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/proyectoFinal/Main.java</url>
           <line>15</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java</url>
+          <line>211</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
