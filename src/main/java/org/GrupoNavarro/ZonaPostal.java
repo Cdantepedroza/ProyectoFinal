@@ -26,10 +26,8 @@ public class ZonaPostal {
     public void cargaInicialZonas() {
         ZonaPostal zonapostal1 = new ZonaPostal(25,"15001","Lima");
         ZonaPostal zonapostal2 = new ZonaPostal(35,"15002", "Callao");
-        ZonaPostal zonapostal3 = new ZonaPostal(20,"15260","lince");
         listaZonaPostal.add(zonapostal1);
         listaZonaPostal.add(zonapostal2);
-        listaZonaPostal.add(zonapostal3);
     }
 
     public static void registrarNuevaZonaPostal() {

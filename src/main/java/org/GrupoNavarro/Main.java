@@ -45,7 +45,7 @@ public class Main {
                 case 3:
                     menuClientes(scanner);
                 case 4:
-                    menuZonaPostal(scanner);
+                    menuTarifas(scanner);
                     break;
                 case 5:
                     menuReporte(scanner);
@@ -128,12 +128,12 @@ public class Main {
                     break;
                 case 3:
                     // Agregar Zona postal
-
+                    ZonaPostal.registrarNuevaZonaPostal();
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
                     break;
                 case 4:
                     // Lista de Zonas Postale
-
+                    ZonaPostal.imprimirZonasPostales();
                     System.out.println("Lista de Zona postal - Implementa la lógica aquí");
                     break;
                 case 0:
@@ -176,7 +176,7 @@ public class Main {
 
         }while (true);
     }
-    private static void menuZonaPostal(Scanner scanner){
+    private static void menuTarifas(Scanner scanner){
         do {
             System.out.println("\nMenú Tarifas:");
             System.out.println("1. Lista de Tarifas");
@@ -188,14 +188,14 @@ public class Main {
             int opcionTarifas = scanner.nextInt();
             switch (opcionTarifas){
                 case 1:
-                    // Lista de Zona postal
+                    // Lista de Tarifas
                     // Implementa la lógica para mostrar la lista de tarifas
-                    ZonaPostal.imprimirZonasPostales();
                     System.out.println("Lista de Tarifas - Implementa la lógica aquí");
                     break;
                 case 2:
-                    // Agregar zona postal
-                    ZonaPostal.registrarNuevaZonaPostal();
+                    // Agregar Tarifa
+                    // Implementa la lógica para agregar una tarifa
+                    System.out.println("Agregar Tarifa - Implementa la lógica aquí");
                     break;
                 case 3:
                     // Modificar Tarifa
