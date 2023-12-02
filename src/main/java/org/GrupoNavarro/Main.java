@@ -117,16 +117,17 @@ public class Main {
 
             System.out.print("Seleccione una opción: ");
             int opcionPedidos = scanner.nextInt();
+
+            List<Solicitud> solicitudes = new ArrayList<>();
+
             switch (opcionPedidos){
                 case 1:
-                    // Registrar Pedido
-                    // Implementa la lógica para registrar un pedido y sus detalles
                     System.out.println("Registrar Pedido - Implementa la lógica aquí");
+                    Solicitud.registrarNuevaSolicitud();
                     break;
                 case 2:
-                    // Lista de Pedidos
-                    // Implementa la lógica para mostrar la lista de pedidos registrados
-                    System.out.println("Lista de Pedidos - Implementa la lógica aquí");
+                    System.out.println("Lista de Pedidos");
+                    Solicitud.imprimirServicios();
                     break;
                 case 0:
                     // volver al menu principal

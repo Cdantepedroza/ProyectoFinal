@@ -91,9 +91,9 @@ public class Solicitud extends Servicios{
         }
     }
 
-    public double costoFinal(Servicios servicio, ZonaPostal zona, String ciudad){
+    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){
         //Falta agregar Zona
-        double importeBase = servicio.getTarifaServico() + zona.calcularPrecioFinal(ciudad);
+        double importeBase = servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito);
         double igv = importeBase*0.18;
         return importeBase+igv-descuentoServicio(servicio);
     }
@@ -129,14 +129,14 @@ public class Solicitud extends Servicios{
         String fechaEm = scanner.nextLine();
         System.out.print("Ingrese comentarios: ");
         String comentarios = scanner.nextLine();
-
         System.out.print("Seleccione su Zona");
+        ZonaPostal.imprimirZona();
 
         try {
             // Crear y agregar solicitud a la lista
             //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);
             //Solicitud.agregarSolicitud(nuevaSolicitud);
-            System.out.println("Servicio agregado correctamente.");
+            System.out.println("Solicitud agregado correctamente.");
         } catch (Exception e) {
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
