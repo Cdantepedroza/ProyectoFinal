@@ -1,0 +1,254 @@
+Index: src/main/java/org/GrupoNavarro/Solicitud.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Locale;\r\nimport java.util.Scanner;\r\n\r\npublic class Solicitud extends Servicios{\r\n\r\n    private String codigoSolicitud;\r\n    private String fechaAtención;\r\n    private String fechaEmisión;\r\n    private String comentarios;\r\n    private String estado;\r\n\r\n    //Llamo a Zona (para sacar tarifa)\r\n    private ZonaPostal zona;\r\n    //Llamo a técnico\r\n    private PersonalTecnico personalTecnico;\r\n    //Listo las solicitudes\r\n    private static ArrayList<Solicitud> listaSolicitudes;\r\n    private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();\r\n    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();\r\n\r\n    public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {\r\n        super(nombre, tarifaServico);\r\n        this.codigoSolicitud = codigoSolicitud;\r\n        this.fechaAtención = fechaAtención;\r\n        this.fechaEmisión = fechaEmisión;\r\n        this.comentarios = comentarios;\r\n        this.estado = \"EN GESTION\";\r\n        this.zona = zona;\r\n        listaSolicitudes = new ArrayList<>();\r\n    }\r\n\r\n    public String getCodigoSolicitud() {\r\n        return codigoSolicitud;\r\n    }\r\n\r\n    public void setCodigoSolicitud(String codigoSolicitud) {\r\n        this.codigoSolicitud = codigoSolicitud;\r\n    }\r\n\r\n    public String getFechaAtención() {\r\n        return fechaAtención;\r\n    }\r\n\r\n    public void setFechaAtención(String fechaAtención) {\r\n        this.fechaAtención = fechaAtención;\r\n    }\r\n\r\n    public String getFechaEmisión() {\r\n        return fechaEmisión;\r\n    }\r\n\r\n    public void setFechaEmisión(String fechaEmisión) {\r\n        this.fechaEmisión = fechaEmisión;\r\n    }\r\n\r\n    public String getComentarios() {\r\n        return comentarios;\r\n    }\r\n\r\n    public void setComentarios(String comentarios) {\r\n        this.comentarios = comentarios;\r\n    }\r\n\r\n    public String getEstado() {\r\n        return estado;\r\n    }\r\n\r\n    public void setEstado(String estado) {\r\n        this.estado = estado;\r\n    }\r\n\r\n\r\n    public static void agregarSolicitud(Solicitud solicitud){\r\n        listaSolicitudes.add(solicitud);\r\n    }\r\n\r\n    public double descuentoServicio(Servicios servicio){\r\n\r\n        if (servicio.getNombre().equals(\"Alarmas de seguridad\")){\r\n            return 0.20;\r\n        } else if (servicio.getNombre().equals(\"Cercos electricos\")) {\r\n            return 0.15;\r\n        } else if (servicio.getNombre().equals(\"Intercomunicadores\")) {\r\n            return 0.10;\r\n        } else {\r\n            return 0;\r\n        }\r\n    }\r\n\r\n    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){\r\n        //Falta agregar Zona\r\n        double importeBase = servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito);\r\n        double igv = importeBase*0.18;\r\n        return importeBase+igv-descuentoServicio(servicio);\r\n    }\r\n\r\n    public void imprimirSolicitudes() {\r\n        System.out.println(\"\\nLista de Solicitudes:\");\r\n        int contador = 1;\r\n        for (Solicitud servicio : listaSolicitudes) {\r\n            System.out.println(contador + \". \" + servicio);\r\n            contador++;\r\n        }\r\n    }\r\n\r\n    public void imprimirZonas() {\r\n        System.out.println(\"\\nLista de Zonas:\");\r\n        int contador = 1;\r\n        for (ZonaPostal zona : listaZonas) {\r\n            System.out.println(contador + \". \" + zona);\r\n            contador++;\r\n        }\r\n    }\r\n\r\n    public static void registrarNuevaSolicitud(){\r\n        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;\r\n\r\n        System.out.println(\"Agregar Solicitud:\");\r\n        // Ingresar código de nueva solicitud\r\n        System.out.print(\"Ingrese el código de la solicitud: \");\r\n        String codSolicitud = scanner.nextLine();\r\n        System.out.print(\"Ingrese la fecha de atención: \");\r\n        String fechaAt = scanner.nextLine();\r\n        System.out.print(\"Ingrese la fecha de Emisión: \");\r\n        String fechaEm = scanner.nextLine();\r\n        System.out.print(\"Ingrese comentarios: \");\r\n        String comentarios = scanner.nextLine();\r\n        System.out.print(\"Seleccione su Zona\");\r\n        ZonaPostal.imprimirZona();\r\n\r\n        try {\r\n            // Crear y agregar solicitud a la lista\r\n            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);\r\n            //Solicitud.agregarSolicitud(nuevaSolicitud);\r\n            System.out.println(\"Solicitud agregado correctamente.\");\r\n        } catch (Exception e) {\r\n            System.out.println(\"Error al agregar el servicio: \" + e.getMessage());\r\n        }\r\n\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/Solicitud.java b/src/main/java/org/GrupoNavarro/Solicitud.java
+--- a/src/main/java/org/GrupoNavarro/Solicitud.java	(revision b0eba8c34663ef5b6cd28f85f4eb2fe2517253f0)
++++ b/src/main/java/org/GrupoNavarro/Solicitud.java	(date 1701536807696)
+@@ -1,36 +1,29 @@
+ package org.GrupoNavarro;
+ 
+ import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Locale;
+-import java.util.Scanner;
+ 
+-public class Solicitud extends Servicios{
++public class Solicitud {
+ 
++    //JV
+     private String codigoSolicitud;
+     private String fechaAtención;
+     private String fechaEmisión;
+     private String comentarios;
+     private String estado;
+ 
+-    //Llamo a Zona (para sacar tarifa)
+-    private ZonaPostal zona;
+-    //Llamo a técnico
+-    private PersonalTecnico personalTecnico;
+-    //Listo las solicitudes
+-    private static ArrayList<Solicitud> listaSolicitudes;
+-    private final ArrayList<ZonaPostal> listaZonas = new ArrayList<ZonaPostal>();
+-    private ArrayList<PersonalTecnico> listaPersonal = new ArrayList<PersonalTecnico>();
++    //Heredo Servicio con su tarifa
++    private String servicio;
++    //Heredo Zona con su tarifa
++    private String zona;
++    private ArrayList<Solicitud> listaSolicitudes;
+ 
+-    public Solicitud(String nombre, double tarifaServico, String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios, ZonaPostal zona) {
+-        super(nombre, tarifaServico);
++    public Solicitud(String codigoSolicitud, String fechaAtención, String fechaEmisión, String comentarios) {
+         this.codigoSolicitud = codigoSolicitud;
+         this.fechaAtención = fechaAtención;
+         this.fechaEmisión = fechaEmisión;
+         this.comentarios = comentarios;
+         this.estado = "EN GESTION";
+-        this.zona = zona;
+-        listaSolicitudes = new ArrayList<>();
++        this.listaSolicitudes = new ArrayList<>();
+     }
+ 
+     public String getCodigoSolicitud() {
+@@ -74,76 +67,41 @@
+     }
+ 
+ 
+-    public static void agregarSolicitud(Solicitud solicitud){
++    public void agregarSolicitud(Solicitud solicitud){
+         listaSolicitudes.add(solicitud);
+     }
+ 
+-    public double descuentoServicio(Servicios servicio){
+-
+-        if (servicio.getNombre().equals("Alarmas de seguridad")){
+-            return 0.20;
+-        } else if (servicio.getNombre().equals("Cercos electricos")) {
+-            return 0.15;
+-        } else if (servicio.getNombre().equals("Intercomunicadores")) {
+-            return 0.10;
+-        } else {
+-            return 0;
+-        }
++    private void costoServicio(){
++        //if(servicio.getTipo().equals("Gasfiteria"))
++        //{
++        // return servicio.getCostoServicio;
++        //}
+     }
++    private void costoZona(){
++        //if(zona.getZona().equals("Lima"))
++        //{
++        // return zona.getTarifaZona();
++        //}
+ 
+-    public double costoFinal(Servicios servicio, ZonaPostal zona, String distrito){
+-        //Falta agregar Zona
+-        double importeBase = servicio.getTarifaServico() + zona.calcularPrecioFinal(distrito);
+-        double igv = importeBase*0.18;
+-        return importeBase+igv-descuentoServicio(servicio);
+-    }
++        //O puede ser solo un intento
+ 
+-    public void imprimirSolicitudes() {
+-        System.out.println("\nLista de Solicitudes:");
+-        int contador = 1;
+-        for (Solicitud servicio : listaSolicitudes) {
+-            System.out.println(contador + ". " + servicio);
+-            contador++;
+-        }
+-    }
++        //if(zona.getZona().equals("Lima"))
++        //{
++        // return zona.getTarifaZona();
++        //}
+ 
+-    public void imprimirZonas() {
+-        System.out.println("\nLista de Zonas:");
+-        int contador = 1;
+-        for (ZonaPostal zona : listaZonas) {
+-            System.out.println(contador + ". " + zona);
+-            contador++;
+-        }
+     }
+ 
+-    public static void registrarNuevaSolicitud(){
+-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+-
+-        System.out.println("Agregar Solicitud:");
+-        // Ingresar código de nueva solicitud
+-        System.out.print("Ingrese el código de la solicitud: ");
+-        String codSolicitud = scanner.nextLine();
+-        System.out.print("Ingrese la fecha de atención: ");
+-        String fechaAt = scanner.nextLine();
+-        System.out.print("Ingrese la fecha de Emisión: ");
+-        String fechaEm = scanner.nextLine();
+-        System.out.print("Ingrese comentarios: ");
+-        String comentarios = scanner.nextLine();
+-        System.out.print("Seleccione su Zona");
+-        ZonaPostal.imprimirZona();
+-
+-        try {
+-            // Crear y agregar solicitud a la lista
+-            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);
+-            //Solicitud.agregarSolicitud(nuevaSolicitud);
+-            System.out.println("Solicitud agregado correctamente.");
+-        } catch (Exception e) {
+-            System.out.println("Error al agregar el servicio: " + e.getMessage());
+-        }
++    private void descuentoZonaServicio(){
++        //if(zona.getZona().equals("Lima"))
++        //{
++        // return zona.getTarifaZona();
++        //}
++    }
+ 
++    private void costoFinal(){
++        //return costoServicio()+costoZona()-descuentoZonaServicio();
+     }
+-
+-
+ 
+ 
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"Solicitud mod\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main-harly\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Josept-Vela&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"recentNewPullRequestHead\">\r\n      <RepoCoordinatesHolder>\r\n        <option name=\"owner\" value=\"Cdantepedroza\" />\r\n        <option name=\"repository\" value=\"ProyectoFinal\" />\r\n      </RepoCoordinatesHolder>\r\n    </option>\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"c2708650-b1fc-4e9a-be06-8dd7ec4f2013\" />\r\n        <option name=\"url\" value=\"https://github.com/Cdantepedroza/ProyectoFinal.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XNhVSSZ35q1W9yLrIWZ4RAZrMp\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main-harly&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Trabajos/caso_pc2&quot;,\r\n    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"org.modelo\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.org.GrupoNavarro.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"19\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"org.GrupoNavarro.Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.GrupoNavarro.Main\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"\" />\r\n      <created>1698475470043</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698475470043</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Prueba commit and Push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699662937725</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699662937725</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Cambio Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726134959</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726134960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Cambio en Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726209917</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726209917</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Clase Cliente\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143685098</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143685098</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Clase PersonaDatos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143760999</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143760999</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143937832</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143937832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701144001680</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701144001680</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Ageregar clases\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701145019047</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701145019048</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147314620</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147314620</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147332658</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147332658</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Solicitud void\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701401953220</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701401953220</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Solicitud mod\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701403856749</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701403856749</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Prueba commit and Push\" />\r\n    <MESSAGE value=\"Cambio Reporte\" />\r\n    <MESSAGE value=\"Cambio en Reporte\" />\r\n    <MESSAGE value=\"Clase Cliente\" />\r\n    <MESSAGE value=\"Clase PersonaDatos\" />\r\n    <MESSAGE value=\"Clase PersonaDatos atributos\" />\r\n    <MESSAGE value=\"Ageregar clases\" />\r\n    <MESSAGE value=\"Clase SP con atributos\" />\r\n    <MESSAGE value=\"Solicitud void\" />\r\n    <MESSAGE value=\"Solicitud mod\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Solicitud mod\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/org/proyectoFinal/Main.java</url>\r\n          <line>15</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b0eba8c34663ef5b6cd28f85f4eb2fe2517253f0)
++++ b/.idea/workspace.xml	(date 1701536807994)
+@@ -4,10 +4,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Solicitud mod">
++    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_12_2023_0_22__Changes_.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_11_2023_23_20__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Cliente.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/GrupoNavarro.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -24,7 +31,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main-harly" />
++        <entry key="$PROJECT_DIR$" value="main" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -36,12 +43,6 @@
+   }
+ }</component>
+   <component name="GithubPullRequestsUISettings">
+-    <option name="recentNewPullRequestHead">
+-      <RepoCoordinatesHolder>
+-        <option name="owner" value="Cdantepedroza" />
+-        <option name="repository" value="ProyectoFinal" />
+-      </RepoCoordinatesHolder>
+-    </option>
+     <option name="selectedUrlAndAccountId">
+       <UrlAndAccount>
+         <option name="accountId" value="c2708650-b1fc-4e9a-be06-8dd7ec4f2013" />
+@@ -66,7 +67,7 @@
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;main-harly&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;D:/UPC/PRIMER CICLO/FUNDAMENTOS DE PROGRAMACION 2/Trabajos/caso_pc2&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dante/Downloads/Proyecto-Java-Crisol-master&quot;,
+     &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,
+     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+   }
+@@ -203,23 +204,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1701147332658</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="Solicitud void">
+-      <option name="closed" value="true" />
+-      <created>1701401953220</created>
+-      <option name="number" value="00011" />
+-      <option name="presentableId" value="LOCAL-00011" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701401953220</updated>
+-    </task>
+-    <task id="LOCAL-00012" summary="Solicitud mod">
+-      <option name="closed" value="true" />
+-      <created>1701403856749</created>
+-      <option name="number" value="00012" />
+-      <option name="presentableId" value="LOCAL-00012" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1701403856749</updated>
+-    </task>
+-    <option name="localTasksCounter" value="13" />
++    <option name="localTasksCounter" value="11" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -242,9 +227,7 @@
+     <MESSAGE value="Clase PersonaDatos atributos" />
+     <MESSAGE value="Ageregar clases" />
+     <MESSAGE value="Clase SP con atributos" />
+-    <MESSAGE value="Solicitud void" />
+-    <MESSAGE value="Solicitud mod" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Solicitud mod" />
++    <option name="LAST_COMMIT_MESSAGE" value="Clase SP con atributos" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>

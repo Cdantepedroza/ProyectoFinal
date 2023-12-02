@@ -1,8 +1,6 @@
 package org.GrupoNavarro;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     //P1
@@ -11,30 +9,39 @@ public class Main {
 
         GrupoNavarro empresa = new GrupoNavarro("Grupo Navarro");
 
-        Servicios servicio1 = new Servicios("Instalacioón de camaras", 56);
-        Servicios servicio2 = new Servicios("Cercos electricos", 80);
-        Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
-        Servicios servicio4 = new Servicios("Intercomunicadores", 200);
-        Servicios servicio5 = new Servicios("Alarmas contra incendio", 150);
-        Servicios servicio6 = new Servicios("Control de acceso", 170);
-        Servicios servicio7 = new Servicios("electricistas", 800);
-        Servicios.agregarServicio(servicio1);
-        Servicios.agregarServicio(servicio2);
-        Servicios.agregarServicio(servicio3);
-        Servicios.agregarServicio(servicio4);
-        Servicios.agregarServicio(servicio5);
-        Servicios.agregarServicio(servicio6);
-        Servicios.agregarServicio(servicio7);
+        Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
+        GrupoNavarro.agregarCliente(cliente1);
+        UsuarioAdm usuario= new UsuarioAdm("administrador", "administrador");
+
+        // Carga de servicios base
+        Servicios servicios = new Servicios();
+        servicios.cargaInicialServicios();
+
+        // lista base de zonas postales
+        ZonaPostal zonaPostal = new ZonaPostal();
+        zonaPostal.cargaInicialZonas();
 
         Scanner scanner = new Scanner(System.in);
+        String id="";
+        String clave="";
+        do {
+            System.out.print("Ingrese el codigo usuario: ");
+            id = scanner.nextLine();
+            System.out.print("Ingrese la contraseaña: ");
+            clave = scanner.nextLine();
+            if(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword)){
+                System.out.println("usuario y/o contraseña incorrecta");
+            }
+        } while(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword));
 
         while (true) {
             System.out.println("\nMenú Principal:");
             System.out.println("1. Técnicos");
             System.out.println("2. Pedidos");
-            System.out.println("3. Tarifas");
-            System.out.println("4. Reporte de Empleados");
-            System.out.println("5. Servicios");
+            System.out.println("3. Clientes");
+            System.out.println("4. Zona Postal");
+            System.out.println("5. Reporte de Empleados");
+            System.out.println("6. Servicios");
             System.out.println("0. Salir");
 
             System.out.print("Seleccione una opción: ");
@@ -48,12 +55,14 @@ public class Main {
                     menuPedidos(scanner);
                     break;
                 case 3:
-                    menuTarifas(scanner);
-                    break;
+                    menuClientes(scanner);
                 case 4:
-                    menuReporte(scanner);
+                    menuZonaPostal(scanner);
                     break;
                 case 5:
+                    menuReporte(scanner);
+                    break;
+                case 6:
                     menuServicios(scanner);
                     break;
                 case 0:
@@ -117,14 +126,12 @@ public class Main {
             int opcionPedidos = scanner.nextInt();
             switch (opcionPedidos){
                 case 1:
-                    // Registrar Pedido
-                    // Implementa la lógica para registrar un pedido y sus detalles
                     System.out.println("Registrar Pedido - Implementa la lógica aquí");
+                    Solicitud.registrarNuevaSolicitud();
                     break;
                 case 2:
-                    // Lista de Pedidos
-                    // Implementa la lógica para mostrar la lista de pedidos registrados
                     System.out.println("Lista de Pedidos - Implementa la lógica aquí");
+                    Solicitud.imprimirServicios();
                     break;
                 case 0:
                     // volver al menu principal
@@ -135,31 +142,59 @@ public class Main {
 
         }while (true);
     }
-    private static void menuTarifas(Scanner scanner){
+    private static void menuClientes(Scanner scanner){
         do {
-            System.out.println("\nMenú Tarifas:");
-            System.out.println("1. Lista de Tarifas");
-            System.out.println("2. Agregar Tarifa");
-            System.out.println("3. Modificar Tarifa");
+            System.out.println("\nMenú Clientes:");
+            System.out.println("1. Registrar nuevo Cliente");
+            System.out.println("2. Lista de Clientes");
+            System.out.println("0. Volver al Menú Principal");
+
+            System.out.print("Seleccione una opción: ");
+            int opcionClientes = scanner.nextInt();
+            switch (opcionClientes){
+                case 1:
+                    // Registrar Clientes
+                    // Implementa la lógica para registrar un pedido y sus detalles
+                    GrupoNavarro.registrarNuevoCliente();
+                    System.out.println("Registrar Cliente - Implementa la lógica aquí");
+                    break;
+                case 2:
+                    // Lista de Clientes
+                    // Implementa la lógica para mostrar la lista de pedidos registrados
+                    GrupoNavarro.imprimirClientes();
+                    System.out.println("Lista de Clientes - Implementa la lógica aquí");
+                    break;
+                case 0:
+                    // volver al menu principal
+                    return;
+                default:
+                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+            }
+
+        }while (true);
+    }
+    private static void menuZonaPostal(Scanner scanner){
+        do {
+            System.out.println("\nMenú Zona Postal:");
+            System.out.println("1. Lista de Zona Postal");
+            System.out.println("2. Agregar Zona Postal");
+            System.out.println("3. Modificar Zona postal");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
             int opcionTarifas = scanner.nextInt();
             switch (opcionTarifas){
                 case 1:
-                    // Lista de Tarifas
-                    // Implementa la lógica para mostrar la lista de tarifas
-                    System.out.println("Lista de Tarifas - Implementa la lógica aquí");
+                    // Lista de Zona Postal
+                    ZonaPostal.imprimirZonasPostales();
                     break;
                 case 2:
-                    // Agregar Tarifa
-                    // Implementa la lógica para agregar una tarifa
-                    System.out.println("Agregar Tarifa - Implementa la lógica aquí");
+                    // Agregar Zona Postal
+                    ZonaPostal.registrarNuevaZonaPostal();
                     break;
                 case 3:
-                    // Modificar Tarifa
-                    // Implementa la lógica para modificar una tarifa
-                    System.out.println("Modificar Tarifa - Implementa la lógica aquí");
+                    // Modificar Zona Postal
+                     System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
@@ -196,10 +231,12 @@ public class Main {
         }while (true);
     }
     private static void menuServicios(Scanner scanner){
+
         do {
             System.out.println("\nMenú Servicos:");
             System.out.println("1. Registrar nuevo servicio");
-            System.out.println("2. Lista de servicios");
+            System.out.println("2. Modificar servicio");
+            System.out.println("3. Lista de servicios");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -209,8 +246,10 @@ public class Main {
                     Servicios.registrarNuevoServicio();
                     break;
                 case 2:
+                    Servicios.modificarServicioT();
+                    break;
+                case 3:
                     Servicios.imprimirServicios();
-                    System.out.println("Lista de servicios- Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
@@ -222,7 +261,6 @@ public class Main {
 
         }while (true);
     }
-
 
 
 

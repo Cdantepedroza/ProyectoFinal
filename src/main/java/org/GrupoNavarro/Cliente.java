@@ -1,15 +1,48 @@
 package org.GrupoNavarro;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Cliente extends PersonaDatos {
     private String codigoCliente;
-    private String codigoZona;
-    private String nombreZona;
+    private String codigoPostal;
 
-    public Cliente(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoCliente, String codigoZona, String nombreZona) {
+
+    // Lista de clientes
+    private static List<Cliente> listaClientes = new ArrayList<>();
+
+    public Cliente(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoCliente, String codigoPostal ) {
         super(nombreCompleto, dni, numeroCelular, direccion);
         this.codigoCliente = codigoCliente;
-        this.codigoZona = codigoZona;
-        this.nombreZona = nombreZona;
+        this.codigoPostal = codigoPostal;
     }
 
+
+    public static void agregarCliente(Cliente cliente) {
+        listaClientes.add(cliente);
+    }
+
+    public static List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public String getCodigoCliente() {
+        return codigoCliente;
+    }
+
+    public String getCodigoPostal() {
+        return codigoPostal;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Nombre: " + getnombreCompleto() +
+                ", DNI: " + getDni() +
+                ", Celular: " + getnumCelular() +
+                ", Dirección: " + getDireccion() +
+                ", Código Cliente: " + getCodigoCliente() +
+                ", Código Postal: " + getCodigoPostal();
+    }
 }
