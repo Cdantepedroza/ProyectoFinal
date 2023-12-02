@@ -107,24 +107,6 @@ public class Solicitud extends Servicios{
         }
     }
 
-    public void imprimirZonas() {
-        System.out.println("\nLista de Zonas:");
-        int contador = 1;
-        for (ZonaPostal zona : listaZonas) {
-            System.out.println(contador + ". " + zona);
-            contador++;
-        }
-    }
-
-    public static Servicios buscarServicio(String nombre) {
-        for (Servicios servicios: Servicios.listaServicios) {
-            if (servicios.getNombre().equals(nombre)) {
-                return servicios;
-            }
-        }
-        return null;
-    }
-
     public static void registrarNuevaSolicitud(){
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
 
