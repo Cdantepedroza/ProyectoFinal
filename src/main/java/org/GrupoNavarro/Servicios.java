@@ -64,6 +64,8 @@ public class Servicios  {
         return listaServicios;
     }
 
+
+
     public void cargaInicialServicios(){
         Servicios servicio1 = new Servicios("Instalacioón de camaras", 400);
         Servicios servicio2 = new Servicios("Cercos electricos", 300);
@@ -140,7 +142,6 @@ public class Servicios  {
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
     }
-
     public static void modificarServicioT(){
         System.out.println("Modificar servicio:");
 

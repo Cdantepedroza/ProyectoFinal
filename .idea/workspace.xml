@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Solicitud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/UsuarioAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/UsuarioAdm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
