@@ -2,17 +2,14 @@ package org.GrupoNavarro;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 public class Servicios  {
     private String nombre;
     private double tarifaServicio;
 
-     public static ArrayList<Servicios> listaServicios = new ArrayList<>();
+    public static ArrayList<Servicios> listaServicios = new ArrayList<>();
 
     public Servicios(String nombre, double tarifaServicio) {
         this.nombre = nombre;
@@ -51,7 +48,7 @@ public class Servicios  {
         for (Servicios servicio : listaServicios){
             nombreTmp = servicio.getNombre();
 
-         //   tarif = servicio.getTarifaServicio();
+            //   tarif = servicio.getTarifaServicio();
             if (nombreTmp.equals(nombre)){
                 servicio.setTarifaServicio(nuevatarifaServicio);
                 Servicios.setListaServicios(listaServicios);
@@ -63,6 +60,8 @@ public class Servicios  {
     public static ArrayList<Servicios> getListaServicios() {
         return listaServicios;
     }
+
+
 
     public void cargaInicialServicios(){
         Servicios servicio1 = new Servicios("Instalacioón de camaras", 400);
@@ -85,12 +84,12 @@ public class Servicios  {
         return "Nombre: " + nombre + ", Tarifa: " + tarifaServicio;
     }
     public static void imprimirServicios() {
-      String diadehoy;
-      double preciosobrecargo;
-      double preciolista;
-      diadehoy = calculadiahoy();
-      preciosobrecargo = 0.0;
-      preciolista = 0.0;
+        String diadehoy;
+        double preciosobrecargo;
+        double preciolista;
+        diadehoy = calculadiahoy();
+        preciosobrecargo = 0.0;
+        preciolista = 0.0;
 
 
         System.out.println("\nLista de Servicios:");
@@ -140,7 +139,6 @@ public class Servicios  {
             System.out.println("Error al agregar el servicio: " + e.getMessage());
         }
     }
-
     public static void modificarServicioT(){
         System.out.println("Modificar servicio:");
 
