@@ -161,7 +161,7 @@ public class Solicitud extends Servicios{
         for (PersonalTecnico personal: listaTecnicos) {
             if (personal.getCodigoEmpleado().equals(codigoTecnico)) {
                 nombreTecnico = personal.getnombreCompleto();
-                especialidad = personal.getEspecialidad();
+                especialidad = personal.getEspecialidad().toString();
             }
         }
         System.out.println("Nombre del tecnico asignado: "+nombreTecnico + " con especialidad: " +especialidad);

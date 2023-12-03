@@ -32,21 +32,31 @@ public class Especialidad {
 
     static {
         // Crear las especialidades
-        Especialidad electricidad = new Especialidad("01","Electricidad");
-        Especialidad seguridad = new Especialidad("02","Seguridad");
-        Especialidad telecomunicaciones = new Especialidad("03","Telecomunicaciones");
+        Especialidad electricidad = new Especialidad("ELE","Electricidad");
+        Especialidad seguridad = new Especialidad("SEG","Seguridad");
+        Especialidad telecomunicaciones = new Especialidad("TEL","Telecomunicaciones");
 
         especialidades.add(electricidad);
         especialidades.add(seguridad);
         especialidades.add(telecomunicaciones);
     }
-   public String ObtenerCodigoPorNombreEspecialidad(String nombreEspecialidad){
-        nombreEspecialidad = nombreEspecialidad.trim().toLowerCase();
-        for (Especialidad e : especialidades) {
-            if (e.getNombre().trim().toLowerCase().equals(nombreEspecialidad)) {
-                return e.getCodigo();
+    public static Especialidad obtenerEspecialidad(String nombreEspecialidad) {
+
+        Especialidad especialidad = null;
+
+        // Buscar la especialidad en la lista de especialidades
+        for (Especialidad e : Especialidad.especialidades) {
+            if (e.getNombre().equals(nombreEspecialidad)) {
+                especialidad = e;
+                break;
             }
         }
-        return null;
+
+        // Si no se encuentra la especialidad, crear una nueva
+        if (especialidad == null) {
+            especialidad = new Especialidad("", nombreEspecialidad);
+        }
+
+        return especialidad;
     }
 }
