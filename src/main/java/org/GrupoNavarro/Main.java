@@ -30,8 +30,7 @@ public class Main {
             System.out.println("2. Pedidos");
             System.out.println("3. Clientes");
             System.out.println("4. Zona Postal");
-            System.out.println("5. Reporte de Empleados");
-            System.out.println("6. Servicios");
+            System.out.println("5. Servicios");
             System.out.println("0. Salir");
 
             System.out.print("Seleccione una opción: ");
@@ -50,9 +49,6 @@ public class Main {
                     menuZonaPostal(scanner);
                     break;
                 case 5:
-                    menuReporte(scanner);
-                    break;
-                case 6:
                     menuServicios(scanner);
                     break;
                 case 0:
@@ -184,32 +180,8 @@ public class Main {
                     break;
                 case 3:
                     // Modificar Zona Postal
+                    ZonaPostal.modificarZonaPostalMain();
                      System.out.println("Modificar Tarifa - Implementa la lógica aquí");
-                    break;
-                case 0:
-                    // volver al menu principal
-                    return;
-                default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
-            }
-
-        }while (true);
-    }
-    private static void menuReporte(Scanner scanner){
-        do {
-            System.out.println("\nMenú Reporte:");
-            System.out.println("1. Reporte Empleados");
-            System.out.println("2. Reporte Solicitudes");
-            System.out.println("0. Volver al Menú Principal");
-
-            System.out.print("Seleccione una opción: ");
-            int opcionReporte = scanner.nextInt();
-            switch (opcionReporte){
-                case 1:
-                    System.out.println("Lista de Tarifas - Implementa la lógica aquí");
-                    break;
-                case 2:
-                    System.out.println("Lista de Tarifas - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
