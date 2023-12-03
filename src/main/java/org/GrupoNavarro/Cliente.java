@@ -4,21 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Cliente extends PersonaDatos {
+public final class  Cliente extends PersonaDatos {
     private String codigoCliente;
     private String codigoPostal;
 
+    private static final Cliente objCliente = new Cliente();
 
     // Lista de clientes
     private static List<Cliente> listaClientes = new ArrayList<>();
+    public Cliente() {
 
+    }
     public Cliente(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoCliente, String codigoPostal ) {
         super(nombreCompleto, dni, numeroCelular, direccion);
         this.codigoCliente = codigoCliente;
         this.codigoPostal = codigoPostal;
+
     }
-
-
     public static void agregarCliente(Cliente cliente) {
         listaClientes.add(cliente);
     }
