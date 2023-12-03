@@ -20,6 +20,19 @@ public class ZonaPostal {
     public ZonaPostal() {
 
     }
+
+    public void setNombreDistrito(String nombreDistrito) {
+        this.nombreDistrito = nombreDistrito;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
+
+    public void setTarifaZona(double tarifaZona) {
+        this.tarifaZona = tarifaZona;
+    }
+
     public ArrayList<ZonaPostal> getListaZonaPostal() {
         return listaZonaPostal;
     }
@@ -27,6 +40,43 @@ public class ZonaPostal {
     public static void agregarZonaPostal(ZonaPostal zonaPostal){
         listaZonaPostal.add(zonaPostal);
     }
+    public static void modificarZonaPostal(String nombreDistrito, String nuevocodigopostal, double nuevatarifaZona, ArrayList<ZonaPostal> listaZonaPostal){
+        boolean encontrado;
+        encontrado = false;
+
+        for (ZonaPostal zonapostal : listaZonaPostal){
+            if (zonapostal.getNombreDistrito().equalsIgnoreCase(nombreDistrito)){
+                zonapostal.setCodigoPostal(nuevocodigopostal);
+                zonapostal.setTarifaZona(nuevatarifaZona);
+                encontrado = true;
+                System.out.println("Zona postal modificado correctamente.");
+            break;
+            }
+        }
+        if (!encontrado){
+            System.out.println("\nZona postal no encontrado: " + nombreDistrito);
+        }
+
+    }
+    public static void modificarZonaPostalMain(){
+        System.out.println("modificar Zona Postal:");
+        try {
+            Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+            System.out.println("Ingresa el nombre del distrito a modificar: ");
+            String nombreDistrito= scanner.nextLine();
+            System.out.println("Ingresa nuevo codigo postal: ");
+            String nuevoCodigoPostal= scanner.nextLine();
+            System.out.println("Ingresa la nueva tarifa de la zona postal: ");
+            Double nuevaTarifaZona= scanner.nextDouble();
+
+            //modificar la zona postal en la lista
+            modificarZonaPostal(nombreDistrito,nuevoCodigoPostal,nuevaTarifaZona,listaZonaPostal);
+        }catch (Exception e){
+            System.out.println("\nError al modificar la zona postal"+ e.getMessage());
+
+        }
+    }
+
     public void cargaInicialZonas() {
         ZonaPostal zonapostal1 = new ZonaPostal("Lima","15001",25);
         ZonaPostal zonapostal2 = new ZonaPostal("Callao","15002",35 );
@@ -143,6 +193,7 @@ public class ZonaPostal {
             contador++;
         }
     }
+
 
     public double getTarifaZona() {
         return tarifaZona;
