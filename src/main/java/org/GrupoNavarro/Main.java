@@ -13,7 +13,9 @@ public class Main {
         GrupoNavarro.agregarCliente(cliente1);
         UsuarioAdm usuario= new UsuarioAdm("administrador", "Passw0rd");
 
-        usuario.loginVerificationUser();
+        // LOGIN USER ADMIN ************************
+                //usuario.loginVerificationUser();
+        // LOGIN USER ADMIN ************************
 
         // Carga de servicios base
         Servicios servicios = new Servicios();
