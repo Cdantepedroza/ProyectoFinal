@@ -55,7 +55,6 @@ public class PersonalTecnico extends PersonaDatos {
     }
 
     static {
-
         tecnicos.add(new PersonalTecnico("Juan Silva", "12345678", "912345678", "Calle tulipan, 123", "987654321",null));
         tecnicos.add(new PersonalTecnico("Carla Sánchez", "987654321", "654321098", "Calle 2 de mayo 456", "567891234", null));
       }

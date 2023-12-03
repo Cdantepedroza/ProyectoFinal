@@ -8,16 +8,23 @@ import java.util.Scanner;
 
 public class GrupoNavarro {
     private String nombre;
-    private ArrayList<UsuarioAdm> listausuariosAdm = new ArrayList<>();
+    private static ArrayList<UsuarioAdm> listausuariosAdm = new ArrayList<>();
     private static ArrayList<PersonalTecnico> listatecnicos = new ArrayList<>();
     private static ArrayList<Cliente> listaclientes = new ArrayList<>();
     private ArrayList<String> listaespecialidades = new ArrayList<>();
 
+    public ArrayList<UsuarioAdm> getListausuariosAdm() {
+        return listausuariosAdm;
+    }
+    public static void agregarUsuarioAdm(UsuarioAdm usuarioAdm) {
+        listausuariosAdm.add(usuarioAdm);
+    }
 
     public static void agregarCliente(Cliente cliente){
         listaclientes.add(cliente);
 
     }
+
     public GrupoNavarro(String nombre) {
         this.nombre = nombre;
     }

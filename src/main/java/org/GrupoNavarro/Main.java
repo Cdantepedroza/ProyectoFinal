@@ -1,6 +1,10 @@
 package org.GrupoNavarro;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.JOptionPane;
 
 public class Main {
     //P1
@@ -11,7 +15,12 @@ public class Main {
 
         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
         GrupoNavarro.agregarCliente(cliente1);
-        UsuarioAdm usuario= new UsuarioAdm("administrador", "administrador");
+        UsuarioAdm usuario= new UsuarioAdm("administrador", "Passw0rd");
+        GrupoNavarro.agregarUsuarioAdm(usuario);
+
+        // LOGIN AL SISTEMA ********************************************************************
+                 // usuario.loginVerificationUser();
+        // LOGIN AL SISTEMA
 
         // Carga de servicios base
         Servicios servicios = new Servicios();
