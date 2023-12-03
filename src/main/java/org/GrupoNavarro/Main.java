@@ -184,6 +184,7 @@ public class Main {
                     break;
                 case 3:
                     // Modificar Zona Postal
+                    ZonaPostal.modificarZonaPostalMain();
                      System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:
