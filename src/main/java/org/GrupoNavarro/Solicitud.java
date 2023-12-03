@@ -180,27 +180,26 @@ public class Solicitud extends Servicios{
         System.out.print("\n");
         Especialidad.imprimirEspecialidades();
         System.out.print("--------------------------------------------\n");
-        System.out.print("Ingrese codigo de especialidad a solicitar:");
+        System.out.print("Ingrese codigo de especialidad a solicitar: ");
         while(!entradaValida3){
             String codigoEspecialidad = scanner.nextLine();
             for (Especialidad especialidad1: listaEspecialidades) {
-                if (especialidad1.getNombre().equals(codigoEspecialidad)) {
+                if (especialidad1.getCodigo().equals(codigoEspecialidad)) {
                     especialidadTecnico = especialidad1.getNombre();
                     //especialidad = personal.getEspecialidad();
                     entradaValida3=true;
                 }
             }
             if (!entradaValida3){
-                System.out.println("ERROR, ingrese un nombre válido: ");
+                System.out.println("ERROR, ingrese un código válido: ");
             }else {
                 System.out.println(" - Servicio válido -  ");
             }
         }
 
         System.out.println("Especialidad: "+especialidadTecnico + " con tecnico: " +especialidad);
-        System.out.print("");
-
-        System.out.print("ATENCION! Solicitud contiene lo siguiente: \n");
+        System.out.print("--------------------------------------------\n");
+        System.out.print("ATENCION! Solicitud contiene los siguientes elementos: \n");
         System.out.print("Código: "+ codSolicitud+"\n");
         System.out.print("Fecha de atención:" +fechaAt+"\n");
         System.out.print("Fecha de emisión:" + fechaEm+"\n");
