@@ -190,7 +190,7 @@ public class Solicitud extends Servicios{
                     entradaValida3=true;
                 }
             }
-            if (!entradaValida2){
+            if (!entradaValida3){
                 System.out.println("ERROR, ingrese un nombre válido: ");
             }else {
                 System.out.println(" - Servicio válido -  ");
