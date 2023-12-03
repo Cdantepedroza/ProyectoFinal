@@ -133,8 +133,8 @@ public class Solicitud extends Servicios{
 
         System.out.print("");
         ZonaPostal.imprimirZonasPostales();
-        System.out.print("");
-        System.out.print("Ingrese código de Zona delivery:");
+        System.out.print("--------------------------------------------\n");
+        System.out.print("Ingrese código de Zona delivery: ");
         while (!entradaValida){
             String codigo = scanner.nextLine();
             System.out.print("");
@@ -156,44 +156,47 @@ public class Solicitud extends Servicios{
 
         System.out.print("");
         Servicios.imprimirServicios();
-        System.out.print("");
-
+        System.out.print("--------------------------------------------\n");
+        System.out.print("Ingrese Nombre de Servicio a Solicitar: ");
         while (!entradaValida2) {
-            try {
-                System.out.print("Ingrese Nombre de Servicio a Solicitar: ");
-                String servicios = scanner.nextLine();
-
-                for (Servicios serv: Servicios.listaServicios) {
-                    if (serv.getNombre().equals(servicios)) {
-                        tarifa = serv.getTarifaServicio();
-                        descuento = Solicitud.descuentoServicio(serv);
-                        costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
-                    }
+            String servicios = scanner.nextLine();
+            for (Servicios serv: Servicios.listaServicios) {
+                if (serv.getNombre().equals(servicios)) {
+                    tarifa = serv.getTarifaServicio();
+                    descuento = Solicitud.descuentoServicio(serv);
+                    costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
+                    entradaValida2 = true;
                 }
-                entradaValida2 = true;
-            } catch (Exception e) {
-
-                System.out.println("Error: "+ e.getMessage());
-                scanner.next(); // Limpiar el buffer del scanner
             }
+            if (!entradaValida2){
+                System.out.println("ERROR, ingrese un nombre válido: ");
+            }else {
+                System.out.println(" - Servicio válido -  ");
+            }
+
         }
 
         System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
-        System.out.print("");
-
-
-
-        System.out.print("");
+        System.out.print("\n");
         Especialidad.imprimirEspecialidades();
-        System.out.print("");
+        System.out.print("--------------------------------------------\n");
         System.out.print("Ingrese codigo de especialidad a solicitar:");
-        String codigoEspecialidad = scanner.nextLine();
-        for (Especialidad especialidad1: listaEspecialidades) {
-            if (especialidad1.getNombre().equals(codigoEspecialidad)) {
-                especialidadTecnico = especialidad1.getNombre();
-                //especialidad = personal.getEspecialidad();
+        while(!entradaValida3){
+            String codigoEspecialidad = scanner.nextLine();
+            for (Especialidad especialidad1: listaEspecialidades) {
+                if (especialidad1.getNombre().equals(codigoEspecialidad)) {
+                    especialidadTecnico = especialidad1.getNombre();
+                    //especialidad = personal.getEspecialidad();
+                    entradaValida3=true;
+                }
+            }
+            if (!entradaValida2){
+                System.out.println("ERROR, ingrese un nombre válido: ");
+            }else {
+                System.out.println(" - Servicio válido -  ");
             }
         }
+
         System.out.println("Especialidad: "+especialidadTecnico + " con tecnico: " +especialidad);
         System.out.print("");
 
