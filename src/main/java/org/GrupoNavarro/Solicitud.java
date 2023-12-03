@@ -19,8 +19,8 @@ public class Solicitud extends Servicios{
     private static ZonaPostal zona = new ZonaPostal();
     private static ArrayList<ZonaPostal> listaZona = zona.getListaZonaPostal();
 
-    private static PersonalTecnico tecnico = new PersonalTecnico();
-    private static ArrayList<PersonalTecnico> listaTecnicos = (ArrayList<PersonalTecnico>) tecnico.getTecnicos();
+    //private static PersonalTecnico tecnico = new PersonalTecnico();
+    //private static ArrayList<PersonalTecnico> listaTecnicos = (ArrayList<PersonalTecnico>) tecnico.getTecnicos();
 
     private static Especialidad especialidad = new Especialidad();
     private static ArrayList<Especialidad> listaEspecialidades = (ArrayList<Especialidad>) especialidad.getEspecialidades();
@@ -115,6 +115,9 @@ public class Solicitud extends Servicios{
         double costoTotal = 0;
         String especialidadTecnico = "";
         String especialidad = "";
+        boolean entradaValida = false;
+        boolean entradaValida2 = false;
+        boolean entradaValida3 = false;
 
         System.out.print("");
         System.out.println("AGREGAR SOLICITUD");
@@ -132,24 +135,32 @@ public class Solicitud extends Servicios{
         ZonaPostal.imprimirZonasPostales();
         System.out.print("");
         System.out.print("Ingrese código de Zona delivery:");
-        String codigo = scanner.nextLine();
-        System.out.print("");
-        for (ZonaPostal zone: listaZona) {
-            if (zone.getCodigoPostal().equals(codigo)) {
-                delivery = zone.getTarifaZona();
+        while (!entradaValida){
+            String codigo = scanner.nextLine();
+            System.out.print("");
+            for (ZonaPostal zone: listaZona) {
+                if (zone.getCodigoPostal().equals(codigo)) {
+                    delivery = zone.getTarifaZona();
+                    entradaValida  = true;
+                }
+            }
+            if (!entradaValida){
+                System.out.println("ERROR, ingrese una código válido: ");
+            }else {
+                System.out.println(" -Zona válida -  ");
             }
         }
-        System.out.println("Costo por delivery: "+delivery);
+
+
+        System.out.println("\nCosto por delivery: "+delivery);
 
         System.out.print("");
         Servicios.imprimirServicios();
         System.out.print("");
 
-        boolean entradaValida = false;
-
-        while (!entradaValida) {
+        while (!entradaValida2) {
             try {
-                System.out.print("Ingrese Nombre de Servicio a Solicitar:");
+                System.out.print("Ingrese Nombre de Servicio a Solicitar: ");
                 String servicios = scanner.nextLine();
 
                 for (Servicios serv: Servicios.listaServicios) {
@@ -159,7 +170,7 @@ public class Solicitud extends Servicios{
                         costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
                     }
                 }
-                entradaValida = true;
+                entradaValida2 = true;
             } catch (Exception e) {
 
                 System.out.println("Error: "+ e.getMessage());
