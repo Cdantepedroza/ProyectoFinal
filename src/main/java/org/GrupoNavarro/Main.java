@@ -11,7 +11,9 @@ public class Main {
 
         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
         GrupoNavarro.agregarCliente(cliente1);
-        UsuarioAdm usuario= new UsuarioAdm("administrador", "administrador");
+        UsuarioAdm usuario= new UsuarioAdm("administrador", "Passw0rd");
+
+        usuario.loginVerificationUser();
 
         // Carga de servicios base
         Servicios servicios = new Servicios();
