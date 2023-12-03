@@ -8,8 +8,16 @@ import java.util.Scanner;
 
 public class GrupoNavarro {
     private String nombre;
+
+    private static final GrupoNavarro objGrupoNavarro = new GrupoNavarro();
+    private GrupoNavarro() {
+    }
+
+    public static GrupoNavarro getInstance(){ //se usa para acceder a los atributos y metodos de la clase
+        return objGrupoNavarro;
+    }
     private ArrayList<UsuarioAdm> listausuariosAdm = new ArrayList<>();
-    private ArrayList<PersonalTecnico> listatecnicos = new ArrayList<>();
+    private static ArrayList<PersonalTecnico> listatecnicos = new ArrayList<>();
     private static ArrayList<Cliente> listaclientes = new ArrayList<>();
     private ArrayList<String> listaespecialidades = new ArrayList<>();
 

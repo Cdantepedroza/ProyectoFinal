@@ -1,0 +1,154 @@
+Index: src/main/java/org/GrupoNavarro/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.*;\r\n\r\npublic class Main {\r\n    //P1\r\n    public static void main(String[] args) {\r\n\r\n\r\n        GrupoNavarro empresa = new GrupoNavarro(\"Grupo Navarro\");\r\n\r\n        Cliente cliente1 = new Cliente(\"dfdsf\",\"75697852\",\"9658324\",\"av siempre viva\", \"dsfsd262626\",\"15102\");\r\n        GrupoNavarro.agregarCliente(cliente1);\r\n        UsuarioAdm usuario= new UsuarioAdm(\"administrador\", \"administrador\");\r\n\r\n        // Carga de servicios base\r\n        Servicios servicios = new Servicios();\r\n        servicios.cargaInicialServicios();\r\n\r\n        // lista base de zonas postales\r\n        ZonaPostal zonaPostal = new ZonaPostal();\r\n        zonaPostal.cargaInicialZonas();\r\n\r\n        Scanner scanner = new Scanner(System.in);\r\n        String id=\"\";\r\n        String clave=\"\";\r\n        do {\r\n            System.out.print(\"Ingrese el codigo usuario: \");\r\n            id = scanner.nextLine();\r\n            System.out.print(\"Ingrese la contraseaña: \");\r\n            clave = scanner.nextLine();\r\n            if(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword)){\r\n                System.out.println(\"usuario y/o contraseña incorrecta\");\r\n            }\r\n        } while(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword));\r\n\r\n        while (true) {\r\n            System.out.println(\"\\nMenú Principal:\");\r\n            System.out.println(\"1. Técnicos\");\r\n            System.out.println(\"2. Pedidos\");\r\n            System.out.println(\"3. Clientes\");\r\n            System.out.println(\"4. Zona Postal\");\r\n            System.out.println(\"5. Reporte de Empleados\");\r\n            System.out.println(\"6. Servicios\");\r\n            System.out.println(\"0. Salir\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionPrincipal = scanner.nextInt();\r\n\r\n            switch (opcionPrincipal) {\r\n                case 1:\r\n                    menuTecnicos(scanner);\r\n                    break;\r\n                case 2:\r\n                    menuPedidos(scanner);\r\n                    break;\r\n                case 3:\r\n                    menuClientes(scanner);\r\n                case 4:\r\n                    menuZonaPostal(scanner);\r\n                    break;\r\n                case 5:\r\n                    menuReporte(scanner);\r\n                    break;\r\n                case 6:\r\n                    menuServicios(scanner);\r\n                    break;\r\n                case 0:\r\n                    System.out.println(\"Saliendo del programa. ¡Hasta luego!\");\r\n                    System.exit(0);\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n                    }\r\n            }\r\n        }\r\n\r\n    private static void menuTecnicos(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Técnicos:\");\r\n            System.out.println(\"1. Registrar Técnico\");\r\n            System.out.println(\"2. Lista de Técnicos\");\r\n            System.out.println(\"3. Registrar Especialidad\");\r\n            System.out.println(\"4. Lista de Especialidades\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionTecnicos = scanner.nextInt();\r\n\r\n            // Creamos una lista de técnicos\r\n            List<PersonalTecnico> tecnicos = new ArrayList<>();\r\n\r\n            switch (opcionTecnicos){\r\n                case 1:\r\n                    //Registramos un tecnico\r\n                    PersonalTecnico.SolicitarDatosTecnico();\r\n                    break;\r\n                case 2:\r\n                    // listamos a los técnicos\r\n                        PersonalTecnico.imprimirTecnicos();\r\n                    break;\r\n                case 3:\r\n                    // implementar logica aqui\r\n                    System.out.println(\"Registrar tecnico \");\r\n                    break;\r\n                case 4:\r\n                    // implementar logica aqui\r\n                    System.out.println(\"Registrar tecnico \");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n        }while (true);\r\n    }\r\n\r\n    private static void menuPedidos(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Pedidos:\");\r\n            System.out.println(\"1. Registrar Pedido\");\r\n            System.out.println(\"2. Lista de Pedidos\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionPedidos = scanner.nextInt();\r\n            switch (opcionPedidos){\r\n                case 1:\r\n                    System.out.println(\"Registrar Pedido - Implementa la lógica aquí\");\r\n                    Solicitud.registrarNuevaSolicitud();\r\n                    break;\r\n                case 2:\r\n                    System.out.println(\"Lista de Pedidos - Implementa la lógica aquí\");\r\n                    Solicitud.imprimirServicios();\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuClientes(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Clientes:\");\r\n            System.out.println(\"1. Registrar nuevo Cliente\");\r\n            System.out.println(\"2. Lista de Clientes\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionClientes = scanner.nextInt();\r\n            switch (opcionClientes){\r\n                case 1:\r\n                    // Registrar Clientes\r\n                    // Implementa la lógica para registrar un pedido y sus detalles\r\n                    GrupoNavarro.registrarNuevoCliente();\r\n                    System.out.println(\"Registrar Cliente - Implementa la lógica aquí\");\r\n                    break;\r\n                case 2:\r\n                    // Lista de Clientes\r\n                    // Implementa la lógica para mostrar la lista de pedidos registrados\r\n                    GrupoNavarro.imprimirClientes();\r\n                    System.out.println(\"Lista de Clientes - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuZonaPostal(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Zona Postal:\");\r\n            System.out.println(\"1. Lista de Zona Postal\");\r\n            System.out.println(\"2. Agregar Zona Postal\");\r\n            System.out.println(\"3. Modificar Zona postal\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionTarifas = scanner.nextInt();\r\n            switch (opcionTarifas){\r\n                case 1:\r\n                    // Lista de Zona Postal\r\n                    ZonaPostal.imprimirZonasPostales();\r\n                    break;\r\n                case 2:\r\n                    // Agregar Zona Postal\r\n                    ZonaPostal.registrarNuevaZonaPostal();\r\n                    break;\r\n                case 3:\r\n                    // Modificar Zona Postal\r\n                     System.out.println(\"Modificar Tarifa - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuReporte(Scanner scanner){\r\n        do {\r\n            System.out.println(\"\\nMenú Reporte:\");\r\n            System.out.println(\"1. Reporte Empleados\");\r\n            System.out.println(\"2. Reporte Solicitudes\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionReporte = scanner.nextInt();\r\n            switch (opcionReporte){\r\n                case 1:\r\n                    System.out.println(\"Lista de Tarifas - Implementa la lógica aquí\");\r\n                    break;\r\n                case 2:\r\n                    System.out.println(\"Lista de Tarifas - Implementa la lógica aquí\");\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n    private static void menuServicios(Scanner scanner){\r\n\r\n        do {\r\n            System.out.println(\"\\nMenú Servicos:\");\r\n            System.out.println(\"1. Registrar nuevo servicio\");\r\n            System.out.println(\"2. Modificar servicio\");\r\n            System.out.println(\"3. Lista de servicios\");\r\n            System.out.println(\"0. Volver al Menú Principal\");\r\n\r\n            System.out.print(\"Seleccione una opción: \");\r\n            int opcionServicios = scanner.nextInt();\r\n            switch (opcionServicios){\r\n                case 1:\r\n                    Servicios.registrarNuevoServicio();\r\n                    break;\r\n                case 2:\r\n                    Servicios.modificarServicioT();\r\n                    break;\r\n                case 3:\r\n                    Servicios.imprimirServicios();\r\n                    break;\r\n                case 0:\r\n                    // volver al menu principal\r\n\r\n                    return;\r\n                default:\r\n                    System.out.println(\"Opción no válida. Por favor, seleccione una opción válida.\");\r\n            }\r\n\r\n        }while (true);\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/Main.java b/src/main/java/org/GrupoNavarro/Main.java
+--- a/src/main/java/org/GrupoNavarro/Main.java	(revision dfeec53980439b112d9baaa413140e47a31250ef)
++++ b/src/main/java/org/GrupoNavarro/Main.java	(date 1701557303972)
+@@ -11,7 +11,8 @@
+ 
+         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
+         GrupoNavarro.agregarCliente(cliente1);
+-        UsuarioAdm usuario= new UsuarioAdm("administrador", "administrador");
++        UsuarioAdm usuario1 = new UsuarioAdm("administrador", "administrador");
++
+ 
+         // Carga de servicios base
+         Servicios servicios = new Servicios();
+@@ -22,17 +23,17 @@
+         zonaPostal.cargaInicialZonas();
+ 
+         Scanner scanner = new Scanner(System.in);
+-        String id="";
+-        String clave="";
+-        do {
+-            System.out.print("Ingrese el codigo usuario: ");
+-            id = scanner.nextLine();
+-            System.out.print("Ingrese la contraseaña: ");
+-            clave = scanner.nextLine();
+-            if(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword)){
+-                System.out.println("usuario y/o contraseña incorrecta");
+-            }
+-        } while(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword));
++        //        String id="";
++        //        String clave="";
++        //        do {
++        //            System.out.print("Ingrese el codigo usuario: ");
++        //            id = scanner.nextLine();
++        //            System.out.print("Ingrese la contraseaña: ");
++        //            clave = scanner.nextLine();
++        //            if(!id.equals(UsuarioAdm.usu) || !clave.equals(UsuarioAdm.password)){
++        //                System.out.println("usuario y/o contraseña incorrecta");
++        //            }
++        //        } while(!id.equals(UsuarioAdm.password) || !clave.equals(UsuarioAdm.password));
+ 
+         while (true) {
+             System.out.println("\nMenú Principal:");
+Index: src/main/java/org/GrupoNavarro/UsuarioAdm.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.GrupoNavarro;\r\n\r\nimport java.util.Date;\r\n\r\npublic class UsuarioAdm extends PersonaDatos{\r\n    private String codigoUser;\r\n    private String nombreUser;\r\n\r\n\r\n    public UsuarioAdm(String nombreCompleto, String dni, String numero_celular, String direccion, String codigoUser, String nombreUser) {\r\n        super(nombreCompleto, dni, numero_celular, direccion);\r\n        this.codigoUser = codigoUser;\r\n        this.nombreUser = nombreUser;\r\n    }\r\n    public String getCodigoUser() {\r\n        return codigoUser;\r\n    }\r\n\r\n    public void setCodigoUser(String codigoUser) {\r\n        this.codigoUser = codigoUser;\r\n    }\r\n\r\n    public String getNombreUser() {\r\n        return nombreUser;\r\n    }\r\n\r\n    public void setNombreUser(String nombreUser) {\r\n        this.nombreUser = nombreUser;\r\n    }\r\n    public  void  generarPedido(){\r\n      //  String codigoSolicitud= codigoSolicitud;\r\n        //   Date fechaAtencion= fechaAtencion;\r\n        //   Date fechaEmision= fechaEmision;\r\n        //   String comentarios= comentarios;\r\n        //   String estado= estado;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/GrupoNavarro/UsuarioAdm.java b/src/main/java/org/GrupoNavarro/UsuarioAdm.java
+--- a/src/main/java/org/GrupoNavarro/UsuarioAdm.java	(revision dfeec53980439b112d9baaa413140e47a31250ef)
++++ b/src/main/java/org/GrupoNavarro/UsuarioAdm.java	(date 1701557303973)
+@@ -3,29 +3,35 @@
+ import java.util.Date;
+ 
+ public class UsuarioAdm extends PersonaDatos{
+-    private String codigoUser;
+-    private String nombreUser;
++    private String usuarioId;
++    private String password;
+ 
+ 
+     public UsuarioAdm(String nombreCompleto, String dni, String numero_celular, String direccion, String codigoUser, String nombreUser) {
+         super(nombreCompleto, dni, numero_celular, direccion);
+-        this.codigoUser = codigoUser;
+-        this.nombreUser = nombreUser;
++        this.usuarioId = usuarioId;
++        this.password = password;
+     }
++
++    public UsuarioAdm(String usuarioId, String password) {
++        this.usuarioId = usuarioId;
++        this.password = password;
++    }
++
+     public String getCodigoUser() {
+-        return codigoUser;
++        return usuarioId;
+     }
+ 
+     public void setCodigoUser(String codigoUser) {
+-        this.codigoUser = codigoUser;
++        this.usuarioId = codigoUser;
+     }
+ 
+     public String getNombreUser() {
+-        return nombreUser;
++        return password;
+     }
+ 
+     public void setNombreUser(String nombreUser) {
+-        this.nombreUser = nombreUser;
++        this.password = nombreUser;
+     }
+     public  void  generarPedido(){
+       //  String codigoSolicitud= codigoSolicitud;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"Clase SP con atributos\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Josept-Vela&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"c2708650-b1fc-4e9a-be06-8dd7ec4f2013\" />\r\n        <option name=\"url\" value=\"https://github.com/Cdantepedroza/ProyectoFinal.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XNhVSSZ35q1W9yLrIWZ4RAZrMp\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"C:/Users/Dante/Downloads/ProyectoFinal\",\r\n    \"onboarding.tips.debug.path\": \"E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java\",\r\n    \"settings.editor.selected.configurable\": \"configurable.group.appearance\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"org.modelo\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.org.GrupoNavarro.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"19\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"org.GrupoNavarro.Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.GrupoNavarro.Main\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.GrupoNavarro.GrupoNavarro\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n      <item itemvalue=\"Application.Main\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.org.GrupoNavarro.Main\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"2ad9d2cc-0ad7-4e13-a32c-755435ac9a08\" name=\"Changes\" comment=\"\" />\r\n      <created>1698475470043</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698475470043</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Prueba commit and Push\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699662937725</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699662937725</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Cambio Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726134959</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726134960</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Cambio en Reporte\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1699726209917</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1699726209917</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Clase Cliente\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143685098</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143685098</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Clase PersonaDatos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143760999</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143760999</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701143937832</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701143937832</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Clase PersonaDatos atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701144001680</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701144001680</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Ageregar clases\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701145019047</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701145019048</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147314620</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147314620</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Clase SP con atributos\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1701147332658</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1701147332658</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"11\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Prueba commit and Push\" />\r\n    <MESSAGE value=\"Cambio Reporte\" />\r\n    <MESSAGE value=\"Cambio en Reporte\" />\r\n    <MESSAGE value=\"Clase Cliente\" />\r\n    <MESSAGE value=\"Clase PersonaDatos\" />\r\n    <MESSAGE value=\"Clase PersonaDatos atributos\" />\r\n    <MESSAGE value=\"Ageregar clases\" />\r\n    <MESSAGE value=\"Clase SP con atributos\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Clase SP con atributos\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/org/proyectoFinal/Main.java</url>\r\n          <line>15</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision dfeec53980439b112d9baaa413140e47a31250ef)
++++ b/.idea/workspace.xml	(date 1701557303972)
+@@ -5,7 +5,11 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Servicios.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2023_13_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2023_13_53__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2023_17_14__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2023_17_14__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/UsuarioAdm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/UsuarioAdm.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -52,17 +56,17 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "main",
+-    "last_opened_file_path": "C:/Users/Dante/Downloads/ProyectoFinal",
+-    "onboarding.tips.debug.path": "E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java",
+-    "settings.editor.selected.configurable": "configurable.group.appearance"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dante/Downloads/ProyectoFinal&quot;,
++    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+       <recent name="org.modelo" />

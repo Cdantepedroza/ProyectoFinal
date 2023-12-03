@@ -22,17 +22,7 @@ public class Main {
         zonaPostal.cargaInicialZonas();
 
         Scanner scanner = new Scanner(System.in);
-        //        String id="";
-        //        String clave="";
-        //        do {
-        //            System.out.print("Ingrese el codigo usuario: ");
-        //            id = scanner.nextLine();
-        //            System.out.print("Ingrese la contraseaña: ");
-        //            clave = scanner.nextLine();
-        //            if(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword)){
-        //                System.out.println("usuario y/o contraseña incorrecta");
-        //            }
-        //        } while(!id.equals(UsuarioAdm.usuarioId) || !clave.equals(UsuarioAdm.pasword));
+
 
         while (true) {
             System.out.println("\nMenú Principal:");
@@ -70,9 +60,9 @@ public class Main {
                     System.exit(0);
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
+                    }
             }
         }
-    }
 
     private static void menuTecnicos(Scanner scanner){
         do {
@@ -96,7 +86,7 @@ public class Main {
                     break;
                 case 2:
                     // listamos a los técnicos
-                    PersonalTecnico.imprimirTecnicos();
+                        PersonalTecnico.imprimirTecnicos();
                     break;
                 case 3:
                     // implementar logica aqui
@@ -194,7 +184,7 @@ public class Main {
                     break;
                 case 3:
                     // Modificar Zona Postal
-                    ZonaPostal.modificarZonaPostalMain();
+                     System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
