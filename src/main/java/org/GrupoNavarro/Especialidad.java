@@ -12,6 +12,10 @@ public class Especialidad {
         this.nombre = nombre;
     }
 
+    public Especialidad() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -29,6 +33,10 @@ public class Especialidad {
     }
 
     private static List<Especialidad> especialidades = new ArrayList<>();
+
+    public List<Especialidad> getEspecialidades() {
+        return especialidades;
+    }
 
     static {
         // Crear las especialidades
@@ -49,4 +57,14 @@ public class Especialidad {
         }
         return null;
     }
+
+    public static void imprimirEspecialidades() {
+        System.out.println("Lista de Especialidades: \n");
+
+        for (Especialidad especialidad : especialidades) {
+            System.out.println("Codigo: " + especialidad.getCodigo());
+            System.out.println("Tipo: " + especialidad.getNombre());
+        }
+    }
+
 }

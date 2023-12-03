@@ -156,28 +156,28 @@ public class Solicitud extends Servicios{
         System.out.print("");
         PersonalTecnico.imprimirTecnicos();
         System.out.print("");
-        //        System.out.print("Ingrese tecnico a solicitar:");
-        //        String codigoTecnico = scanner.nextLine();
-        //        for (PersonalTecnico personal: listaTecnicos) {
-        //            if (personal.getCodigoEmpleado().equals(codigoTecnico)) {
-        //                nombreTecnico = personal.getnombreCompleto();
-        //                especialidad = personal.getEspecialidad();
-        //            }
-        //        }
-        //        System.out.println("Nombre del tecnico asignado: "+nombreTecnico + " con especialidad: " +especialidad);
-        //        System.out.print("");
-        //
-        //        System.out.print("ATENCION! Solicitud contiene lo siguiente: \n");
-        //        System.out.print("Código: "+ codSolicitud+"\n");
-        //        System.out.print("Fecha de atención:" +fechaAt+"\n");
-        //        System.out.print("Fecha de emisión:" + fechaEm+"\n");
-        //        System.out.print("Costo por Delivery: "+delivery+"\n");
-        //        System.out.print("Costo por Servicio: "+tarifa+"\n");
-        //        System.out.print("Descuento por Servicio: "+descuento+"\n");
-        //        System.out.print("Técnico asiganado: "+nombreTecnico+"\n");
-        //        System.out.print("Especialidad Técnico: "+especialidad+"\n");
-        //        System.out.print("Costo Total del Servicio: "+costoTotal+"\n");
-        //        System.out.print("Cometarios sobre la solicitud: "+comentarios+"\n");
+        System.out.print("Ingrese tecnico a solicitar:");
+        String codigoTecnico = scanner.nextLine();
+        for (PersonalTecnico personal: listaTecnicos) {
+            if (personal.getCodigoEmpleado().equals(codigoTecnico)) {
+                nombreTecnico = personal.getnombreCompleto();
+                especialidad = personal.getEspecialidad();
+            }
+        }
+        System.out.println("Nombre del tecnico asignado: "+nombreTecnico + " con especialidad: " +especialidad);
+        System.out.print("");
+
+        System.out.print("ATENCION! Solicitud contiene lo siguiente: \n");
+        System.out.print("Código: "+ codSolicitud+"\n");
+        System.out.print("Fecha de atención:" +fechaAt+"\n");
+        System.out.print("Fecha de emisión:" + fechaEm+"\n");
+        System.out.print("Costo por Delivery: "+delivery+"\n");
+        System.out.print("Costo por Servicio: "+tarifa+"\n");
+        System.out.print("Descuento por Servicio: "+descuento+"\n");
+        System.out.print("Técnico asiganado: "+nombreTecnico+"\n");
+        System.out.print("Especialidad Técnico: "+especialidad+"\n");
+        System.out.print("Costo Total del Servicio: "+costoTotal+"\n");
+        System.out.print("Cometarios sobre la solicitud: "+comentarios+"\n");
 
 
 
