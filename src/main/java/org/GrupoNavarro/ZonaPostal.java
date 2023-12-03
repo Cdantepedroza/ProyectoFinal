@@ -20,6 +20,23 @@ public class ZonaPostal {
     public ZonaPostal() {
 
     }
+
+    public static void setListaZonaPostal(ArrayList<ZonaPostal> listaZonaPostal) {
+        ZonaPostal.listaZonaPostal = listaZonaPostal;
+    }
+
+    public void setNombreDistrito(String nombreDistrito) {
+        this.nombreDistrito = nombreDistrito;
+    }
+
+    public void setCodigoPostal(String codigoPostal) {
+        this.codigoPostal = codigoPostal;
+    }
+
+    public void setTarifaZona(double tarifaZona) {
+        this.tarifaZona = tarifaZona;
+    }
+
     public ArrayList<ZonaPostal> getListaZonaPostal() {
         return listaZonaPostal;
     }
@@ -73,6 +90,8 @@ public class ZonaPostal {
         listaZonaPostal.add(zonapostal20);
         listaZonaPostal.add(zonapostal21);
     }
+
+
 
     public static void registrarNuevaZonaPostal() {
         System.out.println("Registrar nueva Zona Postal:");

@@ -125,11 +125,9 @@ public class Main {
             int opcionPedidos = scanner.nextInt();
             switch (opcionPedidos){
                 case 1:
-                    System.out.println("Registrar Pedido - Implementa la lógica aquí");
                     Solicitud.registrarNuevaSolicitud();
                     break;
                 case 2:
-                    System.out.println("Lista de Pedidos - Implementa la lógica aquí");
                     Solicitud.imprimirSolicitudes();
                     break;
                 case 0:
@@ -153,15 +151,11 @@ public class Main {
             switch (opcionClientes){
                 case 1:
                     // Registrar Clientes
-                    // Implementa la lógica para registrar un pedido y sus detalles
                     GrupoNavarro.registrarNuevoCliente();
-                    System.out.println("Registrar Cliente - Implementa la lógica aquí");
                     break;
                 case 2:
                     // Lista de Clientes
-                    // Implementa la lógica para mostrar la lista de pedidos registrados
                     GrupoNavarro.imprimirClientes();
-                    System.out.println("Lista de Clientes - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
@@ -193,6 +187,7 @@ public class Main {
                     break;
                 case 3:
                     // Modificar Zona Postal
+                    ZonaPostal.modificarZonaPostalMain();
                      System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:
