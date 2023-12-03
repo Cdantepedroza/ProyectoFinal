@@ -1,6 +1,12 @@
 package org.GrupoNavarro;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UsuarioAdm extends PersonaDatos{
     private String codigoUser;
@@ -8,10 +14,9 @@ public class UsuarioAdm extends PersonaDatos{
     private String password;
 
 
-    public UsuarioAdm(String nombreCompleto, String dni, String numero_celular, String direccion, String codigoUser, String nombreUser) {
+    public UsuarioAdm(String nombreCompleto, String dni, String numero_celular, String direccion, String codigoUser ) {
         super(nombreCompleto, dni, numero_celular, direccion);
         this.codigoUser = codigoUser;
-        this.nombreUser = nombreUser;
     }
 
     public UsuarioAdm(String codigoUser, String password) {
@@ -22,17 +27,53 @@ public class UsuarioAdm extends PersonaDatos{
     public String getCodigoUser() {
         return codigoUser;
     }
-    public void setCodigoUser(String codigoUser) {
-        this.codigoUser = codigoUser;
+
+    public String getPassword() {
+        return password;
+    }
+    public void loginVerificationUser() {
+        boolean credencialesCorrectas = false;
+
+        while (!credencialesCorrectas) {
+            String userId = JOptionPane.showInputDialog("Usuario:");
+
+            if (userId == null) {
+                JOptionPane.showMessageDialog(null, "Operación cancelada. Cierre del programa.", "Adiós", JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+
+            JPasswordField passwordField = new JPasswordField();
+            int option = JOptionPane.showConfirmDialog(null, passwordField, "Contraseña:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            if (option == JOptionPane.OK_OPTION) {
+                String password = new String(passwordField.getPassword());
+
+                if (verificarUsuario(userId)) {
+                    if (verificarContrasena(password)) {
+                        JOptionPane.showMessageDialog(null, "Bienvenido al Sistema");
+                        credencialesCorrectas = true;
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La contraseña es incorrecta", "Error de Contraseña", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El usuario es inválido", "Error de Usuario", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Operación cancelada. Cierre del programa.", "Adiós", JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+        }
     }
 
-    public String getNombreUser() {
-        return nombreUser;
+    private boolean verificarUsuario(String userId) {
+        return userId.equals(getCodigoUser());
     }
-
-    public void setNombreUser(String nombreUser) {
-        this.nombreUser = nombreUser;
+    private boolean verificarContrasena(String password) {
+        return password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$");
     }
 
 
 }
+
+
+

@@ -59,6 +59,11 @@ public class PersonalTecnico extends PersonaDatos {
         tecnicos .add(tecnico);
     }
 
+    static {
+        tecnicos.add(new PersonalTecnico("Juan Silva", "12345678", "912345678", "Calle tulipan, 123", "987654321",null));
+        tecnicos.add(new PersonalTecnico("Carla Sánchez", "987654321", "654321098", "Calle 2 de mayo 456", "567891234", null));
+      }
+
     public static void imprimirTecnicos() {
 
         PersonalTecnico tecnico1 = new PersonalTecnico("Juan Pérez", "12345678A", "912345678", "Calle Mayor, 123", "1234", Electricidad);
