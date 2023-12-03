@@ -176,6 +176,15 @@ public class Solicitud extends Servicios{
 
         }
 
+        System.out.print("");
+        PersonalTecnico.imprimirTecnicos();
+        System.out.print("");
+        System.out.print("Ingrese tecnico a solicitar:");
+        String codigoTecnico = scanner.nextLine();
+        for (PersonalTecnico personal: listaTecnicos) {
+            if (personal.getCodigoEmpleado().equals(codigoTecnico)) {
+                nombreTecnico = personal.getnombreCompleto();
+                // especialidad = personal.getEspecialidad().toString();
         System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
         System.out.print("\n");
         Especialidad.imprimirEspecialidades();
