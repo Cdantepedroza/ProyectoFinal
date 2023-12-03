@@ -18,9 +18,10 @@ public class Main {
         UsuarioAdm usuario= new UsuarioAdm("administrador", "Passw0rd");
         GrupoNavarro.agregarUsuarioAdm(usuario);
 
-        // LOGIN AL SISTEMA ********************************************************************
-                 // usuario.loginVerificationUser();
-        // LOGIN AL SISTEMA
+        // LOGIN USUARIO ADMIN **************************************
+        usuario.loginVerificationUser();
+        // LOGIN USUARIO ADMIN
+        
 
         // Carga de servicios base
         Servicios servicios = new Servicios();
@@ -187,7 +188,6 @@ public class Main {
                     break;
                 case 3:
                     // Modificar Zona Postal
-                    ZonaPostal.modificarZonaPostalMain();
                      System.out.println("Modificar Tarifa - Implementa la lógica aquí");
                     break;
                 case 0:

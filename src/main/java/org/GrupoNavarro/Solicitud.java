@@ -19,8 +19,11 @@ public class Solicitud extends Servicios{
     private static ZonaPostal zona = new ZonaPostal();
     private static ArrayList<ZonaPostal> listaZona = zona.getListaZonaPostal();
 
-    private static PersonalTecnico tecnico = new PersonalTecnico();
-    private static ArrayList<PersonalTecnico> listaTecnicos = (ArrayList<PersonalTecnico>) tecnico.getTecnicos();
+    //private static PersonalTecnico tecnico = new PersonalTecnico();
+    //private static ArrayList<PersonalTecnico> listaTecnicos = (ArrayList<PersonalTecnico>) tecnico.getTecnicos();
+
+    private static Especialidad especialidad = new Especialidad();
+    private static ArrayList<Especialidad> listaEspecialidades = (ArrayList<Especialidad>) especialidad.getEspecialidades();
 
 
     public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, PersonalTecnico personalTecnico) {
@@ -110,8 +113,11 @@ public class Solicitud extends Servicios{
         double descuento = 0;
         double delivery = 0;
         double costoTotal = 0;
-        String nombreTecnico = "";
+        String especialidadTecnico = "";
         String especialidad = "";
+        boolean entradaValida = false;
+        boolean entradaValida2 = false;
+        boolean entradaValida3 = false;
 
         System.out.print("");
         System.out.println("AGREGAR SOLICITUD");
@@ -127,31 +133,48 @@ public class Solicitud extends Servicios{
 
         System.out.print("");
         ZonaPostal.imprimirZonasPostales();
-        System.out.print("");
-        System.out.print("Ingrese código de Zona delivery:");
-        String codigo = scanner.nextLine();
-        System.out.print("");
-        for (ZonaPostal zone: listaZona) {
-            if (zone.getCodigoPostal().equals(codigo)) {
-                delivery = zone.getTarifaZona();
+        System.out.print("--------------------------------------------\n");
+        System.out.print("Ingrese código de Zona delivery: ");
+        while (!entradaValida){
+            String codigo = scanner.nextLine();
+            System.out.print("");
+            for (ZonaPostal zone: listaZona) {
+                if (zone.getCodigoPostal().equals(codigo)) {
+                    delivery = zone.getTarifaZona();
+                    entradaValida  = true;
+                }
+            }
+            if (!entradaValida){
+                System.out.println("ERROR, ingrese una código válido: ");
+            }else {
+                System.out.println(" -Zona válida -  ");
             }
         }
-        System.out.println("Costo por delivery: "+delivery);
+
+
+        System.out.println("\nCosto por delivery: "+delivery);
 
         System.out.print("");
         Servicios.imprimirServicios();
-        System.out.print("");
-        System.out.print("Ingrese Servicio a solicitar:");
-        String servicios = scanner.nextLine();
-        for (Servicios serv: Servicios.listaServicios) {
-            if (serv.getNombre().equals(servicios)) {
-                tarifa = serv.getTarifaServicio();
-                descuento = Solicitud.descuentoServicio(serv);
-                costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
+        System.out.print("--------------------------------------------\n");
+        System.out.print("Ingrese Nombre de Servicio a Solicitar: ");
+        while (!entradaValida2) {
+            String servicios = scanner.nextLine();
+            for (Servicios serv: Servicios.listaServicios) {
+                if (serv.getNombre().equals(servicios)) {
+                    tarifa = serv.getTarifaServicio();
+                    descuento = Solicitud.descuentoServicio(serv);
+                    costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
+                    entradaValida2 = true;
+                }
             }
+            if (!entradaValida2){
+                System.out.println("ERROR, ingrese un nombre válido: ");
+            }else {
+                System.out.println(" - Servicio válido -  ");
+            }
+
         }
-        System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
-        System.out.print("");
 
         System.out.print("");
         PersonalTecnico.imprimirTecnicos();
@@ -161,24 +184,41 @@ public class Solicitud extends Servicios{
         for (PersonalTecnico personal: listaTecnicos) {
             if (personal.getCodigoEmpleado().equals(codigoTecnico)) {
                 nombreTecnico = personal.getnombreCompleto();
-                // especialidad = personal.getEspecialidad();
+                // especialidad = personal.getEspecialidad().toString();
+        System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
+        System.out.print("\n");
+        Especialidad.imprimirEspecialidades();
+        System.out.print("--------------------------------------------\n");
+        System.out.print("Ingrese codigo de especialidad a solicitar: ");
+        while(!entradaValida3){
+            String codigoEspecialidad = scanner.nextLine();
+            for (Especialidad especialidad1: listaEspecialidades) {
+                if (especialidad1.getCodigo().equals(codigoEspecialidad)) {
+                    especialidadTecnico = especialidad1.getNombre();
+                    //especialidad = personal.getEspecialidad();
+                    entradaValida3=true;
+                }
+            }
+            if (!entradaValida3){
+                System.out.println("ERROR, ingrese un código válido: ");
+            }else {
+                System.out.println(" - Servicio válido -  ");
             }
         }
-        System.out.println("Nombre del tecnico asignado: "+nombreTecnico + " con especialidad: " +especialidad);
-        System.out.print("");
 
-        System.out.print("ATENCION! Solicitud contiene lo siguiente: \n");
+        System.out.println("Especialidad: "+especialidadTecnico + " con tecnico: " +especialidad);
+        System.out.print("--------------------------------------------\n");
+        System.out.print("ATENCION! Solicitud contiene los siguientes elementos: \n");
         System.out.print("Código: "+ codSolicitud+"\n");
         System.out.print("Fecha de atención:" +fechaAt+"\n");
         System.out.print("Fecha de emisión:" + fechaEm+"\n");
         System.out.print("Costo por Delivery: "+delivery+"\n");
         System.out.print("Costo por Servicio: "+tarifa+"\n");
         System.out.print("Descuento por Servicio: "+descuento+"\n");
-        System.out.print("Técnico asiganado: "+nombreTecnico+"\n");
+        System.out.print("Especialidad asiganado: "+especialidadTecnico+"\n");
         System.out.print("Especialidad Técnico: "+especialidad+"\n");
         System.out.print("Costo Total del Servicio: "+costoTotal+"\n");
         System.out.print("Cometarios sobre la solicitud: "+comentarios+"\n");
-
 
 
         try {
