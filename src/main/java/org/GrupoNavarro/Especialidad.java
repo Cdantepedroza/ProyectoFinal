@@ -2,8 +2,8 @@ package org.GrupoNavarro;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class Especialidad {
+//Final para que no se pueda heredar de especialidad
+public final class Especialidad {
     private String codigo;
     private String nombre;
 

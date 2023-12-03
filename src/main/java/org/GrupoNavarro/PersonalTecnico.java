@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class PersonalTecnico extends PersonaDatos {
     private String codigoEmpleado;
     private Especialidad especialidad;
+    private static final PersonalTecnico objPersonalTecnico = new PersonalTecnico();
 
     public PersonalTecnico(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoEmpleado, Especialidad especialidad) {
         super(nombreCompleto, dni, numeroCelular, direccion);
@@ -18,23 +19,21 @@ public class PersonalTecnico extends PersonaDatos {
     public PersonalTecnico(){
         super();
     }
-
+    public static PersonalTecnico getInstance() {
+        return objPersonalTecnico;
+    }
     public String getCodigoEmpleado() {
         return codigoEmpleado;
     }
-
     public void setCodigoEmpleado(String codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
-
     public Especialidad getEspecialidad() {
         return especialidad;
     }
-
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
-
     @Override
     public String toString() {
         return "PersonalTecnico{" +
@@ -46,7 +45,6 @@ public class PersonalTecnico extends PersonaDatos {
     private static Especialidad Electricidad = new Especialidad("ELE", "Electricidad");
     private static Especialidad Seguridad = new Especialidad("SEG", "Seguridad");
     private static Especialidad Telecomunicaciones = new Especialidad("TEL", "Telecomunicaciones");
-
 
     public List<PersonalTecnico> getTecnicos() {
         return tecnicos;
@@ -80,8 +78,6 @@ public class PersonalTecnico extends PersonaDatos {
             System.out.println("Especialidad: " + tecnico.getEspecialidad().getNombre()+" \n");
         }
     }
-
-
 
     public static void SolicitarDatosTecnico() {
 
