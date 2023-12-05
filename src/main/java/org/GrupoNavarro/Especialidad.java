@@ -12,9 +12,12 @@ public final class Especialidad {
         this.nombre = nombre;
     }
 
+<<<<<<< HEAD
     public Especialidad() {
     }
 
+=======
+>>>>>>> origin/dantepedroza
     public String getNombre() {
         return nombre;
     }
@@ -33,10 +36,13 @@ public final class Especialidad {
 
     private static List<Especialidad> especialidades = new ArrayList<>();
 
+<<<<<<< HEAD
     public List<Especialidad> getEspecialidades() {
         return especialidades;
     }
 
+=======
+>>>>>>> origin/dantepedroza
     static {
         // Crear las especialidades
         Especialidad electricidad = new Especialidad("ELE","Electricidad");
@@ -66,6 +72,7 @@ public final class Especialidad {
 
         return especialidad;
     }
+<<<<<<< HEAD
 
     public static void imprimirEspecialidades() {
         System.out.println("Lista de Especialidades: \n");
@@ -76,4 +83,6 @@ public final class Especialidad {
         }
     }
 
+=======
+>>>>>>> origin/dantepedroza
 }
