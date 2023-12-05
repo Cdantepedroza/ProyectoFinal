@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos" />
+    <list default="true" id="2ad9d2cc-0ad7-4e13-a32c-755435ac9a08" name="Changes" comment="Clase SP con atributos">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2023_22_37__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_12_2023_22_37__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/GrupoNavarro/ZonaPostal.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,25 +30,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
-    {
-      "state": "OPEN"
-    },
-    {
-      "state": "OPEN",
-      "author": "prot21"
-    }
-  ],
-  "lastFilter": {
-    "state": "OPEN",
-    "author": "prot21"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Josept-Vela&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="742a673e-269a-4b6b-8720-0d411478c7dc" />
+        <option name="accountId" value="c2708650-b1fc-4e9a-be06-8dd7ec4f2013" />
         <option name="url" value="https://github.com/Cdantepedroza/ProyectoFinal.git" />
       </UrlAndAccount>
     </option>
@@ -65,7 +61,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;geraMunoz&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dante/Downloads/ProyectoFinal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dante/Downloads/ProyectoFinal 1/ProyectoFinal&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;E:/Fundamentos de Programacion/ProyectoFinal/src/main/java/org/proyectoFinal/Main.java&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
@@ -91,6 +87,8 @@
       </method>
     </configuration>
     <configuration name="org.GrupoNavarro.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="20" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="org.GrupoNavarro.Main" />
       <module name="ProyectoFinal" />
       <extension name="coverage">
@@ -104,8 +102,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.org.GrupoNavarro.Main" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.org.GrupoNavarro.Main" />
     </list>
     <recent_temporary>
       <list>
@@ -226,7 +224,7 @@
     <MESSAGE value="Clase PersonaDatos atributos" />
     <MESSAGE value="Ageregar clases" />
     <MESSAGE value="Clase SP con atributos" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clase SP con atributos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
