@@ -96,12 +96,11 @@ public class Main {
                         PersonalTecnico.imprimirTecnicos();
                     break;
                 case 3:
-                    // implementar logica aqui
-                    System.out.println("Registrar tecnico ");
+                    Especialidad.crearEspecialidad();
                     break;
                 case 4:
-                    // implementar logica aqui
-                    System.out.println("Registrar tecnico ");
+
+                    Especialidad.listarEspecialidades();
                     break;
                 case 0:
                     // volver al menu principal
@@ -114,7 +113,6 @@ public class Main {
             }
         }while (true);
     }
-
     private static void menuPedidos(Scanner scanner){
         do {
             System.out.println("\nMenú Pedidos:");
