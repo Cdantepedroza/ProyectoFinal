@@ -1,7 +1,6 @@
 package org.GrupoNavarro;
 
 import java.util.*;
-
 public class Main {
     //P1
     public static void main(String[] args) {
@@ -11,7 +10,7 @@ public class Main {
 
         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
         GrupoNavarro.agregarCliente(cliente1);
-        UsuarioAdm usuario= new UsuarioAdm("administrador", "Passw0rd");
+        UsuarioAdm usuario = new UsuarioAdm("administrador", "Passw0rd");
 
         // LOGIN USER ADMIN ************************
                 //usuario.loginVerificationUser();
@@ -27,9 +26,17 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        boolean ejecutarUnaVez = true;
 
         while (true) {
-            System.out.println("\nMenú Principal:");
+            if (ejecutarUnaVez) {
+                System.out.println("\n╔═══════════════════════════════╗");
+                System.out.println("║         GRUPO NAVARRO         ║");
+                System.out.println("╚═══════════════════════════════╝");
+                System.out.println("            Bienvenido            ");
+                ejecutarUnaVez = false;
+            }
+            System.out.println("Menú Principal de Opciones:");
             System.out.println("1. Técnicos");
             System.out.println("2. Pedidos");
             System.out.println("3. Clientes");
@@ -98,6 +105,9 @@ public class Main {
                     break;
                 case 0:
                     // volver al menu principal
+                    System.out.println("Presione enter para continuar...");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -125,6 +135,9 @@ public class Main {
                     break;
                 case 0:
                     // volver al menu principal
+                    System.out.println("Presione enter para continuar...");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -144,18 +157,19 @@ public class Main {
             switch (opcionClientes){
                 case 1:
                     // Registrar Clientes
-                    // Implementa la lógica para registrar un pedido y sus detalles
                     GrupoNavarro.registrarNuevoCliente();
                     System.out.println("Registrar Cliente - Implementa la lógica aquí");
                     break;
                 case 2:
                     // Lista de Clientes
-                    // Implementa la lógica para mostrar la lista de pedidos registrados
                     GrupoNavarro.imprimirClientes();
                     System.out.println("Lista de Clientes - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal
+                    System.out.println("Presione enter para continuar...");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -169,6 +183,7 @@ public class Main {
             System.out.println("1. Lista de Zona Postal");
             System.out.println("2. Agregar Zona Postal");
             System.out.println("3. Modificar Zona postal");
+            System.out.println("4. Eliminar Zona postal");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -185,10 +200,15 @@ public class Main {
                 case 3:
                     // Modificar Zona Postal
                     ZonaPostal.modificarZonaPostalMain();
-                     System.out.println("Modificar Tarifa - Implementa la lógica aquí");
+                    break;
+                case 4:
+                    ZonaPostal.eliminarZonaPostal();
                     break;
                 case 0:
                     // volver al menu principal
+                    System.out.println("Presione enter para continuar...");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
@@ -219,7 +239,9 @@ public class Main {
                     break;
                 case 0:
                     // volver al menu principal
-
+                    System.out.println("Presione enter para continuar...");
+                    scanner.nextLine();
+                    scanner.nextLine();
                     return;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
