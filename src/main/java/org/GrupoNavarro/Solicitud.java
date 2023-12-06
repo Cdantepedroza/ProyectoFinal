@@ -1,10 +1,8 @@
 package org.GrupoNavarro;
 
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
-public class Solicitud extends Servicios{
+public class Solicitud{
 
     //JV
     private String codigoSolicitud;
@@ -12,7 +10,6 @@ public class Solicitud extends Servicios{
     private String fechaEmision;
     private String comentarios;
     private String estado;
-
 
     private static ArrayList<Solicitud> listaSolicitudes;
 
@@ -27,8 +24,7 @@ public class Solicitud extends Servicios{
 
 
 
-    public Solicitud(String nombre, double tarifaServicio, String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, PersonalTecnico personalTecnico) {
-        super(nombre, tarifaServicio);
+    public Solicitud(String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, PersonalTecnico personalTecnico) {
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtencion = fechaAtencion;
         this.fechaEmision = fechaEmision;
@@ -115,7 +111,9 @@ public class Solicitud extends Servicios{
         double delivery = 0;
         double costoTotal = 0;
         String especialidadTecnico = "";
-        String especialidad = "";
+        String tecnicoAsignado = "";
+        PersonalTecnico tecnicoAsignado2 = null;
+        Especialidad especialidadA= null;
         boolean entradaValida = false;
         boolean entradaValida2 = false;
         boolean entradaValida3 = false;
@@ -179,18 +177,28 @@ public class Solicitud extends Servicios{
 
         System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
         System.out.print("\n");
-        Especialidad.imprimirEspecialidades();
+
+        Especialidad.listarEspecialidades();
+        //PersonalTecnico.imprimirTecnicos();
+        Especialidad Electricidad = new Especialidad("ELE", "Electricidad");
         System.out.print("--------------------------------------------\n");
         System.out.print("Ingrese codigo de especialidad a solicitar: ");
         while(!entradaValida3){
             String codigoEspecialidad = scanner.nextLine();
-            for (Especialidad especialidad1: listaEspecialidades) {
-                if (especialidad1.getCodigo().equals(codigoEspecialidad)) {
-                    especialidadTecnico = especialidad1.getNombre();
-                    //especialidad = personal.getEspecialidad();
+            //int contador=0;
+            for (Especialidad personal: listaEspecialidades) {
+                //contador++;
+                //especialidadTecnico = personal.getEspecialidad().getNombre();
+                //tecnicoAsignado = personal.getnombreCompleto();
+                //String codigoEspe = personal.getEspecialidad().getCodigo();
+                //System.out.println(personal.getEspecialidad().getNombre());
+                if(personal.getCodigo().equals(codigoEspecialidad)){
+                    especialidadTecnico=personal.getNombre();
                     entradaValida3=true;
                 }
+
             }
+
             if (!entradaValida3){
                 System.out.println("ERROR, ingrese un código válido: ");
             }else {
@@ -198,7 +206,7 @@ public class Solicitud extends Servicios{
             }
         }
 
-        System.out.println("Especialidad: "+especialidadTecnico + " con tecnico: " +especialidad);
+        System.out.println("Especialidad: "+especialidadTecnico + " con tecnico: " +tecnicoAsignado);
         System.out.print("--------------------------------------------\n");
         System.out.print("ATENCION! Solicitud contiene los siguientes elementos: \n");
         System.out.print("Código: "+ codSolicitud+"\n");
@@ -207,8 +215,8 @@ public class Solicitud extends Servicios{
         System.out.print("Costo por Delivery: "+delivery+"\n");
         System.out.print("Costo por Servicio: "+tarifa+"\n");
         System.out.print("Descuento por Servicio: "+descuento+"\n");
-        System.out.print("Especialidad asiganado: "+especialidadTecnico+"\n");
-        System.out.print("Especialidad Técnico: "+especialidad+"\n");
+        System.out.print("Especialidad tecnico: "+especialidadTecnico+"\n");
+        System.out.print("Tecnico Asignado: "+tecnicoAsignado+"\n");
         System.out.print("Costo Total del Servicio: "+costoTotal+"\n");
         System.out.print("Cometarios sobre la solicitud: "+comentarios+"\n");
 
