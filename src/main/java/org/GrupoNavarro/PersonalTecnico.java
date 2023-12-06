@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class PersonalTecnico extends PersonaDatos {
     private String codigoEmpleado;
     private Especialidad especialidad;
-    private static final PersonalTecnico objPersonalTecnico = new PersonalTecnico();
+    private  PersonalTecnico objPersonalTecnico = new PersonalTecnico();
 
     public PersonalTecnico(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoEmpleado, Especialidad especialidad) {
         super(nombreCompleto, dni, numeroCelular, direccion);
@@ -19,9 +19,11 @@ public class PersonalTecnico extends PersonaDatos {
     public PersonalTecnico(){
         super();
     }
-    public static PersonalTecnico getInstance() {
+
+    public PersonalTecnico getObjPersonalTecnico() {
         return objPersonalTecnico;
     }
+
     public String getCodigoEmpleado() {
         return codigoEmpleado;
     }
