@@ -15,6 +15,10 @@ public final class Especialidad {
         this.nombre = nombre;
     }
 
+    public Especialidad() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -32,6 +36,10 @@ public final class Especialidad {
     }
 
     private static List<Especialidad> especialidades = new ArrayList<>();
+
+    public static List<Especialidad> getEspecialidades() {
+        return especialidades;
+    }
 
     static {
         // Crear las especialidades
