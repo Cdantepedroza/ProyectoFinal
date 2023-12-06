@@ -10,12 +10,12 @@ public class Main {
 
         Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
         GrupoNavarro.agregarCliente(cliente1);
-        //UsuarioAdm usuario = new UsuarioAdm("administrador", "Passw0rd");
+        //UsuarioAdm usuario = new UsuarioAdm("admin", "Passw0rd");
 
         UsuarioAdm usuario = UsuarioAdm.getInstance(); //obtenemos la instancia unica del usuario admin
 
         // LOGIN USER ADMIN ************************
-                //usuario.loginVerificationUser();
+                usuario.loginVerificationUser();  //Es codigoUser y Password
         // LOGIN USER ADMIN ************************
 
         // Carga de servicios base

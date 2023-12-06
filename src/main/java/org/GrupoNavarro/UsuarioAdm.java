@@ -10,16 +10,17 @@ public class UsuarioAdm extends PersonaDatos{
     private static UsuarioAdm instanciaUnica;
 
     // Constructor privado para evitar la creación de instancias desde afuera
-    private UsuarioAdm(String nombreCompleto, String dni, String numero_celular, String direccion, String codigoUser, String nombreUser) {
+    private UsuarioAdm(String nombreCompleto, String dni, String numero_celular, String direccion, String codigoUser, String nombreUser, String password) {
         super(nombreCompleto, dni, numero_celular, direccion);
         this.codigoUser = codigoUser;
         this.nombreUser = nombreUser;
+        this.password = password;
     }
     // Método público para obtener la instancia única de la clase
     public static UsuarioAdm getInstance() {
         if (instanciaUnica == null) {
             // Si no existe ninguna instancia, crea una nueva con los datos del usuario maestro
-            instanciaUnica = new UsuarioAdm("Usuario administrador", "79456378", "914336789","Calle administrador","admin","administrador");
+            instanciaUnica = new UsuarioAdm("Usuario administrador", "79456378", "914336789","Calle administrador","admin","administrador","Passw0rd");
         }
         return instanciaUnica;
     }
