@@ -146,7 +146,7 @@ public class Solicitud{
             if (!entradaValida){
                 System.out.println("ERROR, ingrese una código válido: ");
             }else {
-                System.out.println(" -Zona válida -  ");
+                System.out.println(" - Zona válida -  ");
             }
         }
 
