@@ -15,6 +15,9 @@ public final class Especialidad {
         this.nombre = nombre;
     }
 
+    public static void imprimirEspecialidades() {
+    }
+
     public String getNombre() {
         return nombre;
     }
