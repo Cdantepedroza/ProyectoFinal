@@ -27,6 +27,8 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        // Prueba de Indicador para Servicios
+        //int consultaServicio = 0;
 
         while (true) {
             System.out.println("\nMenú Principal:");
@@ -151,6 +153,7 @@ public class Main {
                 case 2:
                     // Lista de Clientes
                     // Implementa la lógica para mostrar la lista de pedidos registrados
+
                     GrupoNavarro.imprimirClientes();
                     System.out.println("Lista de Clientes - Implementa la lógica aquí");
                     break;
@@ -202,7 +205,8 @@ public class Main {
             System.out.println("\nMenú Servicos:");
             System.out.println("1. Registrar nuevo servicio");
             System.out.println("2. Modificar servicio");
-            System.out.println("3. Lista de servicios");
+            System.out.println("3. Eliminar de servicios");
+            System.out.println("4. Lista de servicios");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -215,6 +219,9 @@ public class Main {
                     Servicios.modificarServicioT();
                     break;
                 case 3:
+                    Servicios.eliminarServiciosT();
+                    break;
+                case 4:
                     Servicios.imprimirServicios();
                     break;
                 case 0:

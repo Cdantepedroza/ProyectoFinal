@@ -9,7 +9,6 @@ public class ZonaPostal {
     private String codigoPostal;
     private double tarifaZona;
 
-
     private static ArrayList<ZonaPostal> listaZonaPostal = new ArrayList();
 
     public ZonaPostal(String nombreDistrito, String codigoPostal, double tarifaZona) {
@@ -123,7 +122,6 @@ public class ZonaPostal {
         listaZonaPostal.add(zonapostal20);
         listaZonaPostal.add(zonapostal21);
     }
-
     public static void registrarNuevaZonaPostal() {
         System.out.println("Registrar nueva Zona Postal:");
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
@@ -141,7 +139,6 @@ public class ZonaPostal {
                 System.out.println("Error:"+ e.getMessage());
             }
         }
-
 
         String codigoPostal;
         while (true) {
@@ -193,7 +190,6 @@ public class ZonaPostal {
             contador++;
         }
     }
-
 
     public double getTarifaZona() {
         return tarifaZona;
