@@ -32,11 +32,12 @@ public class Main {
                 System.out.println("║         GRUPO NAVARRO         ║");
                 System.out.println("╚═══════════════════════════════╝");
                 System.out.println("            Bienvenido            ");
+                System.out.println("Sistema de Gestión de Solicitudes");
                 ejecutarUnaVez = false;
             }
             System.out.println("Menú Principal de Opciones:");
             System.out.println("1. Técnicos");
-            System.out.println("2. Pedidos");
+            System.out.println("2. Solicitudes");
             System.out.println("3. Clientes");
             System.out.println("4. Zona Postal");
             System.out.println("5. Servicios");
@@ -108,10 +109,10 @@ public class Main {
     }
     private static void menuPedidos(Scanner scanner){
         do {
-            System.out.println("\nMenú Pedidos:");
-            System.out.println("1. Registrar Pedido");
-            System.out.println("2. Lista de Pedidos");
-            System.out.println("3. Actualizar Pedidos");
+            System.out.println("\nMenú Solicitudes:");
+            System.out.println("1. Registrar Solicitud");
+            System.out.println("2. Lista de Solicitudes");
+            System.out.println("3. Actualizar Solicitud");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
