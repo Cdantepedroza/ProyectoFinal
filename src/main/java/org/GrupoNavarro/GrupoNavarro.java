@@ -1,46 +1,39 @@
 package org.GrupoNavarro;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class GrupoNavarro {
     private String nombre;
 
-    private static final GrupoNavarro objGrupoNavarro = new GrupoNavarro();
     private GrupoNavarro() {
     }
-
-    public static GrupoNavarro getInstance(){ //se usa para acceder a los atributos y metodos de la clase
-        return objGrupoNavarro;
-    }
-    private ArrayList<UsuarioAdm> listausuariosAdm = new ArrayList<>();
-    private static ArrayList<PersonalTecnico> listatecnicos = new ArrayList<>();
-    private static ArrayList<Cliente> listaclientes = new ArrayList<>();
-    private ArrayList<String> listaespecialidades = new ArrayList<>();
+    private static List<Cliente> listaClientes = new ArrayList<>();
 
 
-    public static void agregarCliente(Cliente cliente){
-        listaclientes.add(cliente);
-
-    }
     public GrupoNavarro(String nombre) {
         this.nombre = nombre;
     }
-    public static ArrayList<Cliente> getListaclientes() {
-        return listaclientes;
+
+    public static void agregarCliente(Cliente cliente) {
+        listaClientes.add(cliente);
     }
     public static void imprimirClientes() {
         System.out.println("\nLista de Clientes:");
         int contador = 1;
 
-        for (Cliente cliente : listaclientes) {
+        for (Cliente cliente : listaClientes) {
             System.out.println(contador + ". " + cliente);
             contador++;
         }
     }
+    public static List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
     /*
     CRITERIOS DE CREACION DE CODIGO DE CLIENTE
         CC: Iniciales que representan "Código de Cliente".
@@ -52,10 +45,8 @@ public class GrupoNavarro {
     public static void registrarNuevoCliente() {
         System.out.println("Agregar cliente:");
 
-        // Solicitar datos del cliente
         Scanner scanner = new Scanner(System.in);
 
-        // Validación del nombre (solo texto)
         String nombreCliente = "";
         while (true) {
             try {
@@ -64,12 +55,12 @@ public class GrupoNavarro {
                 if (!nombreCliente.matches("^[a-zA-Z\\s]+$")) {
                     throw new IllegalArgumentException("El nombre debe contener solo letras y espacios.");
                 }
-                break; // Salir del bucle si la validación es exitosa
+                break;
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }
         }
-        // Validación del DNI (solo números)
+
         String dniCliente = "";
         while (true) {
             try {
@@ -83,7 +74,6 @@ public class GrupoNavarro {
                 System.out.println("Error: " + e.getMessage());
             }
         }
-        // Validación del número de celular (solo números y máximo 9 dígitos)
         String celularCliente = "";
         while (true) {
             try {
@@ -92,7 +82,7 @@ public class GrupoNavarro {
                 if (!celularCliente.matches("\\d{1,9}")) {
                     throw new InputMismatchException("El número de celular debe contener solo números y tener como máximo 9 dígitos.");
                 }
-                break; // Salir del bucle si la validación es exitosa
+                break;
             } catch (InputMismatchException e) {
                 System.out.println("Error: " + e.getMessage());
             }

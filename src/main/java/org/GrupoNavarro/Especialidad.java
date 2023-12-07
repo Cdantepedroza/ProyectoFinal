@@ -9,6 +9,7 @@ import java.util.Scanner;
 public final class Especialidad {
     private String codigo;
     private String nombre;
+    private static List<Especialidad> especialidades = new ArrayList<>();
 
     public Especialidad(String codigo, String nombre) {
         this.codigo = codigo;
@@ -18,7 +19,6 @@ public final class Especialidad {
     public Especialidad() {
 
     }
-
     public String getNombre() {
         return nombre;
     }
@@ -35,7 +35,7 @@ public final class Especialidad {
         this.codigo = codigo;
     }
 
-    private static List<Especialidad> especialidades = new ArrayList<>();
+
 
     public static List<Especialidad> getEspecialidades() {
         return especialidades;

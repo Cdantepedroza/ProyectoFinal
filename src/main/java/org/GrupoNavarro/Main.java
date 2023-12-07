@@ -8,19 +8,20 @@ public class Main {
 
         GrupoNavarro empresa = new GrupoNavarro("Grupo Navarro");
 
-        Cliente cliente1 = new Cliente("dfdsf","75697852","9658324","av siempre viva", "dsfsd262626","15102");
-        GrupoNavarro.agregarCliente(cliente1);
-        //UsuarioAdm usuario = new UsuarioAdm("admin", "Passw0rd");
 
+
+        // LOGIN USER ADMIN ************************
         UsuarioAdm usuario = UsuarioAdm.getInstance(); //obtenemos la instancia unica del usuario admin
-
+        // usuario.loginVerificationUser();  //Es codigoUser y Password
         // LOGIN USER ADMIN ************************
-                usuario.loginVerificationUser();  //Es codigoUser y Password
-        // LOGIN USER ADMIN ************************
-
+        Cliente.CargarClientes();
+        //Carga Inicial Tecnicos
+        PersonalTecnico.cargaInicialTecnicos();
         // Carga de servicios base
         Servicios servicios = new Servicios();
         servicios.cargaInicialServicios();
+        // Carga Inicial de clientes
+
 
         // lista base de zonas postales
         ZonaPostal zonaPostal = new ZonaPostal();
@@ -58,6 +59,7 @@ public class Main {
                     break;
                 case 3:
                     menuClientes(scanner);
+                    break;
                 case 4:
                     menuZonaPostal(scanner);
                     break;
@@ -95,13 +97,12 @@ public class Main {
                     break;
                 case 2:
                     // listamos a los técnicos
-                        PersonalTecnico.imprimirTecnicos();
+                    PersonalTecnico.imprimirTecnicos();
                     break;
                 case 3:
                     Especialidad.crearEspecialidad();
                     break;
                 case 4:
-
                     Especialidad.listarEspecialidades();
                     break;
                 case 0:
@@ -126,12 +127,11 @@ public class Main {
             int opcionPedidos = scanner.nextInt();
             switch (opcionPedidos){
                 case 1:
-                    System.out.println("Registrar Pedido - Implementa la lógica aquí");
-                    Solicitud.registrarNuevaSolicitud();
+                    Solicitud.registroNuevaSolicitud();
                     break;
                 case 2:
-                    System.out.println("Lista de Pedidos - Implementa la lógica aquí");
-                    //Solicitud.imprimirServicios();
+                    System.out.println("\n");
+                    Solicitud.imprimirListaSolicitudes();
                     break;
                 case 0:
                     // volver al menu principal
@@ -163,7 +163,6 @@ public class Main {
                 case 2:
                     // Lista de Clientes
                     GrupoNavarro.imprimirClientes();
-                    System.out.println("Lista de Clientes - Implementa la lógica aquí");
                     break;
                 case 0:
                     // volver al menu principal

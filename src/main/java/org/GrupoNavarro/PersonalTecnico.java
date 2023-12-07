@@ -7,77 +7,97 @@ import java.util.Scanner;
 
 public class PersonalTecnico extends PersonaDatos {
     private String codigoEmpleado;
-    private Especialidad especialidad;
-    private  PersonalTecnico objPersonalTecnico = new PersonalTecnico();
+    private String especialidad;
+    private static ArrayList<PersonalTecnico> listaTecnicos = new ArrayList<>();
 
-    public PersonalTecnico(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoEmpleado, Especialidad especialidad) {
+    public PersonalTecnico(String nombreCompleto, String dni, String numeroCelular, String direccion, String codigoEmpleado, String especialidad) {
         super(nombreCompleto, dni, numeroCelular, direccion);
         this.codigoEmpleado = codigoEmpleado;
-        this.especialidad = especialidad != null ? especialidad : new Especialidad("DES", "Desconocido");
+        this.especialidad = especialidad;
+        listaTecnicos.add(this); // Agregar el técnico a la lista automáticamente al ser creado
     }
+    public PersonalTecnico() {
 
-    public PersonalTecnico(){
-        super();
     }
-
-    public PersonalTecnico getObjPersonalTecnico() {
-        return objPersonalTecnico;
-    }
-
     public String getCodigoEmpleado() {
         return codigoEmpleado;
     }
-    public void setCodigoEmpleado(String codigoEmpleado) {
-        this.codigoEmpleado = codigoEmpleado;
+    public String getEspecialidadTecnico() {
+        return getEspecialidad();
     }
-    public Especialidad getEspecialidad() {
+
+    public static ArrayList<PersonalTecnico> getListaTecnicos() {
+        return listaTecnicos;
+    }
+
+    public static void agregarTecnico(PersonalTecnico tecnico) {
+        listaTecnicos.add(tecnico);
+    }
+    public String getNombreCompletoTecnico(){
+        return getnombreCompleto();
+    }
+    public String getNumeroCelularTecnico(){
+        return getnumCelular();
+    }
+    public String getEspecialidad() {
         return especialidad;
     }
     public void setEspecialidad(Especialidad especialidad) {
-        this.especialidad = especialidad;
+        this.especialidad = String.valueOf(especialidad);
     }
     @Override
     public String toString() {
-        return "PersonalTecnico{" +
-                "codigoEmpleado='" + codigoEmpleado + '\'' +
-                ", especialidad='" + especialidad + '\'' +
-                '}';
+        return
+                "nombreCompleto: " + getNombreCompletoTecnico() +
+                ", dni: " + getDni() +
+                ", numeroCelular: " + getNumeroCelularTecnico()  +
+                ", direccion: " + getDireccion() +
+                ", codigoEmpleado: " + codigoEmpleado +
+                ", especialidad: " + especialidad ;
     }
     private static List<PersonalTecnico> tecnicos = new ArrayList<>();
     private static Especialidad Electricidad = new Especialidad("ELE", "Electricidad");
     private static Especialidad Seguridad = new Especialidad("SEG", "Seguridad");
     private static Especialidad Telecomunicaciones = new Especialidad("TEL", "Telecomunicaciones");
 
-    public List<PersonalTecnico> getTecnicos() {
-        return tecnicos;
-    }
-
-    public static void setTecnicos(List<PersonalTecnico> tecnicos) {
-        PersonalTecnico.tecnicos = tecnicos;
-    }
     public static void registrarTecnico(PersonalTecnico tecnico) {
-        tecnicos .add(tecnico);
+        listaTecnicos .add(tecnico);
     }
-
-    public static void imprimirTecnicos() {
-
-        PersonalTecnico tecnico1 = new PersonalTecnico("Juan Pérez", "12345678A", "912345678", "Calle Mayor, 123", "1234", Electricidad);
-        PersonalTecnico tecnico2 = new PersonalTecnico("Pepe La plata", "12345678A", "912345678", "Calle Mayor, 123", "1234", Seguridad);
-        PersonalTecnico tecnico3 = new PersonalTecnico("Claudia Pérez", "12345678A", "912345678", "Calle Mayor, 123", "1234", Telecomunicaciones);
+    public static void cargaInicialTecnicos(){
+        PersonalTecnico tecnico1 = new PersonalTecnico("Juan Pérez", "12345678A", "912345678", "Calle Mayor, 123", "1234", "Instalación de cámaras");
+        PersonalTecnico tecnico2 = new PersonalTecnico("Pepe La plata", "12345678A", "912345678", "Calle Mayor, 123", "1234", "Cercos eléctricos");
+        PersonalTecnico tecnico3 = new PersonalTecnico("Claudia Pérez", "12345678A", "912345678", "Calle Mayor, 123", "1234", "Alarmas de seguridad");
+        PersonalTecnico tecnico4 = new PersonalTecnico("Eduardo Martínez", "87654321B", "987654321", "Calle Principal, 456", "5678", "Intercomunicadores");
+        PersonalTecnico tecnico5 = new PersonalTecnico("María Sánchez", "87654321B", "987654321", "Calle Principal, 456", "5678", "Alarmas contra incendio");
+        PersonalTecnico tecnico6 = new PersonalTecnico("Luis Rodríguez", "87654321B", "987654321", "Calle Principal, 456", "5678", "Control de acceso");
+        PersonalTecnico tecnico7 = new PersonalTecnico("Ana Gómez", "98765432C", "876543210", "Avenida Central, 789", "9876", "Instalación eléctrica");
+        PersonalTecnico tecnico8 = new PersonalTecnico("Carlos Pérez", "98765432C", "876543210", "Avenida Central, 789", "9876", "Instalación de cámaras");
+        PersonalTecnico tecnico9 = new PersonalTecnico("Laura Martínez", "98765432C", "876543210", "Avenida Central, 789", "9876", "Cercos eléctricos");
+        PersonalTecnico tecnico10 = new PersonalTecnico("Roberto Sánchez", "65432109D", "654987321", "Calle Secundaria, 567", "3456", "Alarmas de seguridad");
 
         PersonalTecnico.registrarTecnico(tecnico1);
         PersonalTecnico.registrarTecnico(tecnico2);
         PersonalTecnico.registrarTecnico(tecnico3);
+        PersonalTecnico.registrarTecnico(tecnico4);
+        PersonalTecnico.registrarTecnico(tecnico5);
+        PersonalTecnico.registrarTecnico(tecnico6);
+        PersonalTecnico.registrarTecnico(tecnico7);
+        PersonalTecnico.registrarTecnico(tecnico8);
+        PersonalTecnico.registrarTecnico(tecnico9);
+        PersonalTecnico.registrarTecnico(tecnico10);
+
+    }
+    public static void imprimirTecnicos() {
 
         System.out.println("Lista de técnicos: \n");
 
-        for (PersonalTecnico tecnico : tecnicos) {
+        for (PersonalTecnico tecnico : listaTecnicos) {
             System.out.println("Nombre: " + tecnico.getnombreCompleto());
             System.out.println("DNI: " + tecnico.getDni());
             System.out.println("Número de teléfono: " + tecnico.getnumCelular());
             System.out.println("Dirección: " + tecnico.getDireccion());
             System.out.println("Código de personal técnico: " + tecnico.getCodigoEmpleado());
-            System.out.println("Especialidad: " + tecnico.getEspecialidad().getNombre()+" \n");
+            System.out.println("Especialidad: " + tecnico.getEspecialidad()+" \n");
         }
     }
 
@@ -122,7 +142,7 @@ public class PersonalTecnico extends PersonaDatos {
             Especialidad objEspecialidad = Especialidad.obtenerEspecialidad(especialidad);
 
             // Crear el objeto PersonalTecnico
-            PersonalTecnico tecnico = new PersonalTecnico(nombreCompleto, dni, numeroCelular, direccion, codigoEmpleado, objEspecialidad);
+            PersonalTecnico tecnico = new PersonalTecnico(nombreCompleto, dni, numeroCelular, direccion, codigoEmpleado, especialidad);
 
             // Agregar el técnico a la lista
             PersonalTecnico.registrarTecnico(tecnico);

@@ -21,6 +21,7 @@ public class ZonaPostal {
     public ZonaPostal() {
 
     }
+
     public void setNombreDistrito(String nombreDistrito) {
         this.nombreDistrito = nombreDistrito;
     }
@@ -44,7 +45,7 @@ public class ZonaPostal {
         return nombreDistrito;
     }
 
-    public ArrayList<ZonaPostal> getListaZonaPostal() {
+    public static ArrayList<ZonaPostal> getListaZonaPostal() {
         return listaZonaPostal;
     }
     public void cargaInicialZonas() {

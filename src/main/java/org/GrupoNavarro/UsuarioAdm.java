@@ -25,29 +25,10 @@ public class UsuarioAdm extends PersonaDatos{
         return instanciaUnica;
     }
 
-    //public UsuarioAdm(String codigoUser, String password) {
-    //this.codigoUser = codigoUser;
-    //this.password = password;
-    //}
-
-    public void setCodigoUser(String codigoUser) {
-        this.codigoUser = codigoUser;
-    }
-
-    public String getNombreUser() {
-        return nombreUser;
-    }
-
-    public void setNombreUser(String nombreUser) {
-        this.nombreUser = nombreUser;
-    }
     public String getCodigoUser() {
         return codigoUser;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     public void loginVerificationUser() {
         // Obtener la instancia única del usuario admin

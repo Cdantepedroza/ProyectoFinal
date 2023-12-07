@@ -1,236 +1,251 @@
 package org.GrupoNavarro;
 
+import java.text.CollationKey;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solicitud{
-
-    //JV
     private String codigoSolicitud;
     private String fechaAtencion;
     private String fechaEmision;
     private String comentarios;
     private String estado;
+    private double CostoTotal;
+    private ZonaPostal zonaPostalAsignada;
+    private Cliente clienteAsignado;
+    private Servicios servicioAsignado;
+    private PersonalTecnico tecnicoAsignado;
+    private static ArrayList<Solicitud> listaSolicitudes = new ArrayList<>();
 
-    private static ArrayList<Solicitud> listaSolicitudes;
-
-    private static ZonaPostal zona = new ZonaPostal();
-    private static ArrayList<ZonaPostal> listaZona = zona.getListaZonaPostal();
-
-    private static PersonalTecnico tecnico = new PersonalTecnico();
-    private static ArrayList<PersonalTecnico> listaTecnicos = (ArrayList<PersonalTecnico>) tecnico.getTecnicos();
-
-    private static Especialidad especialidad = new Especialidad();
-    private static ArrayList<Especialidad> listaEspecialidades = (ArrayList<Especialidad>) especialidad.getEspecialidades();
-
-
-
-    public Solicitud(String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, PersonalTecnico personalTecnico) {
+    public Solicitud(String codigoSolicitud, String fechaAtencion, String fechaEmision, String comentarios, String estado,double costoTotal,ZonaPostal zonaPostalAsignada, Cliente clienteAsignado, Servicios servicioAsignado, PersonalTecnico tecnicoAsignado) {
         this.codigoSolicitud = codigoSolicitud;
         this.fechaAtencion = fechaAtencion;
         this.fechaEmision = fechaEmision;
         this.comentarios = comentarios;
-        this.estado = "EN GESTION";
-        listaSolicitudes = new ArrayList<>();
-    }
-
-    public String getCodigoSolicitud() {
-        return codigoSolicitud;
-    }
-
-    public void setCodigoSolicitud(String codigoSolicitud) {
-        this.codigoSolicitud = codigoSolicitud;
-    }
-
-    public String getFechaAtencion() {
-        return fechaAtencion;
-    }
-
-    public void setFechaAtencion(String fechaAtención) {
-        this.fechaAtencion = fechaAtencion;
-    }
-
-    public String getFechaEmision() {
-        return fechaEmision;
-    }
-
-    public void setFechaEmision(String fechaEmisión) {
-        this.fechaEmision = fechaEmision;
-    }
-
-    public String getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(String comentarios) {
-        this.comentarios = comentarios;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
         this.estado = estado;
+        this.CostoTotal = costoTotal;
+        this.zonaPostalAsignada = zonaPostalAsignada;
+        this.clienteAsignado = clienteAsignado;
+        this.servicioAsignado = servicioAsignado;
+        this.tecnicoAsignado = tecnicoAsignado;
     }
 
-
-    public static void agregarSolicitud(Solicitud solicitud){
-        listaSolicitudes.add(solicitud);
+    public Solicitud() {
+        this.codigoSolicitud = codigoSolicitud;
+        this.fechaAtencion = fechaAtencion;
+        this.fechaEmision = fechaEmision;
+        this.comentarios = comentarios;
+        this.estado = estado;
+        this.clienteAsignado = clienteAsignado;
+        this.servicioAsignado = servicioAsignado;
+        this.tecnicoAsignado = tecnicoAsignado;
     }
+    private static int contadorSolicitudes = 1;
+    public static void registroNuevaSolicitud() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("REGISTRAR NUEVA SOLICITUD: \n");
 
-    public static double descuentoServicio(Servicios servicio){
+        String fechaAtencion;
 
-        return switch (servicio.getNombre()) {
-            case "Alarmas de seguridad" -> 0.20;
-            case "Cercos electricos" -> 0.15;
-            case "Intercomunicadores" -> 0.10;
-            default -> 0;
-        };
-    }
+        do {
+            System.out.print("Ingrese la fecha de atención \n(formato esperado: DD/MM/AAAA):");
+            fechaAtencion = scanner.nextLine();
+        } while (!validarFormatoFecha(fechaAtencion));
 
-    public static double costoFinal(double tarifa, double delivery, Servicios servicios){
-        double igv = tarifa *0.18;
-        double importeDescuento = tarifa *descuentoServicio(servicios);
-        return tarifa +igv-importeDescuento+delivery;
-    }
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoMes = new SimpleDateFormat("MM");
+        SimpleDateFormat formatoAnio = new SimpleDateFormat("yy");
+        String mesActual = formatoMes.format(fechaActual);
+        String anioActual = formatoAnio.format(fechaActual);
+        String codigoSolicitud = "GN-" + String.format("%05d", contadorSolicitudes) + "-" + mesActual + anioActual;
+        String fechaEmision = formatoMes.format(fechaActual) + "/" + formatoAnio.format(fechaActual);
 
-    public static void imprimirSolicitudes() {
-        System.out.println("\nLista de Solicitudes:");
-        int contador = 1;
-        for (Solicitud servicio : listaSolicitudes) {
-            System.out.println(contador + ". " + servicio);
-            contador++;
-        }
-    }
-
-    public static void registrarNuevaSolicitud(){
-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
-
-        double tarifa = 0;
-        double descuento = 0;
-        double delivery = 0;
-        double costoTotal = 0;
-        String especialidadTecnico = "";
-        String tecnicoAsignado = "";
-        PersonalTecnico tecnicoAsignado2 = null;
-        Especialidad especialidadA= null;
-        boolean entradaValida = false;
-        boolean entradaValida2 = false;
-        boolean entradaValida3 = false;
-
-        System.out.print("");
-        System.out.println("AGREGAR SOLICITUD");
-        // Ingresar código de nueva solicitud
-        System.out.print("Ingrese el código de la solicitud: ");
-        String codSolicitud = scanner.nextLine();
-        System.out.print("Ingrese la fecha de atención: ");
-        String fechaAt = scanner.nextLine();
-        System.out.print("Ingrese la fecha de Emisión: ");
-        String fechaEm = scanner.nextLine();
-        System.out.print("Ingrese comentarios: ");
+        System.out.print("Ingrese comentarios:");
         String comentarios = scanner.nextLine();
 
-        System.out.print("");
-        ZonaPostal.imprimirZonasPostales();
-        System.out.print("--------------------------------------------\n");
-        System.out.print("Ingrese código de Zona delivery: ");
-        while (!entradaValida){
-            String codigo = scanner.nextLine();
-            System.out.print("");
-            for (ZonaPostal zone: listaZona) {
-                if (zone.getCodigoPostal().equals(codigo)) {
-                    delivery = zone.getTarifaZona();
-                    entradaValida  = true;
-                }
-            }
-            if (!entradaValida){
-                System.out.println("ERROR, ingrese una código válido: ");
-            }else {
-                System.out.println(" - Zona válida -  ");
-            }
-        }
+        System.out.print("Ingrese estado:");
+        String estado = scanner.nextLine();
 
+        Cliente clienteElegido = elegirCliente();
+        String codigoPostalCliente = clienteElegido.getCodigoPostal();
+        ZonaPostal zonaPostalElegida = obtenertarifaZonaPostalPorCodigoPostalCliente(codigoPostalCliente);
 
-        System.out.println("\nCosto por delivery: "+delivery);
+        Servicios servicioElegido = elegirServicio();
 
-        System.out.print("");
-        Servicios.imprimirServicios();
-        System.out.print("--------------------------------------------\n");
-        System.out.print("Ingrese Nombre de Servicio a Solicitar: ");
-        while (!entradaValida2) {
-            String servicios = scanner.nextLine();
-            for (Servicios serv: Servicios.listaServicios) {
-                if (serv.getNombre().equals(servicios)) {
-                    tarifa = serv.getTarifaServicio();
-                    descuento = Solicitud.descuentoServicio(serv);
-                    costoTotal = Solicitud.costoFinal(tarifa,delivery,serv);
-                    entradaValida2 = true;
-                }
-            }
-            if (!entradaValida2){
-                System.out.println("ERROR, ingrese un nombre válido: ");
-            }else {
-                System.out.println(" - Servicio válido -  ");
-            }
+        PersonalTecnico tecnicoElegido = elegirTecnico(servicioElegido);
 
-        }
+        String diaDeHoy = calculadiaCostoTotal();
 
-        System.out.println("Tarifa: "+tarifa+" - Descuento por solicitud de servicio: "+descuento);
-        System.out.print("\n");
+        double costoTotal = 0;
 
-        Especialidad.listarEspecialidades();
-        //PersonalTecnico.imprimirTecnicos();
-        Especialidad Electricidad = new Especialidad("ELE", "Electricidad");
-        System.out.print("--------------------------------------------\n");
-        System.out.print("Ingrese codigo de especialidad a solicitar: ");
-        while(!entradaValida3){
-            String codigoEspecialidad = scanner.nextLine();
-            //int contador=0;
-            for (Especialidad personal: listaEspecialidades) {
-                //contador++;
-                //especialidadTecnico = personal.getEspecialidad().getNombre();
-                //tecnicoAsignado = personal.getnombreCompleto();
-                //String codigoEspe = personal.getEspecialidad().getCodigo();
-                //System.out.println(personal.getEspecialidad().getNombre());
-                if(personal.getCodigo().equals(codigoEspecialidad)){
-                    especialidadTecnico=personal.getNombre();
-                    entradaValida3=true;
-                }
-
-            }
-
-            if (!entradaValida3){
-                System.out.println("ERROR, ingrese un código válido: ");
-            }else {
-                System.out.println(" - Servicio válido -  ");
+        for (Servicios servicio : Servicios.listaServicios) {
+            double costoServicio = servicioElegido.getTarifaServicio();
+            double costoZonaPostal = zonaPostalElegida.getTarifaZona();
+            if (diaDeHoy.equals("Sabado") || diaDeHoy.equals("Domingo")) {
+                costoTotal = (costoServicio + costoZonaPostal) * 1.10;
+                DecimalFormat df = new DecimalFormat("#.##");
+                costoTotal = Double.parseDouble(df.format(costoTotal));
+            } else {
+                costoTotal = costoServicio + costoZonaPostal;
             }
         }
 
-        System.out.println("Especialidad: "+especialidadTecnico + " con tecnico: " +tecnicoAsignado);
-        System.out.print("--------------------------------------------\n");
-        System.out.print("ATENCION! Solicitud contiene los siguientes elementos: \n");
-        System.out.print("Código: "+ codSolicitud+"\n");
-        System.out.print("Fecha de atención:" +fechaAt+"\n");
-        System.out.print("Fecha de emisión:" + fechaEm+"\n");
-        System.out.print("Costo por Delivery: "+delivery+"\n");
-        System.out.print("Costo por Servicio: "+tarifa+"\n");
-        System.out.print("Descuento por Servicio: "+descuento+"\n");
-        System.out.print("Especialidad tecnico: "+especialidadTecnico+"\n");
-        System.out.print("Tecnico Asignado: "+tecnicoAsignado+"\n");
-        System.out.print("Costo Total del Servicio: "+costoTotal+"\n");
-        System.out.print("Cometarios sobre la solicitud: "+comentarios+"\n");
+        Solicitud nuevaSolicitud = new Solicitud();
+        nuevaSolicitud.codigoSolicitud = codigoSolicitud;
+        nuevaSolicitud.fechaAtencion = fechaAtencion;
+        nuevaSolicitud.fechaEmision = fechaEmision;
+        nuevaSolicitud.comentarios = comentarios;
+        nuevaSolicitud.estado = estado;
+        nuevaSolicitud.CostoTotal = costoTotal;
+        nuevaSolicitud.zonaPostalAsignada = zonaPostalElegida;
+        nuevaSolicitud.clienteAsignado = clienteElegido;
+        nuevaSolicitud.servicioAsignado = servicioElegido;
+        nuevaSolicitud.tecnicoAsignado = tecnicoElegido;
 
+        listaSolicitudes.add(nuevaSolicitud);
 
+        System.out.println("Solicitud registrada exitosamente.");
+        System.out.println(nuevaSolicitud.toString());
+        contadorSolicitudes++;
+    }
+    private static ZonaPostal obtenertarifaZonaPostalPorCodigoPostalCliente(String codigoPostalCliente) {
+        // Buscar la ZonaPostal correspondiente al código postal del cliente
+        for (ZonaPostal zonaPostal : ZonaPostal.getListaZonaPostal()) {
+            if (zonaPostal.getCodigoPostal().equals(codigoPostalCliente)) {
+                return zonaPostal;
+            }
+        }
+
+        System.out.println("Zona Postal no encontrada para el código postal del cliente. Seleccionando la primera Zona Postal por defecto.");
+        return ZonaPostal.getListaZonaPostal().get(0);
+    }
+
+    private static Cliente elegirCliente() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Seleccione un cliente:");
+
+        for (int i = 0; i < GrupoNavarro.getListaClientes().size(); i++) {
+            Cliente cliente = GrupoNavarro.getListaClientes().get(i);
+            System.out.println((i + 1) + ". " + cliente.getnombreCompleto()+cliente.getCodigoPostal());
+        }
+
+        int opcionElegida = scanner.nextInt();
+
+        if (opcionElegida >= 1 && opcionElegida <= GrupoNavarro.getListaClientes().size()) {
+            return GrupoNavarro.getListaClientes().get(opcionElegida - 1);
+        } else {
+            System.out.println("Opción no válida. Seleccionando el primer cliente por defecto.");
+            return GrupoNavarro.getListaClientes().get(0);
+        }
+    }
+    private static PersonalTecnico elegirTecnico(Servicios servicioElegido) {
+        String especialidadServicio = servicioElegido.getNombre();
+
+        List<PersonalTecnico> tecnicosDisponibles = PersonalTecnico.getListaTecnicos().stream()
+                .filter(tecnico -> tecnico.getEspecialidadTecnico().equals(especialidadServicio))
+                .collect(Collectors.toList());
+
+        if (tecnicosDisponibles.isEmpty()) {
+            System.out.println("No hay técnicos disponibles con la especialidad del servicio. Seleccionando el primer técnico disponible.");
+            return PersonalTecnico.getListaTecnicos().get(0);
+        }
+
+        Random rand = new Random();
+        return tecnicosDisponibles.get(rand.nextInt(tecnicosDisponibles.size()));
+    }
+    private static boolean validarFormatoFecha(String fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        formatoFecha.setLenient(false);
 
         try {
-            // Crear y agregar solicitud a la lista
-            //Solicitud nuevaSolicitud = new Solicitud(nom,varr,codSolicitud,fechaAt,fechaEm,comentarios,);
-            //Solicitud.agregarSolicitud(nuevaSolicitud);
-            System.out.println("Solicitud agregado correctamente.");
-        } catch (Exception e) {
-            System.out.println("Error al agregar el servicio: " + e.getMessage());
+            formatoFecha.parse(fecha);
+            return true;
+        } catch (ParseException e) {
+            System.out.println("Formato de fecha incorrecto. Intente nuevamente.");
+            return false;
+        }
+    }
+
+    private static Servicios elegirServicio() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Seleccione un servicio:");
+
+        for (int i = 0; i < Servicios.listaServicios.size(); i++) {
+            Servicios servicio = Servicios.listaServicios.get(i);
+            System.out.println((i + 1) + ". " + servicio.getNombre()+" "+servicio.getTarifaServicio());
         }
 
+        int opcionElegida = scanner.nextInt();
+
+        if (opcionElegida >= 1 && opcionElegida <= Servicios.listaServicios.size()) {
+            return Servicios.listaServicios.get(opcionElegida - 1);
+        } else {
+            System.out.println("Opción no válida. Seleccionando el primer servicio por defecto.");
+            return Servicios.listaServicios.get(0);
+        }
+    }
+    // CALCULAR COSTO TOTAL SEGUN EL DIA
+    public static String calculadiaCostoTotal(){
+        String dhoy;
+        // Creamos una instancia del calendario
+        Calendar now = Calendar.getInstance();
+
+        System.out.println("Fecha actual : " + (now.get(Calendar.MONTH) + 1)
+                + "-"
+                + now.get(Calendar.DATE)
+                + "-"
+                + now.get(Calendar.YEAR));
+
+        // Array con los dias de la semana
+        String[] strDays = new String[]{
+                "Domingo",
+                "Lunes",
+                "Martes",
+                "Miercoles",
+                "Jueves",
+                "Viernes",
+                "Sabado"};
+
+        dhoy = strDays[now.get(Calendar.DAY_OF_WEEK) - 1];
+        // El dia de la semana inicia en el 1 mientras que el array empieza en el 0
+        System.out.println("Hoy es : " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
+        return dhoy;
+    }
+    // CALCULAR COSTO TOTAL SEGUN EL DIA
+
+    public static void imprimirListaSolicitudes() {
+        System.out.println("Lista de Solicitudes:");
+        listaSolicitudes.stream().map(Solicitud::toString2).forEach(System.out::println);
+    }
+    public String toString2() {
+        return  "***Solicitud: \n" +
+                "  Código de Solicitud: " + codigoSolicitud +
+                ", Fecha de Atención: " + fechaAtencion+
+                ", Fecha de Emisión: " + fechaEmision + "\n" +
+                "  Comentarios: " + comentarios + "\n" +
+                "  Estado: " + estado + "\n" +
+                "Cliente: \n" + "  " + clienteAsignado + "\n" +
+                "Servicio: \n" + "  " + servicioAsignado + "\n" +
+                "Técnico: \n" + "  " + tecnicoAsignado + "\n";
+    }
+    @Override
+    public String toString() {
+        return  "***Solicitud: \n" +
+                "  Código de Solicitud: " + codigoSolicitud + "\n" +
+                "  Fecha de Atención: " + fechaAtencion + "\n" +
+                "  Fecha de Emisión: " + fechaEmision + "\n" +
+                "  Comentarios: " + comentarios + "\n" +
+                "  Estado: " + estado + "\n" +
+                "  Costo Total: " + CostoTotal + "\n" +
+                "Zona Postal: \n" + "  " + zonaPostalAsignada + "\n"+
+                "Cliente: \n" + "  " + clienteAsignado + "\n" +
+                "Servicio: \n" + "  " + servicioAsignado + "\n" +
+                "Técnico: \n" + "  " + tecnicoAsignado + "\n";
     }
 
 }

@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 public class Servicios  {
     private String nombre;
     private double tarifaServicio;
-
     public static ArrayList<Servicios> listaServicios = new ArrayList<>();
 
     public Servicios(String nombre, double tarifaServicio) {
@@ -20,11 +19,13 @@ public class Servicios  {
     public Servicios() {
 
     }
-
     public String getNombre() {
         return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     public double getTarifaServicio() {
         return tarifaServicio;
     }
@@ -50,8 +51,6 @@ public class Servicios  {
         tarif = 0;
         encontrado = false;
 
-
-
         for (Servicios servicio : listaServicios){
             nombreTmp = servicio.getNombre();
 
@@ -63,10 +62,8 @@ public class Servicios  {
                 System.out.println("Servicio modificado correctamente.");
             }
         }
-
         if (encontrado == false){
             System.out.println("\nServicio no encontrado: " + nombre);
-
         }
     }
     public static ArrayList<Servicios> getListaServicios() {
@@ -74,7 +71,7 @@ public class Servicios  {
     }
 
     public void cargaInicialServicios(){
-        Servicios servicio1 = new Servicios("Instalacioón de camaras", 400);
+        Servicios servicio1 = new Servicios("Instalación de camaras", 400);
         Servicios servicio2 = new Servicios("Cercos electricos", 300);
         Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);
         Servicios servicio4 = new Servicios("Intercomunicadores", 800);
