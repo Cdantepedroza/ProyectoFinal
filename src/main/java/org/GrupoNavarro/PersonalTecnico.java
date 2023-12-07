@@ -198,10 +198,10 @@ public class PersonalTecnico extends PersonaDatos {
 
         PersonalTecnico tecnico = buscarTencicoPorDNI(dniTecnicoEliminar);
 
-        if (dniTecnicoEliminar != null) {
+        if (tecnico != null) {
             System.out.println("Eliminando Técnico - DNI: " + dniTecnicoEliminar);
 
-            listaTecnicos.remove(dniTecnicoEliminar);
+            listaTecnicos.remove(tecnico);
 
             System.out.println("Cliente eliminado exitosamente.");
         } else {
