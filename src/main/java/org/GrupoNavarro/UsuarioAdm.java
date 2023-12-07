@@ -32,7 +32,7 @@ public class UsuarioAdm extends PersonaDatos{
         boolean credencialesCorrectas = false;
 
         while (!credencialesCorrectas) {
-            String userId = JOptionPane.showInputDialog("Usuario:");
+            String userId = JOptionPane.showInputDialog(null,"Usuario:","Grupo navarro",JOptionPane.PLAIN_MESSAGE);
 
             if (userId == null) {
                 JOptionPane.showMessageDialog(null, "Operación cancelada. Cierre del programa.", "Adiós", JOptionPane.INFORMATION_MESSAGE);
