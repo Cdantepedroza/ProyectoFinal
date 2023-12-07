@@ -1,9 +1,5 @@
 package org.GrupoNavarro;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -194,5 +190,71 @@ public class Servicios  {
         System.out.println("Hoy es : " + strDays[now.get(Calendar.DAY_OF_WEEK) - 1]);
         return dhoy;
     }
+    // MÉTODO PARA ELIMINAR SERVICIO
+    public static void eliminarServiciosT(){
 
+        String registroE;
+        registroE = " ";
+        System.out.println("Eliminar servicio:");
+
+        // Solicitar nombre del servicio a eliminar
+        try {
+            System.out.print("Ingrese el nombre del servicio a eliminar: ");
+            Scanner scanner = new Scanner(System.in).useLocale(Locale.US);;
+            String nombreServicioE = scanner.nextLine();
+
+            // BUSQUEDA DEL REGISTRO QUE CONTENGA EL NOMBRE INGRESADO POR TECLADO
+            registroE = Servicios.buscarServicio(nombreServicioE, listaServicios);
+
+            Servicios.eliminarServicio(registroE, listaServicios);
+
+        } catch (Exception e) {
+            System.out.println("\nError al eliminar el servicio: " + e.getMessage());
+        }
+
+
+    }
+    public  static String buscarServicio(String nombre, ArrayList<Servicios> listaServicios) {
+        String nombreTmp;
+        double tarifaTmp;
+        String registroEncontrado;
+        boolean encontrado;
+        nombreTmp = " ";
+        registroEncontrado = " ";
+
+        encontrado = false;
+
+        for (Servicios servicio : listaServicios){
+            nombreTmp = servicio.getNombre();
+            tarifaTmp = servicio.getTarifaServicio();
+            if (nombreTmp.equals(nombre)){
+                registroEncontrado = "Nombre: " + nombreTmp + ", Tarifa: " + tarifaTmp;
+                encontrado = true;
+                System.out.println("Servicio encontrado correctamente." + registroEncontrado);
+            }
+        }
+
+        if (encontrado == false){
+            System.out.println("\nServicio no encontrado: " + nombre);
+        }
+        return registroEncontrado;
+    }
+    public  static void eliminarServicio(String nombre, ArrayList<Servicios> listaServicios) {
+        boolean encontrado;
+        encontrado = false;
+
+        Iterator iterator = listaServicios.iterator();
+        while (iterator.hasNext()){
+            Object nombreTmp = iterator.next();
+            if (nombreTmp.toString().equals(nombre)){
+                iterator.remove();
+                encontrado = true;
+                System.out.println("Servicio eliminado correctamente.");
+            }
+        }
+
+        if (encontrado == false){
+            System.out.println("\nServicio no encontrado: " + nombre);
+        }
+    }
 }

@@ -216,8 +216,9 @@ public class Main {
         do {
             System.out.println("\nMenú Servicos:");
             System.out.println("1. Registrar nuevo servicio");
-            System.out.println("2. Modificar servicio");
-            System.out.println("3. Lista de servicios");
+            System.out.println("2. Lista de servicios");
+            System.out.println("3. Actualizar servicio");
+            System.out.println("4. Eliminar servicio");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -227,10 +228,13 @@ public class Main {
                     Servicios.registrarNuevoServicio();
                     break;
                 case 2:
-                    Servicios.modificarServicioT();
+                    Servicios.imprimirServicios();
                     break;
                 case 3:
-                    Servicios.imprimirServicios();
+                    Servicios.modificarServicioT();
+                    break;
+                case 4:
+                    Servicios.eliminarServiciosT();
                     break;
                 case 0:
                     // volver al menu principal
@@ -244,5 +248,7 @@ public class Main {
 
         }while (true);
     }
+
+
 
 }
