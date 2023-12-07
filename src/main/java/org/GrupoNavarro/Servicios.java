@@ -70,7 +70,7 @@ public class Servicios  {
         return listaServicios;
     }
 
-    public void cargaInicialServicios(){
+    public static void cargaInicialServicios(){
         Servicios servicio1 = new Servicios("Instalación de camaras", 400);
         Servicios servicio2 = new Servicios("Cercos electricos", 300);
         Servicios servicio3 = new Servicios("Alarmas de seguridad", 500);

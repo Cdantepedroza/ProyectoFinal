@@ -48,7 +48,7 @@ public class ZonaPostal {
     public static ArrayList<ZonaPostal> getListaZonaPostal() {
         return listaZonaPostal;
     }
-    public void cargaInicialZonas() {
+    public static void cargaInicialZonas() {
         ZonaPostal zonapostal1 = new ZonaPostal("Lima","15001",25);
         ZonaPostal zonapostal2 = new ZonaPostal("Callao","15002",35 );
         ZonaPostal zonapostal3 = new ZonaPostal("Ate Vitarte","15026",30);

@@ -14,18 +14,15 @@ public class Main {
         UsuarioAdm usuario = UsuarioAdm.getInstance(); //obtenemos la instancia unica del usuario admin
         // usuario.loginVerificationUser();  //Es codigoUser y Password
         // LOGIN USER ADMIN ************************
-        Cliente.CargarClientes();
+
         //Carga Inicial Tecnicos
         PersonalTecnico.cargaInicialTecnicos();
         // Carga de servicios base
-        Servicios servicios = new Servicios();
-        servicios.cargaInicialServicios();
+        Servicios.cargaInicialServicios();
         // Carga Inicial de clientes
-
-
+        Cliente.CargarClientes();
         // lista base de zonas postales
-        ZonaPostal zonaPostal = new ZonaPostal();
-        zonaPostal.cargaInicialZonas();
+        ZonaPostal.cargaInicialZonas();
 
         Scanner scanner = new Scanner(System.in);
 
