@@ -37,7 +37,13 @@ public final class Cliente extends PersonaDatos {
         GrupoNavarro.agregarCliente(cliente3);
         GrupoNavarro.agregarCliente(cliente4);
         GrupoNavarro.agregarCliente(cliente5);
+        GrupoNavarro.agregarCliente(cliente6);
+        GrupoNavarro.agregarCliente(cliente7);
+        GrupoNavarro.agregarCliente(cliente8);
+        GrupoNavarro.agregarCliente(cliente9);
+        GrupoNavarro.agregarCliente(cliente10);
     }
+
     public String getCodigoCliente() {
         return codigoCliente;
     }

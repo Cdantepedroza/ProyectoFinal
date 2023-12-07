@@ -1,10 +1,7 @@
 package org.GrupoNavarro;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class GrupoNavarro {
     private String nombre;
@@ -12,7 +9,7 @@ public class GrupoNavarro {
     private GrupoNavarro() {
     }
     private static List<Cliente> listaClientes = new ArrayList<>();
-
+    private static Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
     public GrupoNavarro(String nombre) {
         this.nombre = nombre;
@@ -112,4 +109,129 @@ public class GrupoNavarro {
         GrupoNavarro.agregarCliente(nuevoCliente);
         System.out.println("Cliente agregado correctamente.");
     }
+    public static void actualizarCliente() {
+        imprimirDniNombreCliente();
+
+        System.out.print("\nIngrese el DNI del cliente que desea actualizar:");
+        String codigoClienteActualizar = scanner.nextLine();
+
+        Cliente clienteActualizar = buscarClientePorDNI(codigoClienteActualizar);
+
+        if (clienteActualizar != null) {
+            System.out.println("Actualizando Cliente: "+ clienteActualizar.getnombreCompleto() +" - DNI: "+ codigoClienteActualizar);
+
+            String nuevonombreCliente = "";
+            while (true) {
+                try {
+                    System.out.print("Ingrese el nuevo nombre del cliente: ");
+                    nuevonombreCliente = scanner.nextLine();
+                    if (!nuevonombreCliente.matches("^[a-zA-Z\\s]+$")) {
+                        throw new IllegalArgumentException("El nombre debe contener solo letras y espacios.");
+                    }
+                    break;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+
+            String nuevoDniCliente = "";
+            while (true) {
+                try {
+                    System.out.print("Ingrese el nuevo DNI del cliente: ");
+                    nuevoDniCliente = scanner.nextLine();
+                    if (!nuevoDniCliente.matches("\\d+")) {
+                        throw new InputMismatchException("El DNI debe contener solo números.");
+                    }
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+            String nuevocelularCliente = "";
+            while (true) {
+                try {
+                    System.out.print("Ingrese el número de celular actualizado del cliente: ");
+                    nuevocelularCliente = scanner.nextLine();
+                    if (!nuevocelularCliente.matches("\\d{1,9}")) {
+                        throw new InputMismatchException("El número de celular debe contener solo números y tener como máximo 9 dígitos.");
+                    }
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+            System.out.print("Ingrese la dirección actualizada del cliente: ");
+            String nuevaDireccionCliente = scanner.nextLine();
+            String nuevocodigoCliente = "CC-" + nuevoDniCliente.substring(0, 4);
+            int year = LocalDate.now().getYear() % 100;
+            nuevocodigoCliente += String.format("-%02d", year);
+            String nuevoCodigoPostalCliente = "";
+            while (true) {
+                try {
+                    System.out.print("Ingrese el código Postal actualizado: ");
+                    nuevoCodigoPostalCliente = scanner.nextLine();
+                    if (!nuevoCodigoPostalCliente.matches("\\d+")) {
+                        throw new InputMismatchException("El código postal debe contener solo números.");
+                    }
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+            }
+            clienteActualizar.setNombreCompleto(nuevonombreCliente);
+            clienteActualizar.setDni(nuevoDniCliente);
+            clienteActualizar.setCodigoCliente(nuevocodigoCliente);
+            clienteActualizar.setNumeroCelular(nuevocelularCliente);
+            clienteActualizar.setDireccion(nuevaDireccionCliente);
+            clienteActualizar.setCodigoCliente(nuevocodigoCliente);
+            clienteActualizar.setCodigoPostal(nuevoCodigoPostalCliente);
+
+
+            // Imprimir mensaje de éxito
+            System.out.println("Cliente actualizado exitosamente.");
+        } else {
+            System.out.println("No se encontró ningún cliente con el DNI proporcionado.");
+        }
+    }
+
+    public static void eliminarCliente() {
+        imprimirDniNombreCliente();
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Ingrese el DNI del cliente que desea eliminar:");
+        String dniClienteEliminar = scanner.nextLine();
+
+        Cliente clienteEliminar = buscarClientePorDNI(dniClienteEliminar);
+
+        if (clienteEliminar != null) {
+            System.out.println("Eliminando Cliente - DNI: " + dniClienteEliminar);
+
+            listaClientes.remove(clienteEliminar);
+
+            System.out.println("Cliente eliminado exitosamente.");
+        } else {
+            System.out.println("No se encontró ningún cliente con el DNI proporcionado.");
+        }
+    }
+    public static void imprimirDniNombreCliente() {
+        System.out.println("\nLista de Clientes:");
+        int contador = 1;
+
+        for (Cliente cliente : listaClientes) {
+            System.out.println(contador + ". " + cliente.getnombreCompleto()+", " + cliente.getDni() );
+            contador++;
+        }
+    }
+
+    private static Cliente buscarClientePorDNI(String dniCliente) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getDni().equals(dniCliente)) {
+                System.out.println("Registro encontrado: "+ cliente.getnombreCompleto()+", DNI: " + cliente.getDni());
+                return cliente;
+            }
+        }
+        return null;
+    }
+
 }

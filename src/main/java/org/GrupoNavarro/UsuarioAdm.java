@@ -24,14 +24,10 @@ public class UsuarioAdm extends PersonaDatos{
         }
         return instanciaUnica;
     }
-
     public String getCodigoUser() {
         return codigoUser;
     }
-
-
     public void loginVerificationUser() {
-        // Obtener la instancia única del usuario admin
         UsuarioAdm usuarioAdm = UsuarioAdm.getInstance();
         boolean credencialesCorrectas = false;
 
@@ -42,7 +38,6 @@ public class UsuarioAdm extends PersonaDatos{
                 JOptionPane.showMessageDialog(null, "Operación cancelada. Cierre del programa.", "Adiós", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
             }
-
             JPasswordField passwordField = new JPasswordField();
             int option = JOptionPane.showConfirmDialog(null, passwordField, "Contraseña:", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
             // Validar datos de inicio de sesión

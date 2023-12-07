@@ -48,4 +48,12 @@ public abstract class  PersonaDatos  {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public void setNumeroCelular(String numeroCelular) {
+        this.numeroCelular = numeroCelular;
+    }
 }

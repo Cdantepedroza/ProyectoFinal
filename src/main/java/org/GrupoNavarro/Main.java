@@ -5,14 +5,11 @@ public class Main {
     //P1
     public static void main(String[] args) {
 
-
         GrupoNavarro empresa = new GrupoNavarro("Grupo Navarro");
 
-
-
         // LOGIN USER ADMIN ************************
-        UsuarioAdm usuario = UsuarioAdm.getInstance(); //obtenemos la instancia unica del usuario admin
-        // usuario.loginVerificationUser();  //Es codigoUser y Password
+        UsuarioAdm usuario = UsuarioAdm.getInstance(); //User: admin Pass: Passw0rd
+        usuario.loginVerificationUser();  //Es codigoUser y Password
         // LOGIN USER ADMIN ************************
 
         //Carga Inicial Tecnicos
@@ -23,6 +20,7 @@ public class Main {
         Cliente.CargarClientes();
         // lista base de zonas postales
         ZonaPostal.cargaInicialZonas();
+        Solicitud.CargaInicialSolicitudes();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -77,30 +75,25 @@ public class Main {
             System.out.println("\nMenú Técnicos:");
             System.out.println("1. Registrar Técnico");
             System.out.println("2. Lista de Técnicos");
-            System.out.println("3. Registrar Especialidad");
-            System.out.println("4. Lista de Especialidades");
+            System.out.println("3. Actualizar registro de Técnico");
+            System.out.println("4. Eliminar  Técnico");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
             int opcionTecnicos = scanner.nextInt();
 
-            // Creamos una lista de técnicos
-            List<PersonalTecnico> tecnicos = new ArrayList<>();
-
             switch (opcionTecnicos){
                 case 1:
-                    //Registramos un tecnico
-                    PersonalTecnico.SolicitarDatosTecnico();
+                    PersonalTecnico.registrarNuevoTecnico();
                     break;
                 case 2:
-                    // listamos a los técnicos
                     PersonalTecnico.imprimirTecnicos();
                     break;
                 case 3:
-                    Especialidad.crearEspecialidad();
+                    PersonalTecnico.actualizarTecnico();
                     break;
                 case 4:
-                    Especialidad.listarEspecialidades();
+                    PersonalTecnico.eliminarTecnico();
                     break;
                 case 0:
                     // volver al menu principal
@@ -118,6 +111,7 @@ public class Main {
             System.out.println("\nMenú Pedidos:");
             System.out.println("1. Registrar Pedido");
             System.out.println("2. Lista de Pedidos");
+            System.out.println("3. Actualizar Pedidos");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
@@ -129,6 +123,9 @@ public class Main {
                 case 2:
                     System.out.println("\n");
                     Solicitud.imprimirListaSolicitudes();
+                    break;
+                case 3:
+                    Solicitud.actualizarSolicitud();
                     break;
                 case 0:
                     // volver al menu principal
@@ -147,19 +144,24 @@ public class Main {
             System.out.println("\nMenú Clientes:");
             System.out.println("1. Registrar nuevo Cliente");
             System.out.println("2. Lista de Clientes");
+            System.out.println("3. Actualizar de Cliente");
+            System.out.println("4. Eliminar Cliente");
             System.out.println("0. Volver al Menú Principal");
 
             System.out.print("Seleccione una opción: ");
             int opcionClientes = scanner.nextInt();
             switch (opcionClientes){
                 case 1:
-                    // Registrar Clientes
                     GrupoNavarro.registrarNuevoCliente();
-                    System.out.println("Registrar Cliente - Implementa la lógica aquí");
                     break;
                 case 2:
-                    // Lista de Clientes
                     GrupoNavarro.imprimirClientes();
+                    break;
+                case 3:
+                    GrupoNavarro.actualizarCliente();
+                    break;
+                case 4:
+                    GrupoNavarro.eliminarCliente();
                     break;
                 case 0:
                     // volver al menu principal
@@ -186,15 +188,12 @@ public class Main {
             int opcionTarifas = scanner.nextInt();
             switch (opcionTarifas){
                 case 1:
-                    // Lista de Zona Postal
                     ZonaPostal.imprimirZonasPostales();
                     break;
                 case 2:
-                    // Agregar Zona Postal
                     ZonaPostal.registrarNuevaZonaPostal();
                     break;
                 case 3:
-                    // Modificar Zona Postal
                     ZonaPostal.modificarZonaPostalMain();
                     break;
                 case 4:
@@ -245,7 +244,5 @@ public class Main {
 
         }while (true);
     }
-
-
 
 }
